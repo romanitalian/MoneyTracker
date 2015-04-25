@@ -26,8 +26,8 @@ public class TransactionAdapter extends ArrayAdapter<Transactions> {
         TextView title = (TextView) convertView.findViewById(R.id.title_id);
         TextView sum = (TextView) convertView.findViewById(R.id.sum_id);
 
-        title.setText(transactions.title);
-        sum.setText(Integer.toString(transactions.sum));
+        title.setText(transactions.getTitle());
+        sum.setText(Integer.toString(transactions.getSum()));
         return convertView;
     }
 }
