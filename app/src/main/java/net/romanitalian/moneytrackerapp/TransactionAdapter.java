@@ -1,6 +1,7 @@
 package net.romanitalian.moneytrackerapp;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +31,8 @@ public class TransactionAdapter extends ArrayAdapter<Transactions> {
         title.setText(transactions.getTitle());
         sum.setText(Integer.toString(transactions.getSum()));
         date.setText(transactions.getDate());
+        String color = position % 2 == 0 ? "#FEFF91" : "#CBFDD2";
+        convertView.setBackgroundColor(Color.parseColor(color));
         return convertView;
     }
 }
