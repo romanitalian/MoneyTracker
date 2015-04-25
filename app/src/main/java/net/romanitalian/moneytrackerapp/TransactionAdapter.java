@@ -25,9 +25,11 @@ public class TransactionAdapter extends ArrayAdapter<Transactions> {
         }
         TextView title = (TextView) convertView.findViewById(R.id.title_id);
         TextView sum = (TextView) convertView.findViewById(R.id.sum_id);
+        TextView date = (TextView) convertView.findViewById(R.id.date_id);
 
         title.setText(transactions.getTitle());
         sum.setText(Integer.toString(transactions.getSum()));
+        date.setText(transactions.getDate());
         return convertView;
     }
 }
