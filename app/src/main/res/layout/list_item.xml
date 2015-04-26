@@ -1,28 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                tools:context=".MainActivity">
+                style="@style/Container">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/title_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Title"
-            android:id="@+id/title_id"/>
+            android:text="@string/title"/>
+        <TextView
+            android:id="@+id/date_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParantLeft="true"
+            android:layout_alignParantStart="true"
+            android:layout_marginLeft="10dp"
+            android:text="@string/date"/>
     </LinearLayout>
 
     <TextView
+        android:id="@+id/sum_id"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:text="Sum"
         android:layout_alignParentRight="true"
-        android:id="@+id/sum_id"/>
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        style="@style/TextMain"
+        android:text="@string/sum"/>
 
 </RelativeLayout>
