@@ -13,8 +13,8 @@ public class TransactionAdapter extends ArrayAdapter<Transactions> {
     List<Transactions> transactions;
 
     public TransactionAdapter(Context context, List<Transactions> transactions) {
+        super(context, 0, transactions);
         this.transactions = transactions;
-        super(context, transactions);
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
