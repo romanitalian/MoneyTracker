@@ -4,7 +4,11 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.widget.ListView;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 
@@ -27,11 +31,14 @@ public class MainActivity extends ActionBarActivity {
     }
 
     private List<Transactions> getDataList() {
-        data.add(new Transactions("Huawei", "9800"));
-        data.add(new Transactions("SamsungS3", "13000"));
-        data.add(new Transactions("T-shirt", "300"));
-        data.add(new Transactions("Jeans", "1500"));
-        data.add(new Transactions("Printer", "4500"));
+        DateFormat df = new SimpleDateFormat("dd-mm-YYYY");
+        Date now_calendar = Calendar.getInstance().getTime();
+        String now = df.format(now_calendar);
+        data.add(new Transactions("Huawei", "9800", now));
+        data.add(new Transactions("SamsungS3", "13000", now));
+        data.add(new Transactions("T-shirt", "300", now));
+        data.add(new Transactions("Jeans", "1500", now));
+        data.add(new Transactions("Printer", "4500", now));
         return data;
     }
 

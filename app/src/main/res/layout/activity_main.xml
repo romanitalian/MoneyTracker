@@ -5,13 +5,18 @@
                 android:gravity="center"
                 tools:context=".MainActivity">
 
-    <ListView
-        android:id="@+id/list_view_id"
-        android:divider="@color/link_text_material_dark"
-        android:dividerHeight="0.4dp"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <LinearLayout
+        style="@style/Container">
 
-    </ListView>
+        <ListView
+            android:id="@+id/list_view_id"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@color/link_text_material_dark"
+            android:dividerHeight="0.4dp">
+
+        </ListView>
+    </LinearLayout>
+
 
 </RelativeLayout>
