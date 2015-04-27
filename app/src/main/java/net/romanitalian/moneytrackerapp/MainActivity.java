@@ -18,6 +18,7 @@ public class MainActivity extends ActionBarActivity {
     private ListView listView;
     private TransactionAdapter transactionAdapter;
     List<Transactions> data = new ArrayList<>();
+    String date_format = "yyyy-MM-dd";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +33,7 @@ public class MainActivity extends ActionBarActivity {
     }
 
     private List<Transactions> getDataList() {
-        DateFormat df = new SimpleDateFormat("yyyy-MM-dd", new Locale("ru"));
+        DateFormat df = new SimpleDateFormat(date_format, new Locale("ru"));
         Date now_calendar = Calendar.getInstance().getTime();
         String now = df.format(now_calendar);
         data.add(new Transactions("Huawei", "9800", now));
