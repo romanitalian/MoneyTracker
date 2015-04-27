@@ -1,7 +1,5 @@
 package net.romanitalian.moneytrackerapp;
 
-import java.util.Date;
-
 /**
  * Created by romadin on 24.04.2015.
  */

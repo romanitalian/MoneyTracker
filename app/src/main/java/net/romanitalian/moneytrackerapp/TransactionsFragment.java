@@ -24,17 +24,18 @@ public class TransactionsFragment extends Fragment {
     private TransactionAdapter transactionAdapter;
     List<Transactions> data = new ArrayList<>();
     String date_format = "yyyy-MM-dd";
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View inflate = inflater.inflate(R.layout.fragment_transactions, container);
-        super.onCreateView(inflater, container, savedInstanceState);
-
+        final View inflate = inflater.inflate(R.layout.fragment_transactions, container);
         List<Transactions> adapterData = getDataList();
+
         transactionAdapter = new TransactionAdapter(getActivity(), adapterData);
 
-        listView = (ListView) getActivity().findViewById(R.id.list_view_id);
+        listView = (ListView) inflate.findViewById(R.id.list_view_id);
         listView.setAdapter(transactionAdapter);
+
         return inflate;
     }
 

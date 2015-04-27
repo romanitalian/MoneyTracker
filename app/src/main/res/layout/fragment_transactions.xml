@@ -4,17 +4,13 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <LinearLayout
-        android:background="@color/list_background"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/list_background">
 
         <ListView
             android:id="@+id/list_view_id"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:divider="@color/link_text_material_dark"
-            android:dividerHeight="@dimen/devider_height">
-
+            style="@style/FragmentRowStyle">
         </ListView>
     </LinearLayout>
 
