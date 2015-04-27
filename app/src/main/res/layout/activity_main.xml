@@ -2,7 +2,7 @@
     style="@style/Container.Background">
 
     <LinearLayout
-        android:background="#f7f7f7"
+        android:background="@color/ylw"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -11,7 +11,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:divider="@color/link_text_material_dark"
-            android:dividerHeight="0.4dp">
+            android:dividerHeight="@dimen/devider_height">
 
         </ListView>
     </LinearLayout>
