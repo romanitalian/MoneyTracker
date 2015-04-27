@@ -19,6 +19,8 @@
     <style name="TextMain">
         <item name="android:textSize">@dimen/text_size_main</item>
         <item name="android:textColor">@color/text</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_marginRight">@dimen/text_main_margin_right</item>
+        <item name="android:layout_marginTop">@dimen/text_main_margin_top</item>
     </style>
-
 </resources>
