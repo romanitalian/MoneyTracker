@@ -23,18 +23,13 @@ public class TransactionsFragment extends Fragment {
     private ListView listView;
     private TransactionAdapter transactionAdapter;
     List<Transactions> data = new ArrayList<>();
-    String date_format;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        final View inflate = inflater.inflate(R.layout.fragment_transactions, container);
+        // #try_bundle: disable root for this fragment - set 3-rd param to: "false". It mean: attachToRoot = false;
+        final View inflate = inflater.inflate(R.layout.fragment_transactions, container, false);
 
-//        List<Transactions> transactions = getTransactions(this.date_format);
-//        TransactionAdapter adapter = new TransactionAdapter(getActivity(), transactions);
-//        ListView list = (ListView) inflate.findViewById(R.id.list_view_id);
-//        list.setAdapter(adapter);
-//
         List<Transactions> adapterData = getTransactions();
         transactionAdapter = new TransactionAdapter(getActivity(), adapterData);
         listView = (ListView) inflate.findViewById(R.id.list_view_id);
@@ -44,13 +39,11 @@ public class TransactionsFragment extends Fragment {
     }
 
     private List<Transactions> getTransactions(/*String format*/) {
-        // #try_bundle fragment
-//        String date_format = getArguments().getString("date_format");
-
+        // #try_bundle: in fragment
         Bundle bundle = getArguments();
-        String date_format_new = bundle.getString("date_format");
+        String date_format = bundle.getString("date_format");
 
-        DateFormat df = new SimpleDateFormat(date_format_new, new Locale("ru"));
+        DateFormat df = new SimpleDateFormat(date_format, new Locale("ru"));
         Date now_calendar = Calendar.getInstance().getTime();
         String now = df.format(now_calendar);
         data.add(new Transactions("Huawei", "9800", now));
@@ -59,9 +52,5 @@ public class TransactionsFragment extends Fragment {
         data.add(new Transactions("Jeans", "1500", now));
         data.add(new Transactions("Printer", "4500", now));
         return data;
-    }
-
-    public void setDateFormat(String val) {
-        this.date_format = val;
     }
 }
