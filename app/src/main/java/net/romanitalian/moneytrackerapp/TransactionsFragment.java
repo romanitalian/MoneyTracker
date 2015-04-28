@@ -28,7 +28,7 @@ public class TransactionsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View inflate = inflater.inflate(R.layout.fragment_transactions, container);
-        List<Transactions> adapterData = getDataList();
+        List<Transactions> adapterData = getTransactions();
 
         transactionAdapter = new TransactionAdapter(getActivity(), adapterData);
 
@@ -38,7 +38,8 @@ public class TransactionsFragment extends Fragment {
         return inflate;
     }
 
-    private List<Transactions> getDataList() {
+    private List<Transactions> getTransactions() {
+//        Bundle args = this.getArguments();
 
         DateFormat df = new SimpleDateFormat("dd-MM-yyyy", new Locale("ru"));
         Date now_calendar = Calendar.getInstance().getTime();
