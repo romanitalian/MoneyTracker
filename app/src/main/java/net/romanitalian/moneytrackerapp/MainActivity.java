@@ -12,8 +12,10 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setFragmentParams();
         setContentView(R.layout.activity_main);
+        TransactionsFragment fr = (TransactionsFragment) getFragmentManager().findFragmentById(R.id.fragment_transactions_id);
+        fr.setDateFormat(date_format);
+//        setFragmentParams();
     }
 
     public void setFragmentParams() {
