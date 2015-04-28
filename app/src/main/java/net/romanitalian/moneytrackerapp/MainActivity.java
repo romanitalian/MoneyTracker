@@ -14,28 +14,16 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // #try_bundle: in activity
+        setFragmentParams();
+    }
+
+    public void setFragmentParams() {
         Fragment fragment = new TransactionsFragment();
         Bundle bundle = new Bundle();
 
         bundle.putString("date_format", date_format);
         fragment.setArguments(bundle);
         getFragmentManager().beginTransaction().replace(R.id.fragment_transactions_id, fragment).commit();
-
-
-//        TransactionsFragment fr = (TransactionsFragment) getFragmentManager().findFragmentById(R.id.fragment_transactions_id);
-//        fr.setDateFormat(date_format);
-//
-//        TransactionsFragment fr = (TransactionsFragment) getFragmentManager().findFragmentById(R.id.fragment_transactions_id);
-//        fr.setDateFormat(date_format);
-
-//        setFragmentParams();
-    }
-
-    public void setFragmentParams() {
-        // #try_bundle activity
-        Fragment fragment = getFragmentManager().findFragmentById(R.id.fragment_transactions_id);
-        Bundle bundle = new Bundle();
-        bundle.putString("date_format", date_format);
-        fragment.setArguments(bundle);
     }
 }
