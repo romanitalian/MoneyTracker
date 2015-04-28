@@ -23,7 +23,6 @@ public class TransactionsFragment extends Fragment {
     private ListView listView;
     private TransactionAdapter transactionAdapter;
     List<Transactions> data = new ArrayList<>();
-    Bundle args;
 
     @Nullable
     @Override
@@ -40,10 +39,8 @@ public class TransactionsFragment extends Fragment {
     }
 
     private List<Transactions> getDataList() {
-        Bundle bundle = this.getArguments();
-        String date_format = bundle.getString("date_format");
 
-        DateFormat df = new SimpleDateFormat(date_format, new Locale("ru"));
+        DateFormat df = new SimpleDateFormat("dd-MM-yyyy", new Locale("ru"));
         Date now_calendar = Calendar.getInstance().getTime();
         String now = df.format(now_calendar);
         data.add(new Transactions("Huawei", "9800", now));
