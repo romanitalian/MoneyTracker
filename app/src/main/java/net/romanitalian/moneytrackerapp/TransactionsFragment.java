@@ -39,6 +39,9 @@ public class TransactionsFragment extends Fragment {
     }
 
     private List<Transactions> getTransactions() {
+        // #try_bundle fragment
+        String date_format = getArguments().getString("date_format");
+
         DateFormat df = new SimpleDateFormat("dd-MM-yyyy", new Locale("ru"));
         Date now_calendar = Calendar.getInstance().getTime();
         String now = df.format(now_calendar);
