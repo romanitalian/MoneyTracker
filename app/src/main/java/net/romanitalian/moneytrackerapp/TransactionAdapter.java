@@ -30,7 +30,7 @@ public class TransactionAdapter extends ArrayAdapter<Transactions> {
         title.setText(transactions.getTitle());
         sum.setText(Integer.toString(transactions.getSum()));
         date.setText(transactions.getDate());
-        int color = position % 2 == 0 ? getContext().getResources().getColor(R.color.wht) : getContext().getResources().getColor(R.color.list_background);
+        int color = position % 2 == 0 ? getContext().getResources().getColor(R.color.wht) : getContext().getResources().getColor(R.color.grn);
         convertView.setBackgroundColor(color);
         return convertView;
     }
