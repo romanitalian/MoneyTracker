@@ -7,4 +7,9 @@
     <string name="title">Title</string>
     <string name="sum">Sum</string>
     <string name="date">date</string>
+    <string name="transactions_title">Траты</string>
+    <string name="transactions_categories_title">Категории</string>
+    <string name="transactions_statistics_title">Статистика</string>
+    <string name="statistics_text">Статистика</string>
+    <string name="categories_text">Категории</string>
 </resources>

@@ -6,4 +6,7 @@
     <color name="text">#7F7F7F</color>
     <color name="green">#1A9C56</color>
     <color name="background">#F7F7F7</color>
+
+    <color name="text_color">#7F7F7F</color>
+    <color name="green_dark">#157E46</color>
 </resources>

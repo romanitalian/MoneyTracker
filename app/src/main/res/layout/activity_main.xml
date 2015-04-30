@@ -18,9 +18,10 @@
 
         <ListView
             android:layout_width="@dimen/drawer_list_left_width"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:id="@+id/drawer_list_left_id"
             android:layout_gravity="start"
+            android:textSize="@dimen/text_size_main"
             android:choiceMode="singleChoice"
             android:background="@color/background"
             android:divider="@android:color/transparent"

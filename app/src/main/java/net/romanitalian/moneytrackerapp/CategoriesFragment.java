@@ -16,7 +16,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-public class TransactionsFragment extends Fragment {
+public class CategoriesFragment extends Fragment {
     private ListView listView;
     private TransactionAdapter transactionAdapter;
     List<Transaction> data = new ArrayList<>();
