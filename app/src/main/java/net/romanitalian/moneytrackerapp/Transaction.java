@@ -3,17 +3,17 @@ package net.romanitalian.moneytrackerapp;
 /**
  * Created by romadin on 24.04.2015.
  */
-public class Transactions {
+public class Transaction {
     private String title;
     private int sum;
     private String date;
 
-    public Transactions(String title, String sum) {
+    public Transaction(String title, String sum) {
         this.title = title;
         this.sum = Integer.valueOf(sum);
     }
 
-    public Transactions(String title, String sum, String date) {
+    public Transaction(String title, String sum, String date) {
         this.title = title;
         this.sum = Integer.valueOf(sum);
         this.date = date;

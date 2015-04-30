@@ -9,16 +9,16 @@ import android.widget.TextView;
 
 import java.util.List;
 
-public class TransactionAdapter extends ArrayAdapter<Transactions> {
-    List<Transactions> transactions;
+public class TransactionAdapter extends ArrayAdapter<Transaction> {
+    List<Transaction> transactions;
 
-    public TransactionAdapter(Context context, List<Transactions> transactions) {
+    public TransactionAdapter(Context context, List<Transaction> transactions) {
         super(context, 0, transactions);
         this.transactions = transactions;
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
-        Transactions transactions = getItem(position);
+        Transaction transactions = getItem(position);
 
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_item, parent, false);
