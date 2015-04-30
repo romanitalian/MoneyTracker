@@ -2,7 +2,8 @@
     style="@style/Container.Background"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <fragment
+    <!-- #try_bundle: in view [change tagname: from "fragment" to "FrameLayout"] -->
+    <FrameLayout
         android:id="@+id/fragment_transactions_id"
         class="net.romanitalian.moneytrackerapp.TransactionsFragment"
         android:layout_width="match_parent"
