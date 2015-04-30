@@ -1,4 +1,4 @@
-package net.romanitalian.moneytrackerapp;
+package net.romanitalian.moneytrackerapp.fragments;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -8,6 +8,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import net.romanitalian.moneytrackerapp.R;
+import net.romanitalian.moneytrackerapp.adapters.TransactionAdapter;
+import net.romanitalian.moneytrackerapp.models.Transaction;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -16,7 +20,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-public class TransactionsFragment extends Fragment {
+public class CategoriesFragment extends Fragment {
     private ListView listView;
     private TransactionAdapter transactionAdapter;
     List<Transaction> data = new ArrayList<>();

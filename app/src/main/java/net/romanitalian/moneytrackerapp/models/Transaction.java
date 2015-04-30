@@ -1,4 +1,4 @@
-package net.romanitalian.moneytrackerapp;
+package net.romanitalian.moneytrackerapp.models;
 
 public class Transaction {
     private String title;

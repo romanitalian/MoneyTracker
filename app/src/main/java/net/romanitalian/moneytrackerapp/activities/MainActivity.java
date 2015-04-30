@@ -1,4 +1,4 @@
-package net.romanitalian.moneytrackerapp;
+package net.romanitalian.moneytrackerapp.activities;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -10,6 +10,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import net.romanitalian.moneytrackerapp.R;
+import net.romanitalian.moneytrackerapp.fragments.CategoriesFragment;
+import net.romanitalian.moneytrackerapp.fragments.StatisticsFragment;
+import net.romanitalian.moneytrackerapp.fragments.TransactionsFragment;
 
 
 public class MainActivity extends ActionBarActivity {
