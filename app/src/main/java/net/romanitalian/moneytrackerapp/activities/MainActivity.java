@@ -30,8 +30,9 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
         // set all menus
         initMenus();
+        setTitle(getString(R.string.transactions_title));
         // #try_bundle: in activity
-        setFragmentParams(new TransactionsFragment());
+        setFragmentParams(new CategoriesFragment());
     }
 
     public void setFragmentParams(Fragment fragment) {
