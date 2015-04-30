@@ -5,4 +5,22 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="Container">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="Container.Background">
+        <item name="android:background">@drawable/android_app_back</item>
+    </style>
+
+    <style name="TextMain">
+        <item name="android:textSize">@dimen/text_size_main</item>
+        <item name="android:textColor">@color/text</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_marginRight">@dimen/text_main_margin_right</item>
+        <item name="android:layout_marginTop">@dimen/text_main_margin_top</item>
+    </style>
 </resources>
