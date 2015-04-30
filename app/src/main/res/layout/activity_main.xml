@@ -21,12 +21,11 @@
             android:layout_height="match_parent"
             android:id="@+id/drawer_list_left_id"
             android:layout_gravity="start"
-            android:textSize="@dimen/text_size_main"
+            android:textSize="10sp"
             android:choiceMode="singleChoice"
             android:background="@color/background"
-            android:divider="@android:color/transparent"
-            >
-
+            android:divider="@android:color/transparent">
         </ListView>
+
     </android.support.v4.widget.DrawerLayout>
 </LinearLayout>

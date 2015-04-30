@@ -39,7 +39,7 @@ public class TransactionsFragment extends Fragment {
         return inflate;
     }
 
-    private List<Transaction> getTransactions(/*String format*/) {
+    private List<Transaction> getTransactions() {
         // #try_bundle: in fragment
         Bundle bundle = getArguments();
         String date_format = bundle.getString("date_format");
