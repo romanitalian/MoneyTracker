@@ -1,8 +1,5 @@
 package net.romanitalian.moneytrackerapp;
 
-/**
- * Created by romadin on 24.04.2015.
- */
 public class Transaction {
     private String title;
     private int sum;
