@@ -13,10 +13,8 @@
             android:layout_width="match_parent"
             android:text="@string/categories_text"
             android:layout_height="match_parent"
-            android:layout_below="@+id/category_id"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="56dp"/>
+            android:id="@+id/category_id"
+            />
     </LinearLayout>
 
 

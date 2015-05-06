@@ -32,7 +32,7 @@ public class MainActivity extends ActionBarActivity {
         initMenus();
         setTitle(getString(R.string.transactions_title));
         // #try_bundle: in activity
-        setFragmentParams(new CategoriesFragment());
+        setFragmentParams(new TransactionsFragment());
     }
 
     public void setFragmentParams(Fragment fragment) {
