@@ -7,13 +7,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/list_background"
-        android:id="@+id/linearLayout">
+        android:id="@+id/statistic_linear_layout">
 
-        <ListView
+        <TextView
+            android:layout_width="match_parent"
+            android:text="@string/categories_text"
+            android:layout_height="match_parent"
             android:id="@+id/statistics_id"
-            style="@style/FragmentRowStyle">
-        </ListView>
+            />
     </LinearLayout>
-
 
 </RelativeLayout>
