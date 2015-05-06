@@ -21,7 +21,7 @@
             android:layout_height="match_parent"
             android:id="@+id/drawer_list_left_id"
             android:layout_gravity="start"
-            android:textSize="10sp"
+            android:textSize="@dimen/left_drawer_layout_text_size"
             android:choiceMode="singleChoice"
             android:background="@color/background"
             android:divider="@android:color/transparent">

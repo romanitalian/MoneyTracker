@@ -10,6 +10,6 @@
     <string name="transactions_title">Траты</string>
     <string name="transactions_categories_title">Категории</string>
     <string name="transactions_statistics_title">Статистика</string>
-    <string name="statistics_text">Статистика</string>
+    <string name="statistics_text">Здесь будет статистика</string>
     <string name="categories_text">Категории</string>
 </resources>
