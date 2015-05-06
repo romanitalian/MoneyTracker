@@ -9,13 +9,10 @@
         android:background="@color/list_background"
         android:id="@+id/category_linear_layout">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:text="@string/categories_text"
-            android:layout_height="match_parent"
-            android:id="@+id/category_id"
-            />
+
+        <ListView
+            android:id="@+id/category_list_view_id"
+            style="@style/FragmentRowStyle">
+        </ListView>
     </LinearLayout>
-
-
 </RelativeLayout>
