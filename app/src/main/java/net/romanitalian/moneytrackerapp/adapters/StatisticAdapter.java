@@ -24,9 +24,9 @@ public class StatisticAdapter extends ArrayAdapter<Statistic> {
         Statistic categories = getItem(position);
 
         if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_item, parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_item_statistics, parent, false);
         }
-        TextView title = (TextView) convertView.findViewById(R.id.title_id);
+        TextView title = (TextView) convertView.findViewById(R.id.statistic_title);
 
         title.setText(categories.getTitle());
         return convertView;

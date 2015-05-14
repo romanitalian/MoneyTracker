@@ -2,13 +2,16 @@
 <RelativeLayout
     style="@style/Container"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     >
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_margin="5dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="7dp"
+        card_view:cardBackgroundColor="@color/background"
+        card_view:cardCornerRadius="3dp"
         >
 
         <RelativeLayout
@@ -22,19 +25,19 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/title_id"
+                    android:id="@+id/transaction_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/title"/>
 
                 <TextView
-                    android:id="@+id/date_id"
+                    android:id="@+id/transaction_date"
                     style="@style/DateStyle"
                     android:text="@string/date"/>
             </LinearLayout>
 
             <TextView
-                android:id="@+id/sum_id"
+                android:id="@+id/transaction_sum"
                 style="@style/TextMain"
                 android:text="@string/sum"/>
         </RelativeLayout>

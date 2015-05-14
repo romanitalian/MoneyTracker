@@ -3,10 +3,11 @@ package net.romanitalian.moneytrackerapp.fragments;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 
 import net.romanitalian.moneytrackerapp.R;
 import net.romanitalian.moneytrackerapp.adapters.TransactionAdapter;
@@ -21,26 +22,29 @@ import java.util.List;
 import java.util.Locale;
 
 public class TransactionsFragment extends Fragment {
-    private ListView listView;
+    private RecyclerView recyclerView;
     private TransactionAdapter transactionAdapter;
     List<Transaction> data = new ArrayList<>();
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // #try_bundle: disable root for this fragment - set 3-rd param to: "false". It mean: attachToRoot = false;
         final View inflate = inflater.inflate(R.layout.fragment_transactions, container, false);
 
         List<Transaction> adapterData = getTransactions();
-        transactionAdapter = new TransactionAdapter(getActivity(), adapterData);
-        listView = (ListView) inflate.findViewById(R.id.list_view_id);
-        listView.setAdapter(transactionAdapter);
+        transactionAdapter = new TransactionAdapter(adapterData);
+
+        recyclerView = (RecyclerView) inflate.findViewById(R.id.transaction_list);
+
+        recyclerView.setHasFixedSize(true);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        recyclerView.setAdapter(transactionAdapter);
 
         return inflate;
     }
 
     private List<Transaction> getTransactions() {
-        // #try_bundle: in fragment
         Bundle bundle = getArguments();
         String date_format = bundle.getString("date_format");
 

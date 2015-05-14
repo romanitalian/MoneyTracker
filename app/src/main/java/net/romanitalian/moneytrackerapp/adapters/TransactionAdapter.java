@@ -1,10 +1,9 @@
 package net.romanitalian.moneytrackerapp.adapters;
 
-import android.content.Context;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import net.romanitalian.moneytrackerapp.R;
@@ -12,29 +11,48 @@ import net.romanitalian.moneytrackerapp.models.Transaction;
 
 import java.util.List;
 
-public class TransactionAdapter extends ArrayAdapter<Transaction> {
+
+public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.CardViewHolder> {
     List<Transaction> transactions;
 
-    public TransactionAdapter(Context context, List<Transaction> transactions) {
-        super(context, 0, transactions);
+    public TransactionAdapter(List<Transaction> transactions) {
+
         this.transactions = transactions;
     }
 
-    public View getView(int position, View convertView, ViewGroup parent) {
-        Transaction transactions = getItem(position);
+    //TransactionAdapter
 
-        if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_item, parent, false);
+    @Override
+    public CardViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_transactions, parent, false);
+
+        return new CardViewHolder(itemView);
+    }
+
+    @Override
+    public void onBindViewHolder(CardViewHolder holder, int position) {
+        Transaction transaction = transactions.get(position);
+        holder.title.setText(transaction.getTitle());
+        holder.sum.setText(transaction.getSum());
+
+    }
+
+    @Override
+    public int getItemCount() {
+        return transactions.size();
+    }
+
+
+    public static class CardViewHolder extends RecyclerView.ViewHolder {
+
+        protected TextView title;
+        protected TextView sum;
+
+        public CardViewHolder(View itemView) {
+            super(itemView);
+            title = (TextView) itemView.findViewById(R.id.transaction_title);
+            sum = (TextView) itemView.findViewById(R.id.transaction_sum);
         }
-        TextView title = (TextView) convertView.findViewById(R.id.title_id);
-        TextView sum = (TextView) convertView.findViewById(R.id.sum_id);
-        TextView date = (TextView) convertView.findViewById(R.id.date_id);
-
-        title.setText(transactions.getTitle());
-        sum.setText(Integer.toString(transactions.getSum()));
-        date.setText(transactions.getDate());
-        int color = position % 2 == 0 ? getContext().getResources().getColor(R.color.wht) : getContext().getResources().getColor(R.color.grn);
-        convertView.setBackgroundColor(color);
-        return convertView;
     }
 }
+

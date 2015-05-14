@@ -24,9 +24,9 @@ public class CategoryAdapter extends ArrayAdapter<Category> {
         Category categories = getItem(position);
 
         if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_item_category, parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_item_categories, parent, false);
         }
-        TextView title = (TextView) convertView.findViewById(R.id.title_id);
+        TextView title = (TextView) convertView.findViewById(R.id.category_title);
 
         title.setText(categories.getTitle());
         return convertView;
