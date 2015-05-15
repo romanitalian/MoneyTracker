@@ -1,2 +1,7 @@
 /build
 .idea
+
+# Intellij project files
+*.iml
+*.ipr
+*.iws
