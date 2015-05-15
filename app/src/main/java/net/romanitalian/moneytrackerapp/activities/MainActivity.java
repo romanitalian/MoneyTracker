@@ -18,8 +18,8 @@ import net.romanitalian.moneytrackerapp.fragments.TransactionsFragment;
 
 
 public class MainActivity extends ActionBarActivity {
-    private String date_format = "dd-MM-yyyy";
-    private Toolbar toolbar_menu;
+    private String dateFormat = "dd-MM-yyyy";
+    private Toolbar toolbarMenu;
     private DrawerLayout drawer_widget;
     private ListView left_menu;
     private ActionBarDrawerToggle drawer_toggle;
@@ -35,15 +35,15 @@ public class MainActivity extends ActionBarActivity {
 
     public void setFragmentParams(Fragment fragment) {
         Bundle bundle = new Bundle();
-        bundle.putString("date_format", date_format);
+        bundle.putString("dateFormat", dateFormat);
         fragment.setArguments(bundle);
         getFragmentManager().beginTransaction().replace(R.id.drawer_layout_frame_id, fragment).commit();
     }
 
     public void initMenus() {
-        toolbar_menu = (Toolbar) findViewById(R.id.toolbar_id);
-        if (toolbar_menu != null) {
-            setSupportActionBar(toolbar_menu);
+        toolbarMenu = (Toolbar) findViewById(R.id.toolbar_id);
+        if (toolbarMenu != null) {
+            setSupportActionBar(toolbarMenu);
         }
 
         drawer_widget = (DrawerLayout) findViewById(R.id.drawer_layout_id);
@@ -62,7 +62,7 @@ public class MainActivity extends ActionBarActivity {
         left_menu.setOnItemClickListener(new DrawerItemClickListener());
 
         // set toggle
-        drawer_toggle = new ActionBarDrawerToggle(this, drawer_widget, toolbar_menu, R.string.app_name, R.string.app_name);
+        drawer_toggle = new ActionBarDrawerToggle(this, drawer_widget, toolbarMenu, R.string.app_name, R.string.app_name);
         drawer_widget.setDrawerListener(drawer_toggle);
         // set icon widget for toggle
 //        getSupportActionBar().setDisplayHomeAsUpEnabled(true);

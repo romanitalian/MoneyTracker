@@ -28,7 +28,6 @@ public class TransactionsFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // #try_bundle: disable root for this fragment - set 3-rd param to: "false". It mean: attachToRoot = false;
         final View inflate = inflater.inflate(R.layout.fragment_transactions, container, false);
 
         List<Transaction> adapterData = getTransactions();
@@ -40,9 +39,8 @@ public class TransactionsFragment extends Fragment {
     }
 
     private List<Transaction> getTransactions() {
-        // #try_bundle: in fragment
         Bundle bundle = getArguments();
-        String date_format = bundle.getString("date_format");
+        String date_format = bundle.getString("dateFormat");
 
         DateFormat df = new SimpleDateFormat(date_format, new Locale("ru"));
         Date now_calendar = Calendar.getInstance().getTime();
