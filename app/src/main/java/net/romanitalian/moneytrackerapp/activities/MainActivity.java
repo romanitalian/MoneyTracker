@@ -64,13 +64,6 @@ public class MainActivity extends ActionBarActivity {
         // set toggle
         drawer_toggle = new ActionBarDrawerToggle(this, drawer_widget, toolbarMenu, R.string.app_name, R.string.app_name);
         drawer_widget.setDrawerListener(drawer_toggle);
-        // set icon widget for toggle
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    }
-
-    @Override
-    public void setTitle(CharSequence title) {
-        super.setTitle(title);
     }
 
     @Override
