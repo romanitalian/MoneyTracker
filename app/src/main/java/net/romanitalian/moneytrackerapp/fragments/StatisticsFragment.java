@@ -19,8 +19,8 @@ public class StatisticsFragment extends Fragment {
         final View inflate = inflater.inflate(R.layout.fragment_statistics, container, false);
 
         LinearLayout ll = (LinearLayout) inflate.findViewById(R.id.statistic_linear_layout);
-        TextView text_view = (TextView) ll.findViewById(R.id.statistics_id);
-        text_view.setText(R.string.statistics_text);
+        TextView textView = (TextView) ll.findViewById(R.id.statistics_id);
+        textView.setText(R.string.statistics_text);
 
         return inflate;
     }
