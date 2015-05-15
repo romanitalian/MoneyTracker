@@ -27,7 +27,7 @@ proguard/
 *.iml
 *.ipr
 *.iws
-.idea/
+
 .DS_Store
 
 #Gradle files
@@ -48,3 +48,5 @@ libraries/facebook/build/
 
 # some stupid generated file
 reader/manifest-merger-release-report.txt
+
+.idea
