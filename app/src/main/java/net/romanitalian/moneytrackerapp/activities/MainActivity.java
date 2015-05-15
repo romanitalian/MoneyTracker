@@ -28,10 +28,8 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        // set all menus
         initMenus();
         setTitle(getString(R.string.transactions_title));
-        // #try_bundle: in activity
         setFragmentParams(new TransactionsFragment());
     }
 
@@ -43,7 +41,6 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void initMenus() {
-        // get all - our menus
         toolbar_menu = (Toolbar) findViewById(R.id.toolbar_id);
         if (toolbar_menu != null) {
             setSupportActionBar(toolbar_menu);
@@ -52,7 +49,6 @@ public class MainActivity extends ActionBarActivity {
         drawer_widget = (DrawerLayout) findViewById(R.id.drawer_layout_id);
         left_menu = (ListView) findViewById(R.id.drawer_list_left_id);
 
-        // set menu labels
         String[] menuLabels = new String[]
                 {
                         getString(R.string.transactions_title),
