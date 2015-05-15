@@ -18,11 +18,11 @@ import net.romanitalian.moneytrackerapp.fragments.TransactionsFragment;
 
 
 public class MainActivity extends ActionBarActivity {
-    private String date_format = "dd-MM-yyyy";
-    private Toolbar toolbar_menu;
-    private DrawerLayout drawer_widget;
-    private ListView left_menu;
-    private ActionBarDrawerToggle drawer_toggle;
+    private String dateFormat = "dd-MM-yyyy";
+    private Toolbar toolbarMenu;
+    private DrawerLayout drawerWidget;
+    private ListView leftMenu;
+    private ActionBarDrawerToggle drawerToggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,20 +37,20 @@ public class MainActivity extends ActionBarActivity {
 
     public void setFragmentParams(Fragment fragment) {
         Bundle bundle = new Bundle();
-        bundle.putString("date_format", date_format);
+        bundle.putString("dateFormat", dateFormat);
         fragment.setArguments(bundle);
         getFragmentManager().beginTransaction().replace(R.id.drawer_layout_frame_id, fragment).commit();
     }
 
     public void initMenus() {
         // get all - our menus
-        toolbar_menu = (Toolbar) findViewById(R.id.toolbar_id);
-        if (toolbar_menu != null) {
-            setSupportActionBar(toolbar_menu);
+        toolbarMenu = (Toolbar) findViewById(R.id.toolbar_id);
+        if (toolbarMenu != null) {
+            setSupportActionBar(toolbarMenu);
         }
 
-        drawer_widget = (DrawerLayout) findViewById(R.id.drawer_layout_id);
-        left_menu = (ListView) findViewById(R.id.drawer_list_left_id);
+        drawerWidget = (DrawerLayout) findViewById(R.id.drawer_layout_id);
+        leftMenu = (ListView) findViewById(R.id.drawer_list_left_id);
 
         // set menu labels
         String[] menuLabels = new String[]
@@ -60,14 +60,14 @@ public class MainActivity extends ActionBarActivity {
                         getString(R.string.transactions_statistics_title)
                 };
         ArrayAdapter<String> menu_labels_adapter = new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_expandable_list_item_1, menuLabels);
-        left_menu.setAdapter(menu_labels_adapter);
+        leftMenu.setAdapter(menu_labels_adapter);
 
         // set onClickListener on left menu
-        left_menu.setOnItemClickListener(new DrawerItemClickListener());
+        leftMenu.setOnItemClickListener(new DrawerItemClickListener());
 
         // set toggle
-        drawer_toggle = new ActionBarDrawerToggle(this, drawer_widget, toolbar_menu, R.string.app_name, R.string.app_name);
-        drawer_widget.setDrawerListener(drawer_toggle);
+        drawerToggle = new ActionBarDrawerToggle(this, drawerWidget, toolbarMenu, R.string.app_name, R.string.app_name);
+        drawerWidget.setDrawerListener(drawerToggle);
         // set icon widget for toggle
 //        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
@@ -81,14 +81,14 @@ public class MainActivity extends ActionBarActivity {
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         // set icon widget for toggle
-        drawer_toggle.syncState();
+        drawerToggle.syncState();
     }
 
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            left_menu.setItemChecked(position, true);
-            drawer_widget.closeDrawer(left_menu);
+            leftMenu.setItemChecked(position, true);
+            drawerWidget.closeDrawer(leftMenu);
             if (position == 0) {
                 setTitle(getString(R.string.transactions_title));
                 setFragmentParams(new TransactionsFragment());
