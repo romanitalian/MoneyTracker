@@ -78,15 +78,19 @@ public class MainActivity extends ActionBarActivity {
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             left_menu.setItemChecked(position, true);
             drawer_widget.closeDrawer(left_menu);
-            if (position == 0) {
-                setTitle(getString(R.string.transactions_title));
-                setFragmentParams(new TransactionsFragment());
-            } else if (position == 1) {
-                setTitle(getString(R.string.transactions_categories_title));
-                setFragmentParams(new CategoriesFragment());
-            } else if (position == 2) {
-                setTitle(getString(R.string.transactions_statistics_title));
-                setFragmentParams(new StatisticsFragment());
+            switch (position) {
+                case 0:
+                    setTitle(getString(R.string.transactions_title));
+                    setFragmentParams(new TransactionsFragment());
+                    break;
+                case 1:
+                    setTitle(getString(R.string.transactions_categories_title));
+                    setFragmentParams(new CategoriesFragment());
+                    break;
+                case 2:
+                    setTitle(getString(R.string.transactions_statistics_title));
+                    setFragmentParams(new StatisticsFragment());
+                    break;
             }
         }
     }
