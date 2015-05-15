@@ -39,6 +39,8 @@ public class TransactionsFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(linearLayoutManager);
+
         recyclerView.setAdapter(transactionAdapter);
 
         return inflate;
