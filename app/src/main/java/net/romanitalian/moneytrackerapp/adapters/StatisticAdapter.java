@@ -13,11 +13,11 @@ import net.romanitalian.moneytrackerapp.models.Statistic;
 import java.util.List;
 
 public class StatisticAdapter extends ArrayAdapter<Statistic> {
-    List<Statistic> categories;
+    List<Statistic> statistics;
 
     public StatisticAdapter(Context context, List<Statistic> statistic) {
         super(context, 0, statistic);
-        this.categories = statistic;
+        this.statistics = statistic;
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {

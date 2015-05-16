@@ -13,6 +13,5 @@ public class Statistic {
 
     public Statistic(String title) {
         this.title = title;
-
     }
 }

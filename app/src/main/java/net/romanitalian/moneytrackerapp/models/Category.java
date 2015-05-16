@@ -13,6 +13,5 @@ public class Category {
 
     public Category(String title) {
         this.title = title;
-
     }
 }
