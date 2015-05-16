@@ -14,7 +14,7 @@
             android:id="@+id/drawer_layout_frame_id"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/list_background"/>
+            android:background="@color/background"/>
 
         <ListView
             android:layout_width="@dimen/drawer_list_left_width"

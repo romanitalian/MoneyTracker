@@ -9,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.melnykov.fab.FloatingActionButton;
+
 import net.romanitalian.moneytrackerapp.R;
 import net.romanitalian.moneytrackerapp.adapters.TransactionAdapter;
 import net.romanitalian.moneytrackerapp.models.Transaction;
@@ -35,6 +37,7 @@ public class TransactionsFragment extends Fragment {
         transactionAdapter = new TransactionAdapter(adapterData);
 
         recyclerView = (RecyclerView) inflate.findViewById(R.id.transaction_list);
+        FloatingActionButton fab = (FloatingActionButton) inflate.findViewById(R.id.fab);
 
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
@@ -42,6 +45,7 @@ public class TransactionsFragment extends Fragment {
         recyclerView.setLayoutManager(linearLayoutManager);
 
         recyclerView.setAdapter(transactionAdapter);
+        fab.attachToRecyclerView(recyclerView);
 
         return inflate;
     }
