@@ -51,8 +51,8 @@ public class TransactionsFragment extends Fragment {
         String dateFormat = bundle.getString("dateFormat");
 
         DateFormat df = new SimpleDateFormat(dateFormat, new Locale("ru"));
-        Date now_calendar = Calendar.getInstance().getTime();
-        String now = df.format(now_calendar);
+        Date nowCalendar = Calendar.getInstance().getTime();
+        String now = df.format(nowCalendar);
         data.add(new Transaction("Huawei", "9800", now));
         data.add(new Transaction("SamsungS3", "13000", now));
         data.add(new Transaction("T-shirt", "300", now));

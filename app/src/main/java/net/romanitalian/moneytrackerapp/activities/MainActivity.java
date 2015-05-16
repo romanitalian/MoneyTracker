@@ -28,10 +28,8 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        // set all menus
         initMenus();
         setTitle(getString(R.string.transactions_title));
-        // #try_bundle: in activity
         setFragmentParams(new TransactionsFragment());
     }
 
@@ -43,7 +41,6 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void initMenus() {
-        // get all - our menus
         toolbarMenu = (Toolbar) findViewById(R.id.toolbar_id);
         if (toolbarMenu != null) {
             setSupportActionBar(toolbarMenu);
@@ -52,7 +49,6 @@ public class MainActivity extends ActionBarActivity {
         drawerWidget = (DrawerLayout) findViewById(R.id.drawer_layout_id);
         leftMenu = (ListView) findViewById(R.id.drawer_list_left_id);
 
-        // set menu labels
         String[] menuLabels = new String[]
                 {
                         getString(R.string.transactions_title),
@@ -68,8 +64,6 @@ public class MainActivity extends ActionBarActivity {
         // set toggle
         drawerToggle = new ActionBarDrawerToggle(this, drawerWidget, toolbarMenu, R.string.app_name, R.string.app_name);
         drawerWidget.setDrawerListener(drawerToggle);
-        // set icon widget for toggle
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override

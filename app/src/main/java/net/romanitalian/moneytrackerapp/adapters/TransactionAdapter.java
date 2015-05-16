@@ -16,14 +16,12 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
     List<Transaction> transactions;
 
     public TransactionAdapter(List<Transaction> transactions) {
-
         this.transactions = transactions;
     }
 
     @Override
     public CardViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_transactions, parent, false);
-
         return new CardViewHolder(itemView);
     }
 
@@ -40,9 +38,7 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
         return transactions.size();
     }
 
-
     public static class CardViewHolder extends RecyclerView.ViewHolder {
-
         protected TextView title;
         protected TextView sum;
 
