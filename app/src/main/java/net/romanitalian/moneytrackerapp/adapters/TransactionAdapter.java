@@ -29,7 +29,7 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
     public void onBindViewHolder(CardViewHolder holder, int position) {
         Transaction transaction = transactions.get(position);
         holder.title.setText(transaction.getTitle());
-        holder.sum.setText(transaction.getSum());
+        holder.sum.setText(String.valueOf(transaction.getSum()));
 
     }
 
