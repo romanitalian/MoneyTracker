@@ -20,9 +20,9 @@ import net.romanitalian.moneytrackerapp.fragments.TransactionsFragment;
 public class MainActivity extends ActionBarActivity {
     private String dateFormat = "dd-MM-yyyy";
     private Toolbar toolbarMenu;
-    private DrawerLayout drawer_widget;
-    private ListView left_menu;
-    private ActionBarDrawerToggle drawer_toggle;
+    private DrawerLayout drawerWidget;
+    private ListView listView;
+    private ActionBarDrawerToggle drawerToggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,8 +46,8 @@ public class MainActivity extends ActionBarActivity {
             setSupportActionBar(toolbarMenu);
         }
 
-        drawer_widget = (DrawerLayout) findViewById(R.id.drawer_layout_id);
-        left_menu = (ListView) findViewById(R.id.drawer_list_left_id);
+        drawerWidget = (DrawerLayout) findViewById(R.id.drawer_layout_id);
+        listView = (ListView) findViewById(R.id.drawer_list_left_id);
 
         String[] menuLabels = new String[]
                 {
@@ -56,28 +56,28 @@ public class MainActivity extends ActionBarActivity {
                         getString(R.string.transactions_statistics_title)
                 };
         ArrayAdapter<String> menu_labels_adapter = new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_expandable_list_item_1, menuLabels);
-        left_menu.setAdapter(menu_labels_adapter);
+        listView.setAdapter(menu_labels_adapter);
 
         // set onClickListener on left menu
-        left_menu.setOnItemClickListener(new DrawerItemClickListener());
+        listView.setOnItemClickListener(new DrawerItemClickListener());
 
         // set toggle
-        drawer_toggle = new ActionBarDrawerToggle(this, drawer_widget, toolbarMenu, R.string.app_name, R.string.app_name);
-        drawer_widget.setDrawerListener(drawer_toggle);
+        drawerToggle = new ActionBarDrawerToggle(this, drawerWidget, toolbarMenu, R.string.app_name, R.string.app_name);
+        drawerWidget.setDrawerListener(drawerToggle);
     }
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         // set icon widget for toggle
-        drawer_toggle.syncState();
+        drawerToggle.syncState();
     }
 
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            left_menu.setItemChecked(position, true);
-            drawer_widget.closeDrawer(left_menu);
+            listView.setItemChecked(position, true);
+            drawerWidget.closeDrawer(listView);
             switch (position) {
                 case 0:
                     setTitle(getString(R.string.transactions_title));
