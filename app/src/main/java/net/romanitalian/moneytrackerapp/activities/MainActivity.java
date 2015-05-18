@@ -30,7 +30,7 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
         initMenus();
         setTitle(getString(R.string.transactions_title));
-        setFragmentParams(new TransactionsFragment());
+        setFragment(0);
     }
 
     public void setFragmentParams(Fragment fragment) {
@@ -78,21 +78,29 @@ public class MainActivity extends ActionBarActivity {
         drawerToggle.syncState();
     }
 
+    public void setFragment(int position) {
+        switch (position) {
+            case 0:
+                setTitle(getString(R.string.transactions_title));
+                setFragmentParams(new TransactionsFragment());
+                break;
+            case 1:
+                setTitle(getString(R.string.transactions_categories_title));
+                setFragmentParams(new CategoriesFragment());
+                break;
+            case 2:
+                setTitle(getString(R.string.transactions_statistics_title));
+                setFragmentParams(new StatisticsFragment());
+                break;
+        }
+    }
+
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             leftMenu.setItemChecked(position, true);
             drawerWidget.closeDrawer(leftMenu);
-            if (position == 0) {
-                setTitle(getString(R.string.transactions_title));
-                setFragmentParams(new TransactionsFragment());
-            } else if (position == 1) {
-                setTitle(getString(R.string.transactions_categories_title));
-                setFragmentParams(new CategoriesFragment());
-            } else if (position == 2) {
-                setTitle(getString(R.string.transactions_statistics_title));
-                setFragmentParams(new StatisticsFragment());
-            }
+            setFragment(position);
         }
     }
 }
