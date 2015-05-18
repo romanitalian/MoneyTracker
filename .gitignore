@@ -27,7 +27,7 @@ proguard/
 *.iml
 *.ipr
 *.iws
-.idea/
+.idea
 .DS_Store
 
 #Gradle files
@@ -35,9 +35,6 @@ proguard/
 gradle-app.setting
 
 #other stuff
-*.hprof
-
-#other
 *.hprof
 
 #Libraries build files
