@@ -15,8 +15,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:elevation="@dimen/drawer_elevation"
-            android:theme="@style/CustomTheme"/>
+            android:elevation="@dimen/drawer_elevation"/>
 
         <FrameLayout
             android:id="@+id/drawer_layout_frame"
@@ -26,13 +25,13 @@
 
         <ListView
             android:id="@+id/drawer_list"
-            android:layout_width="@dimen/drawer_list_left_width"
+            android:layout_width="@dimen/drawer_list_width"
             android:layout_height="match_parent"
             android:layout_gravity="start"
             android:background="@color/background"
             android:choiceMode="singleChoice"
             android:divider="@android:color/transparent"
-            android:textSize="@dimen/left_drawer_layout_text_size">
+            android:textSize="@dimen/drawer_layout_text_size">
         </ListView>
 
     </android.support.v4.widget.DrawerLayout>

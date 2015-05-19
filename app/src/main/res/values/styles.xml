@@ -113,37 +113,5 @@
     <!--<color name="ripple">#F06292</color>-->
     <!--<color name="accent">#E91E63</color>-->
     <!--<color name="accent_pressed">#C2185B</color>-->
-
-    <style name="DrawerTheme" parent="AppTheme.Base">
-        <item name="colorPrimary">@color/green</item>
-        <item name="colorPrimaryDark">@color/green_dark</item>
-        <item name="material_drawer_selected">@color/material_drawer_selected</item>
-        <item name="material_drawer_selected_text">@color/text_color</item>
-    </style>
-
-    <style name="CustomTheme" parent="MaterialDrawerTheme">
-
-        <!-- Here we setting appcompat’s actionBarStyle -->
-        <item name="drawerArrowStyle">@style/MaterialDrawer.DrawerArrowStyle</item>
-
-        <!-- ...and here we setting appcompat’s color theming attrs -->
-        <item name="colorPrimary">@color/material_drawer_accent</item>
-        <item name="colorPrimaryDark">@color/material_drawer_accent</item>
-        <item name="colorAccent">@color/material_drawer_accent</item>
-        <item name="listChoiceBackgroundIndicator">@color/material_drawer_accent</item>
-
-        <!-- MaterialDrawer specific values -->
-        <item name="material_drawer_background">@color/material_drawer_dark_background</item>
-        <item name="material_drawer_icons">@color/material_drawer_dark_icons</item>
-        <item name="material_drawer_primary_text">@color/green</item>
-        <item name="material_drawer_primary_icon">@color/green</item>
-        <item name="material_drawer_secondary_text">@color/green</item>
-        <item name="material_drawer_hint_text">@color/green</item>
-        <item name="material_drawer_divider">@color/green</item>
-        <item name="material_drawer_selected">@color/green</item>
-        <item name="material_drawer_selected_text">@color/green</item>
-        <item name="material_drawer_header_selection_text">@color/green</item>
-
-    </style>
 </resources>
 
