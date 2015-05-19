@@ -9,4 +9,5 @@
     <dimen name="text_main_margin_top">10dp</dimen>
     <dimen name="drawer_list_left_width">180dp</dimen>
     <dimen name="left_drawer_layout_text_size">10sp</dimen>
+    <dimen name="drawer_elevation">4dp</dimen>
 </resources>

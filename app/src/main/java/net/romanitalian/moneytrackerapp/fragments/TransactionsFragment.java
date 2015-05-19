@@ -62,6 +62,14 @@ public class TransactionsFragment extends Fragment {
         data.add(new Transaction("T-shirt", "300", now));
         data.add(new Transaction("Jeans", "1500", now));
         data.add(new Transaction("Printer", "4500", now));
+        data.add(new Transaction("Huawei", "9800", now));
+        data.add(new Transaction("T-shirt", "300", now));
+        data.add(new Transaction("Jeans", "1500", now));
+        data.add(new Transaction("Printer", "4500", now));
+        data.add(new Transaction("T-shirt", "300", now));
+        data.add(new Transaction("Jeans", "1500", now));
+        data.add(new Transaction("Printer", "4500", now));
+        data.add(new Transaction("Huawei", "9800", now));
         data.add(new Transaction("T-shirt", "300", now));
         data.add(new Transaction("Jeans", "1500", now));
         data.add(new Transaction("Printer", "4500", now));
