@@ -15,6 +15,8 @@ import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 
 import net.romanitalian.moneytrackerapp.R;
+import net.romanitalian.moneytrackerapp.fragments.CategoriesFragment;
+import net.romanitalian.moneytrackerapp.fragments.StatisticsFragment;
 import net.romanitalian.moneytrackerapp.fragments.TransactionsFragment;
 
 
@@ -80,9 +82,11 @@ public class MainActivity extends ActionBarActivity {
                 break;
             case 1:
                 setTitle(getString(R.string.categories_title));
+                setFragmentDateFormat(new CategoriesFragment());
                 break;
             case 2:
                 setTitle(getString(R.string.statistics_title));
+                setFragmentDateFormat(new StatisticsFragment());
                 break;
         }
     }
