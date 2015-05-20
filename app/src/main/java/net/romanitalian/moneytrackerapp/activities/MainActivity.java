@@ -60,7 +60,7 @@ public class MainActivity extends ActionBarActivity {
         drawerWidget.setDrawerListener(drawerToggle);
     }
 
-    public void setFragmentDateFormat(Fragment fragment) {
+    public void setFragment(Fragment fragment) {
         Bundle bundle = new Bundle();
         bundle.putString("dateFormat", dateFormat);
         fragment.setArguments(bundle);
@@ -78,15 +78,15 @@ public class MainActivity extends ActionBarActivity {
         switch (position) {
             case 0:
                 setTitle(getString(R.string.transactions_title));
-                setFragmentDateFormat(new TransactionsFragment());
+                setFragment(new TransactionsFragment());
                 break;
             case 1:
                 setTitle(getString(R.string.categories_title));
-                setFragmentDateFormat(new CategoriesFragment());
+                setFragment(new CategoriesFragment());
                 break;
             case 2:
                 setTitle(getString(R.string.statistics_title));
-                setFragmentDateFormat(new StatisticsFragment());
+                setFragment(new StatisticsFragment());
                 break;
         }
     }
