@@ -10,20 +10,10 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/title_id"
+            android:id="@+id/category_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/title"/>
-
-        <TextView
-            android:id="@+id/date_id"
-            style="@style/DateStyle"
-            android:text="@string/date"/>
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/sum_id"
-        style="@style/TextMain"
-        android:text="@string/sum"/>
 
 </RelativeLayout>

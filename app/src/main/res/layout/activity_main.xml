@@ -1,12 +1,37 @@
-<RelativeLayout
-    style="@style/Container.Background"
+<LinearLayout
+    style="@style/Container"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- #try_bundle: in view [change tagname: from "fragment" to "FrameLayout"] -->
-    <FrameLayout
-        android:id="@+id/fragment_transactions_id"
-        class="net.romanitalian.moneytrackerapp.TransactionsFragment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+    <include layout="@layout/toolbar"/>
 
-</RelativeLayout>
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:elevation="@dimen/drawer_elevation"/>
+
+        <FrameLayout
+            android:id="@+id/drawer_layout_frame"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/background"/>
+
+        <ListView
+            android:id="@+id/drawer_list"
+            android:layout_width="@dimen/drawer_list_width"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:background="@color/background"
+            android:choiceMode="singleChoice"
+            android:divider="@android:color/transparent"
+            android:textSize="@dimen/drawer_layout_text_size">
+        </ListView>
+
+    </android.support.v4.widget.DrawerLayout>
+</LinearLayout>
