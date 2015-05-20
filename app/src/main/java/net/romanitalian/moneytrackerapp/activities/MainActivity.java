@@ -19,23 +19,27 @@ import net.romanitalian.moneytrackerapp.fragments.CategoriesFragment;
 import net.romanitalian.moneytrackerapp.fragments.StatisticsFragment;
 import net.romanitalian.moneytrackerapp.fragments.TransactionsFragment;
 
+import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.ViewById;
 
+
+@EActivity(R.layout.activity_main)
 public class MainActivity extends ActionBarActivity {
+    @SuppressWarnings("FieldCanBeLocal")
     private String dateFormat = "dd-MM-yyyy";
-    private Toolbar toolbar;
-    private DrawerLayout drawerWidget;
-    private ListView drawerList;
     private ActionBarDrawerToggle drawerToggle;
+    @ViewById
+    private Toolbar toolbar;
+    @ViewById
+    private DrawerLayout drawerWidget;
+    @ViewById
+    private ListView drawerList;
 
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        if (toolbar != null) {
-            setSupportActionBar(toolbar);
-        }
+        setSupportActionBar(toolbar);
 
         new Drawer()
                 .withActivity(this)
