@@ -1,6 +1,15 @@
 <resources>
-    <string name="app_name">MoneyTrackerApp</string>
+    <string name="app_name">MoneyTracker</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="status_msg">status</string>
+    <string name="title">Title</string>
+    <string name="sum">Sum</string>
+    <string name="date">date</string>
+    <string name="transactions_title">Траты</string>
+    <string name="categories_title">Категории</string>
+    <string name="statistics_title">Статистика</string>
+    <string name="statistics_text">Здесь будет статистика</string>
+    <string name="categories_text">Категории</string>
 </resources>
