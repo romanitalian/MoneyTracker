@@ -15,6 +15,8 @@ import net.romanitalian.moneytrackerapp.R;
 import net.romanitalian.moneytrackerapp.adapters.TransactionAdapter;
 import net.romanitalian.moneytrackerapp.models.Transaction;
 
+import org.androidannotations.annotations.EFragment;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -23,6 +25,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+@EFragment
 public class TransactionsFragment extends Fragment {
     private RecyclerView recyclerView;
     private TransactionAdapter transactionAdapter;
