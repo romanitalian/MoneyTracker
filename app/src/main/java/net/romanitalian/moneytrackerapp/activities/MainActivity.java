@@ -15,9 +15,9 @@ import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 
 import net.romanitalian.moneytrackerapp.R;
-import net.romanitalian.moneytrackerapp.fragments.CategoriesFragment;
-import net.romanitalian.moneytrackerapp.fragments.StatisticsFragment;
-import net.romanitalian.moneytrackerapp.fragments.TransactionsFragment;
+import net.romanitalian.moneytrackerapp.fragments.CategoriesFragment_;
+import net.romanitalian.moneytrackerapp.fragments.StatisticsFragment_;
+import net.romanitalian.moneytrackerapp.fragments.TransactionsFragment_;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;
@@ -26,15 +26,20 @@ import org.androidannotations.annotations.ViewById;
 
 @EActivity(R.layout.activity_main)
 public class MainActivity extends ActionBarActivity {
+
     @SuppressWarnings("FieldCanBeLocal")
     private String dateFormat = "dd-MM-yyyy";
-    private ActionBarDrawerToggle drawerToggle;
+
     @ViewById
     Toolbar toolbar;
+
     @ViewById
     DrawerLayout drawerWidget;
+
     @ViewById
     ListView drawerList;
+
+    private ActionBarDrawerToggle drawerToggle;
 
     @AfterViews
     void ready() {
@@ -71,15 +76,15 @@ public class MainActivity extends ActionBarActivity {
         switch (position) {
             case 0:
                 setTitle(getString(R.string.transactions_title));
-                setFragmentParams(new TransactionsFragment());
+                setFragmentParams(TransactionsFragment_.builder().build());
                 break;
             case 1:
                 setTitle(getString(R.string.categories_title));
-                setFragmentParams(new CategoriesFragment());
+                setFragmentParams(CategoriesFragment_.builder().build());
                 break;
             case 2:
                 setTitle(getString(R.string.statistics_title));
-                setFragmentParams(new StatisticsFragment());
+                setFragmentParams(StatisticsFragment_.builder().build());
                 break;
         }
     }

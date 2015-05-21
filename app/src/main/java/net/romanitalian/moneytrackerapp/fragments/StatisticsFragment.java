@@ -11,6 +11,9 @@ import android.widget.TextView;
 
 import net.romanitalian.moneytrackerapp.R;
 
+import org.androidannotations.annotations.EFragment;
+
+@EFragment
 public class StatisticsFragment extends Fragment {
 
     @Nullable

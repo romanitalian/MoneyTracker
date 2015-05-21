@@ -12,9 +12,12 @@ import net.romanitalian.moneytrackerapp.R;
 import net.romanitalian.moneytrackerapp.adapters.CategoryAdapter;
 import net.romanitalian.moneytrackerapp.models.Category;
 
+import org.androidannotations.annotations.EFragment;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@EFragment
 public class CategoriesFragment extends Fragment {
     private ListView listView;
     private CategoryAdapter categoryAdapter;
