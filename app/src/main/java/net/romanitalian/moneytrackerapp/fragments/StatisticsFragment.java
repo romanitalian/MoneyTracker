@@ -1,27 +1,26 @@
 package net.romanitalian.moneytrackerapp.fragments;
 
 import android.app.Fragment;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import net.romanitalian.moneytrackerapp.R;
 
+import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.EFragment;
+import org.androidannotations.annotations.ViewById;
+
+@EFragment(R.layout.fragment_statistics)
 public class StatisticsFragment extends Fragment {
 
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        final View inflate = inflater.inflate(R.layout.fragment_statistics, container, false);
+    @ViewById
+    LinearLayout statistic_linear_layout;
 
-        LinearLayout linearLayout = (LinearLayout) inflate.findViewById(R.id.statistic_linear_layout);
-        TextView textView = (TextView) linearLayout.findViewById(R.id.statistics_id);
-        textView.setText(R.string.statistics_text);
+    @ViewById
+    TextView statistic;
 
-        return inflate;
+    @AfterViews
+    void ready() {
+        statistic.setText(R.string.statistics_text);
     }
 }

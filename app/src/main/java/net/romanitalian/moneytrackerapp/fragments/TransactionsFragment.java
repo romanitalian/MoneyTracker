@@ -2,18 +2,18 @@ package net.romanitalian.moneytrackerapp.fragments;
 
 import android.app.Fragment;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.melnykov.fab.FloatingActionButton;
 
 import net.romanitalian.moneytrackerapp.R;
 import net.romanitalian.moneytrackerapp.adapters.TransactionAdapter;
 import net.romanitalian.moneytrackerapp.models.Transaction;
+
+import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.EFragment;
+import org.androidannotations.annotations.ViewById;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -23,31 +23,29 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+@EFragment(R.layout.fragment_transactions)
 public class TransactionsFragment extends Fragment {
-    private RecyclerView recyclerView;
     private TransactionAdapter transactionAdapter;
     List<Transaction> data = new ArrayList<>();
 
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        final View inflate = inflater.inflate(R.layout.fragment_transactions, container, false);
+    @ViewById
+    RecyclerView transaction_list;
 
+    @ViewById
+    FloatingActionButton fab;
+
+    @AfterViews
+    void ready() {
         List<Transaction> adapterData = getTransactions();
         transactionAdapter = new TransactionAdapter(adapterData);
 
-        recyclerView = (RecyclerView) inflate.findViewById(R.id.transaction_list);
-        FloatingActionButton fab = (FloatingActionButton) inflate.findViewById(R.id.fab);
-
-        recyclerView.setHasFixedSize(true);
+        transaction_list.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        recyclerView.setLayoutManager(linearLayoutManager);
+        transaction_list.setLayoutManager(linearLayoutManager);
 
-        recyclerView.setAdapter(transactionAdapter);
-        fab.attachToRecyclerView(recyclerView);
-
-        return inflate;
+        transaction_list.setAdapter(transactionAdapter);
+        fab.attachToRecyclerView(transaction_list);
     }
 
     private List<Transaction> getTransactions() {

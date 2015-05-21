@@ -1,36 +1,33 @@
 package net.romanitalian.moneytrackerapp.fragments;
 
 import android.app.Fragment;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ListView;
 
 import net.romanitalian.moneytrackerapp.R;
 import net.romanitalian.moneytrackerapp.adapters.CategoryAdapter;
 import net.romanitalian.moneytrackerapp.models.Category;
 
+import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.EFragment;
+import org.androidannotations.annotations.ViewById;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@EFragment(R.layout.fragment_categories)
 public class CategoriesFragment extends Fragment {
     private ListView listView;
     private CategoryAdapter categoryAdapter;
     List<Category> data = new ArrayList<>();
 
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        final View inflate = inflater.inflate(R.layout.fragment_categories, container, false);
+    @ViewById
+    ListView category_list;
 
+    @AfterViews
+    void ready() {
         List<Category> adapterData = getCategories();
         categoryAdapter = new CategoryAdapter(getActivity(), adapterData);
-        listView = (ListView) inflate.findViewById(R.id.category_list_view_id);
-        listView.setAdapter(categoryAdapter);
-
-        return inflate;
+        category_list.setAdapter(categoryAdapter);
     }
 
     private List<Category> getCategories() {

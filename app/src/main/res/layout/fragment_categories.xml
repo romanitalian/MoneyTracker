@@ -10,7 +10,7 @@
         android:id="@+id/category_linear_layout">
 
         <ListView
-            android:id="@+id/category_list_view_id"
+            android:id="@+id/category_list"
             style="@style/FragmentRowStyle">
         </ListView>
     </LinearLayout>
