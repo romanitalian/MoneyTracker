@@ -60,7 +60,6 @@ public class MainActivity extends ActionBarActivity {
         setFragment(0);
     }
 
-
     public void setFragmentParams(Fragment fragment) {
         Bundle bundle = new Bundle();
         bundle.putString("dateFormat", dateFormat);
