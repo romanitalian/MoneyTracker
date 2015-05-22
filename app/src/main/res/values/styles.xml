@@ -45,6 +45,10 @@
     </style>
 
     <style name="Container.Background">
+        <item name="android:background">@drawable/android_app_back_main</item>
+    </style>
+
+    <style name="Container.DarkBackground">
         <item name="android:background">@drawable/android_app_back</item>
     </style>
 

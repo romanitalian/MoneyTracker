@@ -1,13 +1,16 @@
 package net.romanitalian.moneytrackerapp.fragments;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.melnykov.fab.FloatingActionButton;
 
 import net.romanitalian.moneytrackerapp.R;
+import net.romanitalian.moneytrackerapp.activities.AddTransactionActivity;
 import net.romanitalian.moneytrackerapp.adapters.TransactionAdapter;
 import net.romanitalian.moneytrackerapp.models.Transaction;
 
@@ -46,6 +49,14 @@ public class TransactionsFragment extends Fragment {
 
         transaction_list.setAdapter(transactionAdapter);
         fab.attachToRecyclerView(transaction_list);
+        fab.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), AddTransactionActivity.class);
+                getActivity().startActivity(intent);
+            }
+        });
     }
 
     private List<Transaction> getTransactions() {
