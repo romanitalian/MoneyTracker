@@ -1,13 +1,29 @@
 package net.romanitalian.moneytrackerapp.models;
 
-public class Transaction {
-    private String title;
-    private int sum;
+import com.activeandroid.Model;
+import com.activeandroid.annotation.Column;
+import com.activeandroid.annotation.Table;
+
+import net.romanitalian.moneytrackerapp.utils.Udate;
+
+@Table(name = "Transactions")
+public class Transaction extends Model {
+    @Column(name = "title")
+    public String title;
+
+    @Column(name = "sum")
+    public int sum;
+
+    @Column(name = "date")
     private String date;
+
+    public Transaction() {
+    }
 
     public Transaction(String title, String sum) {
         this.title = title;
         this.sum = Integer.valueOf(sum);
+        this.date = Udate.getDateNow();
     }
 
     public Transaction(String title, String sum, String date) {
@@ -34,5 +50,14 @@ public class Transaction {
 
     public String getDate() {
         return date;
+    }
+
+    @Override
+    public String toString() {
+        return "Transaction{" +
+                "title='" + title + '\'' +
+                ", sum=" + sum +
+                ", date='" + date + '\'' +
+                '}';
     }
 }
