@@ -65,11 +65,6 @@ public class MainActivity extends ActionBarActivity {
                 })
                 .build();
         setFragment(0);
-//        Transaction transaction =  new Transaction("Cool stuf", "900");
-//        transaction.save();
-//
-//        String loc = getRandomTransaction().toString();
-//        Toast.makeText(this, loc, Toast.LENGTH_LONG).show();
     }
 
     public Transaction getRandomTransaction() {
