@@ -43,7 +43,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="fill"
-            android:hint="@string/about_hint" />
+            android:hint="@string/about_hint"
+            />
 
 
         <TextView
@@ -79,8 +80,7 @@
             android:id="@+id/add_transaction"
             android:text="@string/add"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
+            android:layout_height="wrap_content"/>
 
     </GridLayout>
 
