@@ -39,7 +39,7 @@ public class AddTransactionActivity extends ActionBarActivity {
     public void onResume() {
         super.onResume();
         Transaction transactionLast = getTransactionLast();
-        if (transactionLast.isValid()) {
+        if (transactionLast != null && transactionLast.isValid()) {
             title.setText(transactionLast.getTitle());
             sum.setText(String.valueOf(transactionLast.getSum()));
         }

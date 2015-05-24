@@ -9,9 +9,10 @@ import java.util.Locale;
 public class Udate {
     final public static String dateFormat = "dd-MM-yyyy";
 
-    public static String getDateNow() {
+    public static Date getDateNow() {
         DateFormat df = new SimpleDateFormat(dateFormat, new Locale("ru"));
         Date nowCalendar = Calendar.getInstance().getTime();
-        return df.format(nowCalendar);
+        return nowCalendar;
+//        return df.format(nowCalendar);
     }
 }
