@@ -7,6 +7,7 @@ import android.widget.EditText;
 import net.romanitalian.moneytrackerapp.R;
 import net.romanitalian.moneytrackerapp.models.Transaction;
 import net.romanitalian.moneytrackerapp.utils.Udate;
+import net.romanitalian.moneytrackerapp.utils.Uerror;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
@@ -34,13 +35,20 @@ public class AddTransactionActivity extends ActionBarActivity {
 
     @Click
     void AddTransaction() {
-        new Transaction(title.getText().toString(), sum.getText().toString(), Udate.getDateNow()).save();
-        finish();
+        if(validForm()) {
+            new Transaction(title.getText().toString(), sum.getText().toString(), Udate.getDateNow()).save();
+            finish();
+        } else {
+            Uerror.showAlert(this);
+        }
     }
 
     @OptionsItem
     void homeSelected() {
         onBackPressed();
     }
-}
 
+    boolean validForm() {
+        return title.getText().length() != 0 && sum.getText().length() != 0;
+    }
+}

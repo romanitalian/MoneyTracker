@@ -20,7 +20,7 @@
         <activity android:name="net.romanitalian.moneytrackerapp.activities.AddTransactionActivity_">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.MainActivity"/>
+                android:value="net.romanitalian.moneytrackerapp.activities.MainActivity_"/>
         </activity>
     </application>
 
