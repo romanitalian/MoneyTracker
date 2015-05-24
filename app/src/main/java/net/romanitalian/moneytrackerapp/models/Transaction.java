@@ -60,4 +60,8 @@ public class Transaction extends Model {
                 ", date='" + date + '\'' +
                 '}';
     }
+
+    public boolean isValid() {
+        return title.length() != 0 && sum > 0;
+    }
 }

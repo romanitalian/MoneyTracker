@@ -4,6 +4,8 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.widget.EditText;
 
+import com.activeandroid.query.Select;
+
 import net.romanitalian.moneytrackerapp.R;
 import net.romanitalian.moneytrackerapp.models.Transaction;
 import net.romanitalian.moneytrackerapp.utils.Udate;
@@ -33,9 +35,19 @@ public class AddTransactionActivity extends ActionBarActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        Transaction transactionLast = getTransactionLast();
+        if (transactionLast.isValid()) {
+            title.setText(transactionLast.getTitle());
+            sum.setText(String.valueOf(transactionLast.getSum()));
+        }
+    }
+
     @Click
     void AddTransaction() {
-        if(validForm()) {
+        if (isValidForm()) {
             new Transaction(title.getText().toString(), sum.getText().toString(), Udate.getDateNow()).save();
             finish();
         } else {
@@ -48,7 +60,14 @@ public class AddTransactionActivity extends ActionBarActivity {
         onBackPressed();
     }
 
-    boolean validForm() {
+    public Transaction getTransactionLast() {
+        return new Select()
+                .from(Transaction.class)
+                .orderBy("date DESC")
+                .executeSingle();
+    }
+
+    boolean isValidForm() {
         return title.getText().length() != 0 && sum.getText().length() != 0;
     }
 }
