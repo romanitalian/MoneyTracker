@@ -19,6 +19,9 @@ import net.romanitalian.moneytrackerapp.fragments.CategoriesFragment_;
 import net.romanitalian.moneytrackerapp.fragments.StatisticsFragment_;
 import net.romanitalian.moneytrackerapp.fragments.TransactionsFragment_;
 
+import com.crashlytics.android.Crashlytics;
+import io.fabric.sdk.android.Fabric;
+
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
@@ -43,6 +46,7 @@ public class MainActivity extends ActionBarActivity {
 
     @AfterViews
     void ready() {
+        Fabric.with(this, new Crashlytics());
         setSupportActionBar(toolbar);
         Drawer.Result result = new Drawer()
                 .withActivity(this)
