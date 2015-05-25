@@ -1,27 +1,28 @@
 package net.romanitalian.moneytrackerapp.fragments;
 
 import android.app.Fragment;
+import android.app.LoaderManager;
+import android.content.AsyncTaskLoader;
+import android.content.Loader;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.activeandroid.query.Select;
 import com.melnykov.fab.FloatingActionButton;
 
 import net.romanitalian.moneytrackerapp.R;
+import net.romanitalian.moneytrackerapp.activities.AddTransactionActivity_;
 import net.romanitalian.moneytrackerapp.adapters.TransactionAdapter;
 import net.romanitalian.moneytrackerapp.models.Transaction;
 
 import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 @EFragment(R.layout.fragment_transactions)
 public class TransactionsFragment extends Fragment {
@@ -48,29 +49,45 @@ public class TransactionsFragment extends Fragment {
         fab.attachToRecyclerView(transaction_list);
     }
 
-    private List<Transaction> getTransactions() {
-        Bundle bundle = getArguments();
-        String dateFormat = bundle.getString("dateFormat");
+    @Click
+    void fabClicked() {
+        AddTransactionActivity_.intent(getActivity()).start();
+    }
 
-        DateFormat df = new SimpleDateFormat(dateFormat, new Locale("ru"));
-        Date nowCalendar = Calendar.getInstance().getTime();
-        String now = df.format(nowCalendar);
-        data.add(new Transaction("Huawei", "9800", now));
-        data.add(new Transaction("SamsungS3", "13000", now));
-        data.add(new Transaction("T-shirt", "300", now));
-        data.add(new Transaction("Jeans", "1500", now));
-        data.add(new Transaction("Printer", "4500", now));
-        data.add(new Transaction("Huawei", "9800", now));
-        data.add(new Transaction("T-shirt", "300", now));
-        data.add(new Transaction("Jeans", "1500", now));
-        data.add(new Transaction("Printer", "4500", now));
-        data.add(new Transaction("T-shirt", "300", now));
-        data.add(new Transaction("Jeans", "1500", now));
-        data.add(new Transaction("Printer", "4500", now));
-        data.add(new Transaction("Huawei", "9800", now));
-        data.add(new Transaction("T-shirt", "300", now));
-        data.add(new Transaction("Jeans", "1500", now));
-        data.add(new Transaction("Printer", "4500", now));
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        getLoaderManager().restartLoader(0, null, new LoaderManager.LoaderCallbacks<List<Transaction>>() {
+            @Override
+            public Loader<List<Transaction>> onCreateLoader(int id, Bundle args) {
+                final AsyncTaskLoader<List<Transaction>> transactionLoader = new AsyncTaskLoader<List<Transaction>>(getActivity()) {
+                    @Override
+                    public List<Transaction> loadInBackground() {
+                        return getTransactions();
+                    }
+                };
+                transactionLoader.forceLoad();
+                return transactionLoader;
+            }
+
+            @Override
+            public void onLoadFinished(Loader<List<Transaction>> loader, List<Transaction> data) {
+                transaction_list.setAdapter(new TransactionAdapter(data));
+            }
+
+            @Override
+            public void onLoaderReset(Loader<List<Transaction>> loader) {
+
+            }
+        });
+    }
+
+    private List<Transaction> getTransactions() {
+        data = new Select()
+                .from(Transaction.class)
+                .orderBy("date DESC")
+                .execute();
         return data;
     }
 }

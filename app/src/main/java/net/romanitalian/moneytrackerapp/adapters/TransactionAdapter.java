@@ -8,8 +8,12 @@ import android.widget.TextView;
 
 import net.romanitalian.moneytrackerapp.R;
 import net.romanitalian.moneytrackerapp.models.Transaction;
+import net.romanitalian.moneytrackerapp.utils.Udate;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Locale;
 
 
 public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.CardViewHolder> {
@@ -31,6 +35,10 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
         holder.title.setText(transaction.getTitle());
         holder.sum.setText(String.valueOf(transaction.getSum()));
 
+
+        DateFormat df = new SimpleDateFormat(Udate.dateFormat, new Locale("ru"));
+        String _date = df.format(transaction.getDate());
+        holder.date.setText(_date);
     }
 
     @Override
@@ -41,11 +49,13 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
     public static class CardViewHolder extends RecyclerView.ViewHolder {
         protected TextView title;
         protected TextView sum;
+        protected TextView date;
 
         public CardViewHolder(View itemView) {
             super(itemView);
             title = (TextView) itemView.findViewById(R.id.transaction_title);
             sum = (TextView) itemView.findViewById(R.id.transaction_sum);
+            date = (TextView) itemView.findViewById(R.id.transaction_date);
         }
     }
 }

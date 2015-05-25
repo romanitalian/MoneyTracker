@@ -12,4 +12,15 @@
     <string name="statistics_title">Статистика</string>
     <string name="statistics_text">Здесь будет статистика</string>
     <string name="categories_text">Категории</string>
+
+    <string name="add_transaction">Добавить трату</string>
+    <string name="hint_date">Сегодня</string>
+    <string name="title_date">Дата</string>
+    <string name="category_hint">Выберите категорию</string>
+    <string name="category_text">Категория</string>
+    <string name="about_hint">Война и мир</string>
+    <string name="about_text">Примечание</string>
+    <string name="sum_hint">300</string>
+    <string name="sum_text">Сумма</string>
+    <string name="add">Add</string>
 </resources>
