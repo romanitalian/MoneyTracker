@@ -54,15 +54,6 @@ public class Transaction extends Model {
         return date;
     }
 
-    @Override
-    public String toString() {
-        return "Transaction{" +
-                "title='" + title + '\'' +
-                ", sum=" + sum +
-                ", date='" + date + '\'' +
-                '}';
-    }
-
     public boolean isValid() {
         return title.length() != 0 && sum > 0;
     }

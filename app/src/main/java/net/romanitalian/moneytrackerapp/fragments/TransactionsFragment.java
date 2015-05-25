@@ -7,7 +7,6 @@ import android.content.Loader;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 
 import com.activeandroid.query.Select;
 import com.melnykov.fab.FloatingActionButton;
@@ -16,7 +15,6 @@ import net.romanitalian.moneytrackerapp.R;
 import net.romanitalian.moneytrackerapp.activities.AddTransactionActivity_;
 import net.romanitalian.moneytrackerapp.adapters.TransactionAdapter;
 import net.romanitalian.moneytrackerapp.models.Transaction;
-import net.romanitalian.moneytrackerapp.utils.Uinfo;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
@@ -60,8 +58,6 @@ public class TransactionsFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-//        Toast.makeText(this, "onResume run", Toast.LENGTH_LONG).show();
-        Log.i(Uinfo.TAG, "onResume run");
         getLoaderManager().restartLoader(0, null, new LoaderManager.LoaderCallbacks<List<Transaction>>() {
             @Override
             public Loader<List<Transaction>> onCreateLoader(int id, Bundle args) {
