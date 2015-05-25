@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.activeandroid.query.Select;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
@@ -19,7 +18,6 @@ import net.romanitalian.moneytrackerapp.R;
 import net.romanitalian.moneytrackerapp.fragments.CategoriesFragment_;
 import net.romanitalian.moneytrackerapp.fragments.StatisticsFragment_;
 import net.romanitalian.moneytrackerapp.fragments.TransactionsFragment_;
-import net.romanitalian.moneytrackerapp.models.Transaction;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;
@@ -65,13 +63,6 @@ public class MainActivity extends ActionBarActivity {
                 })
                 .build();
         setFragment(0);
-    }
-
-    public Transaction getRandomTransaction() {
-        return new Select()
-                .from(Transaction.class)
-                .orderBy("RANDOM()")
-                .executeSingle();
     }
 
     public void setFragmentParams(Fragment fragment) {
