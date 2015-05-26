@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.crashlytics.android.Crashlytics;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
@@ -18,13 +19,17 @@ import net.romanitalian.moneytrackerapp.R;
 import net.romanitalian.moneytrackerapp.fragments.CategoriesFragment_;
 import net.romanitalian.moneytrackerapp.fragments.StatisticsFragment_;
 import net.romanitalian.moneytrackerapp.fragments.TransactionsFragment_;
-
-import com.crashlytics.android.Crashlytics;
-import io.fabric.sdk.android.Fabric;
+import net.romanitalian.moneytrackerapp.rest.AuthInterceptor;
+import net.romanitalian.moneytrackerapp.rest.AuthResult;
+import net.romanitalian.moneytrackerapp.rest.RestClient;
 
 import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Background;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
+import org.androidannotations.annotations.rest.RestService;
+
+import io.fabric.sdk.android.Fabric;
 
 
 @EActivity(R.layout.activity_main)
@@ -43,6 +48,9 @@ public class MainActivity extends ActionBarActivity {
     ListView drawerList;
 
     private ActionBarDrawerToggle drawerToggle;
+
+    @RestService
+    RestClient api;
 
     @AfterViews
     void ready() {
@@ -67,6 +75,14 @@ public class MainActivity extends ActionBarActivity {
                 })
                 .build();
         setFragment(0);
+
+        testNetwork();
+    }
+
+    @Background
+    void testNetwork() {
+        final AuthResult login = api.login("roman", "123456");
+        AuthInterceptor.authToken = login.authToken;
     }
 
     public void setFragmentParams(Fragment fragment) {

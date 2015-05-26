@@ -2,6 +2,8 @@
 <manifest package="net.romanitalian.moneytrackerapp"
           xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:name="net.romanitalian.moneytrackerapp.MoneyTrackerApplication"
         android:allowBackup="true"
@@ -26,6 +28,4 @@
             android:name="io.fabric.ApiKey"
             android:value="f2cb2ca4b0a8587fcb65af6a3ac65f9aa637d0d2" />
     </application>
-
-    <uses-permission android:name="android.permission.INTERNET" />
 </manifest>
