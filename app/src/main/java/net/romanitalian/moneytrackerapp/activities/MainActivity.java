@@ -1,6 +1,7 @@
 package net.romanitalian.moneytrackerapp.activities;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
@@ -64,6 +65,7 @@ public class MainActivity extends ActionBarActivity {
                 .addDrawerItems(
                         new PrimaryDrawerItem().withName(R.string.transactions_title),
                         new PrimaryDrawerItem().withName(R.string.categories_title),
+                        new PrimaryDrawerItem().withName(R.string.statistics_title),
                         new PrimaryDrawerItem().withName(R.string.statistics_title)
                 )
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
@@ -105,6 +107,9 @@ public class MainActivity extends ActionBarActivity {
             case 2:
                 setTitle(getString(R.string.statistics_title));
                 setFragmentParams(StatisticsFragment_.builder().build());
+                break;
+            case 3:
+                Intent intent = new Intent(this, LoginActivity.class);
                 break;
         }
     }
