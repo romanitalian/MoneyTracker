@@ -29,13 +29,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.romanitalian.moneytrackerapp.R;
+import net.romanitalian.moneytrackerapp.rest.AuthInterceptor;
+import net.romanitalian.moneytrackerapp.rest.AuthResult;
+import net.romanitalian.moneytrackerapp.rest.RestClient;
 
 import org.androidannotations.annotations.EActivity;
 
 /**
  * A login screen that offers login via email/password.
  */
-@EActivity(R.layout.activity_login)
+//@EActivity(R.layout.activity_login)
 public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 
     /**
@@ -55,6 +58,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
     private EditText passwordView;
     private View progressView;
     private View loginFormView;
+    RestClient api;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -270,6 +274,9 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
             } catch (InterruptedException e) {
                 return false;
             }
+
+            final AuthResult login = api.login("roman", "123456");
+            AuthInterceptor.authToken = login.authToken;
 
             for (String credential : DUMMY_CREDENTIALS) {
                 String[] pieces = credential.split(":");

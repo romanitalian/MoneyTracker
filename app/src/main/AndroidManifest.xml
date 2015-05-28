@@ -34,7 +34,7 @@
             android:value="f2cb2ca4b0a8587fcb65af6a3ac65f9aa637d0d2" />
 
         <activity
-            android:name=".activities.LoginActivity_"
+            android:name=".activities.LoginActivity"
             android:label="@string/title_activity_login"
             android:windowSoftInputMode="adjustResize|stateVisible" >
         </activity>

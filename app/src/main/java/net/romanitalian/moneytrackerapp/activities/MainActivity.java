@@ -72,7 +72,7 @@ public class MainActivity extends ActionBarActivity {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id, IDrawerItem drawerItem) {
                         setFragment(position);
-                        view.setBackgroundResource(R.color.green);
+//                        view.setBackgroundResource(R.color.green);
                     }
                 })
                 .build();
@@ -97,7 +97,7 @@ public class MainActivity extends ActionBarActivity {
     public void setFragment(int position) {
         switch (position) {
             case 0:
-                Intent intent = new Intent(this, LoginActivity_.class);
+                Intent intent = new Intent(this, LoginActivity.class);
                 startActivity(intent);
                 break;
             case 1:
