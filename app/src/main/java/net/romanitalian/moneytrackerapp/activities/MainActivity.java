@@ -1,6 +1,7 @@
 package net.romanitalian.moneytrackerapp.activities;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
@@ -15,16 +16,14 @@ import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 
+import net.romanitalian.moneytrackerapp.MoneyTrackerApplication;
 import net.romanitalian.moneytrackerapp.R;
 import net.romanitalian.moneytrackerapp.fragments.CategoriesFragment_;
 import net.romanitalian.moneytrackerapp.fragments.StatisticsFragment_;
 import net.romanitalian.moneytrackerapp.fragments.TransactionsFragment_;
-import net.romanitalian.moneytrackerapp.rest.AuthInterceptor;
-import net.romanitalian.moneytrackerapp.rest.AuthResult;
 import net.romanitalian.moneytrackerapp.rest.RestClient;
 
 import org.androidannotations.annotations.AfterViews;
-import org.androidannotations.annotations.Background;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.rest.RestService;
@@ -54,6 +53,18 @@ public class MainActivity extends ActionBarActivity {
 
     @AfterViews
     void ready() {
+
+//        testNetwork();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        setMenu();
+        setFragment(1);
+    }
+
+    public void setMenu() {
         Fabric.with(this, new Crashlytics());
         setSupportActionBar(toolbar);
         Drawer.Result result = new Drawer()
@@ -62,6 +73,7 @@ public class MainActivity extends ActionBarActivity {
                 .withDisplayBelowToolbar(true)
                 .withActionBarDrawerToggleAnimated(true)
                 .addDrawerItems(
+                        new PrimaryDrawerItem().withName(MoneyTrackerApplication.isAuth ? R.string.title_activity_logout : R.string.title_activity_login),
                         new PrimaryDrawerItem().withName(R.string.transactions_title),
                         new PrimaryDrawerItem().withName(R.string.categories_title),
                         new PrimaryDrawerItem().withName(R.string.statistics_title)
@@ -70,19 +82,10 @@ public class MainActivity extends ActionBarActivity {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id, IDrawerItem drawerItem) {
                         setFragment(position);
-                        view.setBackgroundResource(R.color.green);
+//                        view.setBackgroundResource(R.color.green);
                     }
                 })
                 .build();
-        setFragment(0);
-
-        testNetwork();
-    }
-
-    @Background
-    void testNetwork() {
-        final AuthResult login = api.login("roman", "123456");
-        AuthInterceptor.authToken = login.authToken;
     }
 
     public void setFragmentParams(Fragment fragment) {
@@ -95,14 +98,23 @@ public class MainActivity extends ActionBarActivity {
     public void setFragment(int position) {
         switch (position) {
             case 0:
+                if (MoneyTrackerApplication.isAuth) {
+                    MoneyTrackerApplication.isAuth = false;
+                    setMenu();
+                } else {
+                    Intent intent = new Intent(this, LoginActivity_.class);
+                    startActivity(intent);
+                }
+                break;
+            case 1:
                 setTitle(getString(R.string.transactions_title));
                 setFragmentParams(TransactionsFragment_.builder().build());
                 break;
-            case 1:
+            case 2:
                 setTitle(getString(R.string.categories_title));
                 setFragmentParams(CategoriesFragment_.builder().build());
                 break;
-            case 2:
+            case 3:
                 setTitle(getString(R.string.statistics_title));
                 setFragmentParams(StatisticsFragment_.builder().build());
                 break;
