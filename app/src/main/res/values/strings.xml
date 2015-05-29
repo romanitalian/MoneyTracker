@@ -36,4 +36,6 @@
     <string name="error_invalid_password">Пароль слишком слабый</string>
     <string name="error_incorrect_password">Пароль не верный</string>
     <string name="error_field_required">Обязательно для заполнения</string>
+    <string name="title_activity_logout">Выйти</string>
+    <string name="auth_success">Вы авторизовались успешно</string>
 </resources>

@@ -10,7 +10,6 @@ import android.content.Loader;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.AsyncTask;
-
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
@@ -24,21 +23,26 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import net.romanitalian.moneytrackerapp.MoneyTrackerApplication;
 import net.romanitalian.moneytrackerapp.R;
 import net.romanitalian.moneytrackerapp.rest.AuthInterceptor;
 import net.romanitalian.moneytrackerapp.rest.AuthResult;
 import net.romanitalian.moneytrackerapp.rest.RestClient;
 
+import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.ViewById;
+import org.androidannotations.annotations.rest.RestService;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A login screen that offers login via email/password.
  */
-//@EActivity(R.layout.activity_login)
+@EActivity(R.layout.activity_login)
 public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 
     /**
@@ -54,22 +58,31 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
     private UserLoginTask authTask = null;
 
     // UI references.
-    private AutoCompleteTextView emailView;
-    private EditText passwordView;
-    private View progressView;
-    private View loginFormView;
+//    private AutoCompleteTextView emailView;
+//    private EditText passwordView;
+//    private View progressView;
+//    private View loginFormView;
+
+    @RestService
     RestClient api;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+    @ViewById(R.id.email)
+    AutoCompleteTextView emailView;
 
+    @ViewById(R.id.password)
+    EditText passwordView;
+
+    @ViewById(R.id.login_progress)
+    View progressView;
+
+    @ViewById(R.id.login_form)
+    View loginFormView;
+
+    @AfterViews
+    void ready() {
         // Set up the login form.
-        emailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
 
-        passwordView = (EditText) findViewById(R.id.password);
         passwordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
@@ -88,15 +101,11 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
                 attemptLogin();
             }
         });
-
-        loginFormView = findViewById(R.id.login_form);
-        progressView = findViewById(R.id.login_progress);
     }
 
     private void populateAutoComplete() {
         getLoaderManager().initLoader(0, null, this);
     }
-
 
     /**
      * Attempts to sign in or register the account specified by the login form.
@@ -151,8 +160,8 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
     }
 
     private boolean isEmailValid(String email) {
-        //TODO: Replace this with your own logic
-        return email.contains("@");
+        return true;
+//        return email.contains("@");
     }
 
     private boolean isPasswordValid(String password) {
@@ -268,26 +277,27 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         protected Boolean doInBackground(Void... params) {
             // TODO: attempt authentication against a network service.
 
-            try {
-                // Simulate network access.
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                return false;
-            }
+//            try {
+//                // Simulate network access.
+//                Thread.sleep(2000);
+//            } catch (InterruptedException e) {
+//                return false;
+//            }
 
-            final AuthResult login = api.login("roman", "123456");
+            final AuthResult login = api.login(this.email, this.password);
             AuthInterceptor.authToken = login.authToken;
-
-            for (String credential : DUMMY_CREDENTIALS) {
-                String[] pieces = credential.split(":");
-                if (pieces[0].equals(email)) {
-                    // Account exists, return true if the password matches.
-                    return pieces[1].equals(password);
-                }
-            }
+            MoneyTrackerApplication.isAuth = login.authToken != null;
+            return MoneyTrackerApplication.isAuth;
+//            for (String credential : DUMMY_CREDENTIALS) {
+//                String[] pieces = credential.split(":");
+//                if (pieces[0].equals(email)) {
+//                    return pieces[1].equals(password);
+//                }
+//            }
 
             // TODO: register the new account here.
-            return true;
+
+//            return true;
         }
 
         @Override
@@ -296,6 +306,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
             showProgress(false);
 
             if (success) {
+                Toast.makeText(getApplicationContext(), getString(R.string.auth_success), Toast.LENGTH_LONG).show();
                 finish();
             } else {
                 passwordView.setError(getString(R.string.error_incorrect_password));
