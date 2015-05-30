@@ -1,17 +1,20 @@
 package net.romanitalian.moneytrackerapp.models;
 
-public class Category {
-    private String title;
+import com.activeandroid.Model;
+import com.activeandroid.annotation.Column;
+import com.activeandroid.annotation.Table;
 
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
+@Table(name = "Category")
+public class Category extends Model {
+    @Column(name = "title")
+    public String title;
 
     public Category(String title) {
         this.title = title;
     }
+
+    /**
+     * Just for annotasion.table
+     */
+    public Category() {}
 }

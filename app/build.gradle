@@ -66,7 +66,7 @@ apt {
         // if you have multiple outputs (when using splits), you may want to have other index than 0
 
         // You can set optional annotation processing options here, like these commented options:
-        // logLevel 'INFO'
+         logLevel 'WARN'
         // logFile '/var/log/aa.log'
     }
 }

@@ -38,4 +38,5 @@
     <string name="error_field_required">Обязательно для заполнения</string>
     <string name="title_activity_logout">Выйти</string>
     <string name="auth_success">Вы авторизовались успешно</string>
+    <string name="add_category">Добавить категорию</string>
 </resources>

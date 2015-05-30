@@ -28,6 +28,11 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="net.romanitalian.moneytrackerapp.activities.MainActivity_" />
         </activity>
+        <activity android:name=".activities.AddCategoryActivity_" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="net.romanitalian.moneytrackerapp.activities.MainActivity_" />
+        </activity>
 
         <meta-data
             android:name="io.fabric.ApiKey"
