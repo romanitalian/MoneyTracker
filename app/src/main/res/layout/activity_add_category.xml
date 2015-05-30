@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              style="@style/Container.DarkBackground">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/Container.DarkBackground">
 
     <include layout="@layout/toolbar"/>
 
@@ -19,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
             android:gravity="left|center"
-            android:text="Категория"
+            android:text="@string/category_text"
             android:textSize="@dimen/big_text_size"/>
 
         <EditText
@@ -27,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="fill"
-            android:hint="Еда"/>
+            android:hint="@string/category_text_hint"/>
 
         <Button
             android:id="@+id/add_category"

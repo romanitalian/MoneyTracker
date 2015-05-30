@@ -54,6 +54,7 @@ public class MainActivity extends ActionBarActivity {
     @AfterViews
     void ready() {
 
+        setFragment(1);
 //        testNetwork();
     }
 
@@ -61,13 +62,12 @@ public class MainActivity extends ActionBarActivity {
     public void onResume() {
         super.onResume();
         setMenu();
-        setFragment(1);
     }
 
     public void setMenu() {
         Fabric.with(this, new Crashlytics());
         setSupportActionBar(toolbar);
-        Drawer.Result result = new Drawer()
+        new Drawer()
                 .withActivity(this)
                 .withToolbar(toolbar)
                 .withDisplayBelowToolbar(true)

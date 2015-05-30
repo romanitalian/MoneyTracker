@@ -6,7 +6,6 @@ import android.content.AsyncTaskLoader;
 import android.content.Loader;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
-import android.widget.ListView;
 
 import com.activeandroid.query.Select;
 import com.melnykov.fab.FloatingActionButton;
@@ -26,7 +25,6 @@ import java.util.List;
 
 @EFragment(R.layout.fragment_categories)
 public class CategoriesFragment extends Fragment {
-    private ListView listView;
     private CategoryAdapter categoryAdapter;
     List<Category> data = new ArrayList<>();
 
@@ -79,10 +77,6 @@ public class CategoriesFragment extends Fragment {
     }
 
     private List<Category> getCategories() {
-//        data.add(new Category("Category_01"));
-//        data.add(new Category("Category_02"));
-//        data.add(new Category("Category_03"));
-//        return data;
         data = new Select()
                 .from(Category.class)
                 .orderBy("title")
