@@ -7,7 +7,7 @@
               android:paddingBottom="@dimen/activity_vertical_margin"
               android:paddingLeft="@dimen/activity_horizontal_margin"
               android:paddingRight="@dimen/activity_horizontal_margin"
-              android:paddingTop="20dp"
+              android:paddingTop="@dimen/form_login_padding_top"
 
               style="@style/Container.DarkBackground"
               tools:context="net.romanitalian.moneytrackerapp.activities.LoginActivity">
@@ -60,7 +60,6 @@
 
             <Button
                 android:id="@+id/email_sign_in_button"
-                style="?android:textAppearanceSmall"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="32dp"

@@ -53,8 +53,7 @@ public class MainActivity extends ActionBarActivity {
 
     @AfterViews
     void ready() {
-
-        setFragment(1);
+//        setFragment(1);
 //        testNetwork();
     }
 

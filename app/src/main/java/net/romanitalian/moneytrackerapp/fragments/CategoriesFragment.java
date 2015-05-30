@@ -5,6 +5,7 @@ import android.app.LoaderManager;
 import android.content.AsyncTaskLoader;
 import android.content.Loader;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.activeandroid.query.Select;
@@ -40,6 +41,12 @@ public class CategoriesFragment extends Fragment {
         categoryAdapter = new CategoryAdapter(categories);
         category_list.setAdapter(categoryAdapter);
 
+        category_list.setHasFixedSize(true);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        category_list.setLayoutManager(linearLayoutManager);
+
+        category_list.setAdapter(categoryAdapter);
         fab2.attachToRecyclerView(category_list);
     }
 

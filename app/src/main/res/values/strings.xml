@@ -28,12 +28,12 @@
     <string name="title_activity_login">Войти</string>
 
     <!-- Strings related to login -->
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password (optional)</string>
+    <string name="prompt_email">Login</string>
+    <string name="prompt_password">Password</string>
     <string name="action_sign_in">Войти / зарегистрироваться</string>
     <string name="action_sign_in_short">Войти</string>
 
-    <string name="error_invalid_email">Email не валидный</string>
+    <string name="error_invalid_email">Login не валидный</string>
     <string name="error_invalid_password">Пароль слишком слабый</string>
     <string name="error_incorrect_password">Пароль не верный</string>
     <string name="error_field_required">Обязательно для заполнения</string>
