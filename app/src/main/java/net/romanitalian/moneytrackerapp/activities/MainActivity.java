@@ -18,12 +18,18 @@ import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 
 import net.romanitalian.moneytrackerapp.MoneyTrackerApplication;
 import net.romanitalian.moneytrackerapp.R;
+import net.romanitalian.moneytrackerapp.auth.SessionManager;
 import net.romanitalian.moneytrackerapp.fragments.CategoriesFragment_;
 import net.romanitalian.moneytrackerapp.fragments.StatisticsFragment_;
 import net.romanitalian.moneytrackerapp.fragments.TransactionsFragment_;
+import net.romanitalian.moneytrackerapp.rest.AuthInterceptor;
+import net.romanitalian.moneytrackerapp.rest.AuthResult;
 import net.romanitalian.moneytrackerapp.rest.RestClient;
+import net.romanitalian.moneytrackerapp.rest.Result;
+import net.romanitalian.moneytrackerapp.rest.TransactionsResult;
 
 import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.rest.RestService;
@@ -51,10 +57,21 @@ public class MainActivity extends ActionBarActivity {
     @RestService
     RestClient api;
 
+    @Bean
+    SessionManager sessionManager;
+
     @AfterViews
     void ready() {
-//        setFragment(1);
-//        testNetwork();
+        testNetwork();
+    }
+
+    private void testNetwork() {
+        final AuthResult login = api.login("roman2", "123455");
+        sessionManager.createAccount("roman2", login.authToken);
+        AuthInterceptor.authToken = login.authToken;
+        api.addCategory("category_01");
+        final Result result = api.addTransaction(100, "test", 1, "2015-06-01");
+        final TransactionsResult transactionsResult = api.getTransactions();
     }
 
     @Override
