@@ -53,8 +53,6 @@ public class MainActivity extends ActionBarActivity {
 
     @AfterViews
     void ready() {
-//        setFragment(1);
-//        testNetwork();
     }
 
     @Override
@@ -81,7 +79,6 @@ public class MainActivity extends ActionBarActivity {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id, IDrawerItem drawerItem) {
                         setFragment(position);
-//                        view.setBackgroundResource(R.color.green);
                     }
                 })
                 .build();

@@ -29,11 +29,6 @@ public class AddCategoryActivity extends ActionBarActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-    }
-
     @Click
     void addCategory() {
         if (isValidForm()) {
