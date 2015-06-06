@@ -25,7 +25,7 @@ import java.io.IOException;
 public class SessionManager {
     private static final String LOG_TAG = SessionManager.class.getSimpleName();
 
-    public static final String AUTH_ACCOUNT_TYPE = "com.my.moneytracker";
+    public static final String AUTH_ACCOUNT_TYPE = "net.romanitalian.moneytrackerapp";
     private static final String AUTH_TOKEN_TYPE_FULL_ACCESS = AUTH_ACCOUNT_TYPE + ".authtokenFull";
     public static final String SESSION_OPENED_BROADCAST = "session-open";
 

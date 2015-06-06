@@ -30,6 +30,7 @@ import net.romanitalian.moneytrackerapp.rest.TransactionsResult;
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.Receiver;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.rest.RestService;
 
@@ -62,6 +63,11 @@ public class MainActivity extends ActionBarActivity {
 //        testNetwork();
     }
 
+    @Receiver(actions = {SessionManager.SESSION_OPENED_BROADCAST}, registerAt = Receiver.RegisterAt.OnResumeOnPause, local = true)
+    void onSessionOpen() {
+//        testNetwork();
+    }
+
     private void testNetwork() {
         final AuthResult login = api.login("roman2", "123455");
         sessionManager.createAccount("roman2", login.authToken);
@@ -75,7 +81,9 @@ public class MainActivity extends ActionBarActivity {
     public void onResume() {
         super.onResume();
         setMenu();
-        sessionManager.login(this);
+        final AuthResult login = api.login("roman2", "123456");
+        sessionManager.createAccount("roman2", login.authToken);
+//        sessionManager.login(this);
     }
 
     public void setMenu() {
