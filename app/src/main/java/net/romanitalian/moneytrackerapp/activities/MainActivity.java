@@ -81,9 +81,9 @@ public class MainActivity extends ActionBarActivity {
     public void onResume() {
         super.onResume();
         setMenu();
-        final AuthResult login = api.login("roman2", "123456");
-        sessionManager.createAccount("roman2", login.authToken);
-//        sessionManager.login(this);
+//        final AuthResult login = api.login("roman2", "123456");
+//        sessionManager.createAccount("roman2", login.authToken);
+        sessionManager.login(this);
     }
 
     public void setMenu() {
