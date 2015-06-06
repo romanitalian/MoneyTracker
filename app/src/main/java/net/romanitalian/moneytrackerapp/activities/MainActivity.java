@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
@@ -52,8 +51,6 @@ public class MainActivity extends ActionBarActivity {
     @ViewById
     ListView drawerList;
 
-    private ActionBarDrawerToggle drawerToggle;
-
     @RestService
     RestClient api;
 
@@ -62,7 +59,7 @@ public class MainActivity extends ActionBarActivity {
 
     @AfterViews
     void ready() {
-        testNetwork();
+//        testNetwork();
     }
 
     private void testNetwork() {
@@ -78,6 +75,7 @@ public class MainActivity extends ActionBarActivity {
     public void onResume() {
         super.onResume();
         setMenu();
+        sessionManager.login(this);
     }
 
     public void setMenu() {
@@ -89,10 +87,10 @@ public class MainActivity extends ActionBarActivity {
                 .withDisplayBelowToolbar(true)
                 .withActionBarDrawerToggleAnimated(true)
                 .addDrawerItems(
-                        new PrimaryDrawerItem().withName(MoneyTrackerApplication.isAuth ? R.string.title_activity_logout : R.string.title_activity_login),
                         new PrimaryDrawerItem().withName(R.string.transactions_title),
                         new PrimaryDrawerItem().withName(R.string.categories_title),
-                        new PrimaryDrawerItem().withName(R.string.statistics_title)
+                        new PrimaryDrawerItem().withName(R.string.statistics_title),
+                        new PrimaryDrawerItem().withName(MoneyTrackerApplication.isAuth ? R.string.title_activity_logout : R.string.title_activity_login)
                 )
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
@@ -114,6 +112,18 @@ public class MainActivity extends ActionBarActivity {
     public void setFragment(int position) {
         switch (position) {
             case 0:
+                setTitle(getString(R.string.transactions_title));
+                setFragmentParams(TransactionsFragment_.builder().build());
+                break;
+            case 1:
+                setTitle(getString(R.string.categories_title));
+                setFragmentParams(CategoriesFragment_.builder().build());
+                break;
+            case 2:
+                setTitle(getString(R.string.statistics_title));
+                setFragmentParams(StatisticsFragment_.builder().build());
+                break;
+            case 3:
                 if (MoneyTrackerApplication.isAuth) {
                     MoneyTrackerApplication.isAuth = false;
                     setMenu();
@@ -121,18 +131,6 @@ public class MainActivity extends ActionBarActivity {
                     Intent intent = new Intent(this, LoginActivity_.class);
                     startActivity(intent);
                 }
-                break;
-            case 1:
-                setTitle(getString(R.string.transactions_title));
-                setFragmentParams(TransactionsFragment_.builder().build());
-                break;
-            case 2:
-                setTitle(getString(R.string.categories_title));
-                setFragmentParams(CategoriesFragment_.builder().build());
-                break;
-            case 3:
-                setTitle(getString(R.string.statistics_title));
-                setFragmentParams(StatisticsFragment_.builder().build());
                 break;
         }
     }
