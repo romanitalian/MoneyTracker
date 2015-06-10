@@ -69,7 +69,10 @@ public class MainActivity extends ActionBarActivity {
 
     @Background
     public void testNetwork() {
-        api.addCategory("category_01");
+//        final AuthResult login = api.login("roman2", "123456");
+//        sessionManager.createAccount("roman2", login.authToken);
+//        AuthInterceptor.authToken = login.authToken;
+//        api.addCategory("category_02");
         final Result result = api.addTransaction(100, "test", 1, "2015-06-01");
         final TransactionsResult transactionsResult = api.getTransactions();
     }

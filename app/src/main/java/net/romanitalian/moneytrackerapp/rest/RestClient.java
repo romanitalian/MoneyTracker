@@ -9,7 +9,7 @@ public interface RestClient {
     @Get("/auth?login={login}&password={password}")
     AuthResult login(CharSequence login, CharSequence password);
 
-    @Get("/categories/add?title={title}")
+    @Post("/categories/add?title={title}")
     Result addCategory(String title);
 
     @Get("/transactions")
