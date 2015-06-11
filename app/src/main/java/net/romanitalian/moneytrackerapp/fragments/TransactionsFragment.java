@@ -9,7 +9,6 @@ import android.content.Loader;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -36,8 +35,6 @@ import java.util.List;
 @EFragment(R.layout.fragment_transactions)
 @OptionsMenu(R.menu.transactions_menu)
 public class TransactionsFragment extends Fragment {
-
-    private static final String LOG_TAG = TransactionsFragment.class.getSimpleName();
     private static final String FILTER_TIMER = "filter_timer";
     private TransactionAdapter transactionAdapter;
 
@@ -66,25 +63,23 @@ public class TransactionsFragment extends Fragment {
         fab.attachToRecyclerView(transaction_list);
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        loadTransactions("");
+    }
+
     @Click
     void fabClicked() {
         AddTransactionActivity_.intent(getActivity()).start();
     }
 
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        loadData("");
-    }
-
     @Background(delay = 300, id = FILTER_TIMER)
     void filterDelayed(String filter) {
-        loadData(filter);
+        loadTransactions(filter);
     }
 
-    private void loadData(final String filter) {
-        Log.d(LOG_TAG, "loadData " + filter);
+    private void loadTransactions(final String filter) {
         getLoaderManager().restartLoader(0, null, new LoaderManager.LoaderCallbacks<List<Transaction>>() {
             @Override
             public Loader<List<Transaction>> onCreateLoader(int id, Bundle args) {
@@ -122,7 +117,7 @@ public class TransactionsFragment extends Fragment {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                loadData(newText);
+                loadTransactions(newText);
                 return true;
             }
         });
