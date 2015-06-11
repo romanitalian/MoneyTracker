@@ -40,4 +40,6 @@
     <string name="title_activity_logout">Выйти</string>
     <string name="auth_success">Вы авторизовались успешно</string>
     <string name="add_category">Добавить категорию</string>
+    <string name="search_hint">search</string>
+    <string name="menu_search">search</string>
 </resources>
