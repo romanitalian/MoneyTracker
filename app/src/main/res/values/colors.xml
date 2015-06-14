@@ -9,4 +9,5 @@
     <color name="ripple">#DC3E52</color>
     <color name="accent">#DC3E56</color>
     <color name="accent_pressed">#C2185B</color>
+    <color name="primary_foreground">#88bebebe</color>
 </resources>

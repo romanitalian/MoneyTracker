@@ -7,6 +7,8 @@ import android.content.AsyncTaskLoader;
 import android.content.Context;
 import android.content.Loader;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.view.ActionMode;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
@@ -37,11 +39,13 @@ import java.util.List;
 public class TransactionsFragment extends Fragment {
     private static final String FILTER_TIMER = "filter_timer";
     private TransactionAdapter transactionAdapter;
+    private ActionMode actionMode;
+    private ActionModeCallback actionModeCallback = new ActionModeCallback();
 
     List<Transaction> data = new ArrayList<>();
 
     @ViewById
-    RecyclerView transaction_list;
+    RecyclerView transactionList;
 
     @ViewById
     FloatingActionButton fab;
@@ -51,16 +55,11 @@ public class TransactionsFragment extends Fragment {
 
     @AfterViews
     void ready() {
-        List<Transaction> adapterData = Transaction.getAll("");
-        transactionAdapter = new TransactionAdapter(adapterData);
-
-        transaction_list.setHasFixedSize(true);
+        transactionList.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        transaction_list.setLayoutManager(linearLayoutManager);
-
-        transaction_list.setAdapter(transactionAdapter);
-        fab.attachToRecyclerView(transaction_list);
+        transactionList.setLayoutManager(linearLayoutManager);
+        fab.attachToRecyclerView(transactionList);
     }
 
     @Override
@@ -95,7 +94,25 @@ public class TransactionsFragment extends Fragment {
 
             @Override
             public void onLoadFinished(Loader<List<Transaction>> loader, List<Transaction> data) {
-                transaction_list.setAdapter(new TransactionAdapter(data));
+                transactionAdapter = (new TransactionAdapter(data, new TransactionAdapter.CardViewHolder.ClickListener() {
+                    @Override
+                    public void onItemClicked(int position) {
+                        if (actionMode != null) {
+                            toggleSelection(position);
+                        }
+                    }
+
+                    @Override
+                    public boolean onItemLongClicked(int position) {
+                        if (actionMode == null) {
+                            ActionBarActivity actionBarActivity = (ActionBarActivity) getActivity();
+                            actionMode = actionBarActivity.startSupportActionMode((actionModeCallback));
+                        }
+                        toggleSelection(position);
+                        return true;
+                    }
+                }));
+                transactionList.setAdapter(transactionAdapter);
             }
 
             @Override
@@ -124,5 +141,46 @@ public class TransactionsFragment extends Fragment {
         searchView.setSearchableInfo(((SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE)).getSearchableInfo(getActivity().getComponentName()));
     }
 
+    private void toggleSelection(int position) {
+        transactionAdapter.toggleSelection(position);
+        int count = transactionAdapter.getSelectedItemCount();
+        if (count == 0) {
+            actionMode.finish();
+        } else {
+            actionMode.setTitle(String.valueOf(count));
+            actionMode.invalidate();
+        }
+    }
+
+    private class ActionModeCallback implements ActionMode.Callback {
+        @Override
+        public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+            mode.getMenuInflater().inflate(R.menu.contextual_menu, menu);
+            return true;
+        }
+
+        @Override
+        public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+            return false;
+        }
+
+        @Override
+        public boolean onActionItemClicked(android.support.v7.view.ActionMode mode, MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.menu_remove:
+                    transactionAdapter.removeItems(transactionAdapter.getSelectedItems());
+                    mode.finish();
+                    return true;
+                default:
+                    return false;
+            }
+        }
+
+        @Override
+        public void onDestroyActionMode(android.support.v7.view.ActionMode mode) {
+            transactionAdapter.clearSelection();
+            actionMode = null;
+        }
+    }
 }
 

@@ -21,5 +21,6 @@ allprojects {
             url 'http://repo.spring.io/milestone'
         }
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+        maven { url 'https://dl.bintray.com/drummer-aidan/maven' }
     }
 }
