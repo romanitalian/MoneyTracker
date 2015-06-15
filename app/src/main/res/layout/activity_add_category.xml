@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/Container.DarkBackground">
+
+    <include layout="@layout/toolbar"/>
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/background"
+        android:columnCount="2"
+        android:paddingBottom="@dimen/small_padding"
+        android:paddingLeft="@dimen/medium_padding"
+        android:paddingTop="@dimen/small_padding"
+        android:rowCount="4">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="fill"
+            android:gravity="left|center"
+            android:text="@string/category_text"
+            android:textSize="@dimen/big_text_size"/>
+
+        <EditText
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="fill"
+            android:hint="@string/category_text_hint"/>
+
+        <Button
+            android:id="@+id/add_category"
+            android:text="@string/add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </GridLayout>
+
+</LinearLayout>
