@@ -50,10 +50,6 @@ public class TransactionAdapter extends SelectableAdapter<TransactionAdapter.Car
         if (transactions.get(position) != null) {
             transactions.get(position).delete();
         }
-//        int count = transactions.size();
-//        for (int i = 0; i < count; ++i) {
-//            transactions.get(i).delete();
-//        }
         notifyItemRemoved(position);
     }
 
