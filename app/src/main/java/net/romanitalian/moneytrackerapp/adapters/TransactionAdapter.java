@@ -47,8 +47,13 @@ public class TransactionAdapter extends SelectableAdapter<TransactionAdapter.Car
 
     public void removeItem(int position) {
         transactions.remove(position);
-//        Transaction transaction = new Transaction();
-//        transaction.save();
+        if (transactions.get(position) != null) {
+            transactions.get(position).delete();
+        }
+//        int count = transactions.size();
+//        for (int i = 0; i < count; ++i) {
+//            transactions.get(i).delete();
+//        }
         notifyItemRemoved(position);
     }
 
@@ -88,10 +93,11 @@ public class TransactionAdapter extends SelectableAdapter<TransactionAdapter.Car
     private void removeRange(int positionStart, int itemCount) {
         for (int i = 0; i < itemCount; ++i) {
             transactions.remove(positionStart);
+            if (transactions.get(positionStart) != null) {
+                transactions.get(positionStart).delete();
+            }
         }
-
         notifyItemRangeRemoved(positionStart, itemCount);
-
     }
 
     @Override

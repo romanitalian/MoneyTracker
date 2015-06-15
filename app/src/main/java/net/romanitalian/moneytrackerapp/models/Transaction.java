@@ -5,6 +5,7 @@ import android.text.TextUtils;
 import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
+import com.activeandroid.query.Delete;
 import com.activeandroid.query.From;
 import com.activeandroid.query.Select;
 
@@ -71,5 +72,12 @@ public class Transaction extends Model {
         if (!TextUtils.isEmpty(filter))
             from.where("title LIKE ?", "%" + filter + "%");
         return from.execute();
+    }
+
+    public static void delete(int id) {
+        List<Model> delete = new Delete()
+                .from(Transaction.class)
+                .where("id = ?", id)
+                .execute();
     }
 }
