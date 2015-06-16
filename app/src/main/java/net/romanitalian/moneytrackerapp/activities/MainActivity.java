@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.crashlytics.android.Crashlytics;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
@@ -22,8 +21,6 @@ import net.romanitalian.moneytrackerapp.fragments.CategoriesFragment_;
 import net.romanitalian.moneytrackerapp.fragments.StatisticsFragment_;
 import net.romanitalian.moneytrackerapp.fragments.TransactionsFragment_;
 import net.romanitalian.moneytrackerapp.rest.RestClient;
-import net.romanitalian.moneytrackerapp.rest.Result;
-import net.romanitalian.moneytrackerapp.rest.TransactionsResult;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Background;
@@ -32,8 +29,6 @@ import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.Receiver;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.rest.RestService;
-
-import io.fabric.sdk.android.Fabric;
 
 
 @EActivity(R.layout.activity_main)
@@ -73,8 +68,8 @@ public class MainActivity extends ActionBarActivity {
 //        sessionManager.createAccount("roman2", login.authToken);
 //        AuthInterceptor.authToken = login.authToken;
 //        api.addCategory("category_02");
-        final Result result = api.addTransaction(100, "test", 1, "2015-06-01");
-        final TransactionsResult transactionsResult = api.getTransactions();
+//        final Result result = api.addTransaction(100, "test", 1, "2015-06-01");
+//        final TransactionsResult transactionsResult = api.getTransactions();
     }
 
     @Override
@@ -85,7 +80,7 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void setMenu() {
-        Fabric.with(this, new Crashlytics());
+//        Fabric.with(this, new Crashlytics());
         setSupportActionBar(toolbar);
         new Drawer()
                 .withActivity(this)

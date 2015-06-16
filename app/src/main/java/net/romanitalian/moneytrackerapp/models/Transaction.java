@@ -1,12 +1,18 @@
 package net.romanitalian.moneytrackerapp.models;
 
+import android.text.TextUtils;
+
 import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
+import com.activeandroid.query.Delete;
+import com.activeandroid.query.From;
+import com.activeandroid.query.Select;
 
 import net.romanitalian.moneytrackerapp.utils.Udate;
 
 import java.util.Date;
+import java.util.List;
 
 @Table(name = "Transactions")
 public class Transaction extends Model {
@@ -56,5 +62,22 @@ public class Transaction extends Model {
 
     public boolean isValid() {
         return title.length() != 0 && sum > 0;
+    }
+
+
+    public static List<Transaction> getAll(String filter) {
+        final From from = new Select()
+                .from(Transaction.class)
+                .orderBy("date DESC");
+        if (!TextUtils.isEmpty(filter))
+            from.where("title LIKE ?", "%" + filter + "%");
+        return from.execute();
+    }
+
+    public static void delete(int id) {
+        List<Model> delete = new Delete()
+                .from(Transaction.class)
+                .where("id = ?", id)
+                .execute();
     }
 }
