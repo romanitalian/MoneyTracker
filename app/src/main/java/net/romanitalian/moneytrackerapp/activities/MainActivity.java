@@ -55,6 +55,7 @@ public class MainActivity extends ActionBarActivity {
     @AfterViews
     void ready() {
 //        testNetwork();
+        sessionManager.login(this);
     }
 
     @Receiver(actions = {SessionManager.SESSION_OPENED_BROADCAST}, registerAt = Receiver.RegisterAt.OnResumeOnPause, local = true)
@@ -76,7 +77,7 @@ public class MainActivity extends ActionBarActivity {
     public void onResume() {
         super.onResume();
         setMenu();
-        sessionManager.login(this);
+//        sessionManager.login(this);
     }
 
     public void setMenu() {
