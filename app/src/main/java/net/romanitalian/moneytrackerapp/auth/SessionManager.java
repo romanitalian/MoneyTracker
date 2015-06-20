@@ -21,11 +21,9 @@ import org.androidannotations.annotations.UiThread;
 
 import java.io.IOException;
 
-
 @EBean(scope = EBean.Scope.Singleton)
 public class SessionManager {
     private static final String LOG_TAG = SessionManager.class.getSimpleName();
-
     public static final String AUTH_ACCOUNT_TYPE = "net.romanitalian.moneytrackerapp";
     private static final String AUTH_TOKEN_TYPE_FULL_ACCESS = AUTH_ACCOUNT_TYPE + ".authtokenFull";
     public static final String SESSION_OPENED_BROADCAST = "session-open";
@@ -51,7 +49,6 @@ public class SessionManager {
         if (restoreAccount()) {
             return;
         }
-
         try {
             AccountManagerFuture<Bundle> future = accountManager.addAccount(AUTH_ACCOUNT_TYPE, AUTH_TOKEN_TYPE_FULL_ACCESS, null, null, activity, null, null);
             future.getResult();
@@ -62,10 +59,9 @@ public class SessionManager {
 
     boolean restoreAccount() {
         Account[] availableAccounts = accountManager.getAccountsByType(AUTH_ACCOUNT_TYPE);
-
-        if (availableAccounts.length == 0)
+        if (availableAccounts.length == 0) {
             return false;
-
+        }
         AccountManagerFuture<Bundle> future = accountManager.getAuthToken(availableAccounts[0], AUTH_TOKEN_TYPE_FULL_ACCESS, null, false, null, null);
         try {
             ContentResolver.setSyncAutomatically(availableAccounts[0], AUTH_ACCOUNT_TYPE, true);
@@ -92,16 +88,13 @@ public class SessionManager {
         return authToken;
     }
 
-
     public void sync() {
         isSynced = true;
-
         android.accounts.Account[] availableAccounts = accountManager.getAccountsByType(AUTH_ACCOUNT_TYPE);
         if (availableAccounts.length == 0) {
             Log.d(LOG_TAG, "sync(), Account not found");
             return;
         }
-
         ContentResolver.requestSync(availableAccounts[0], AUTH_ACCOUNT_TYPE, new Bundle());
     }
 }

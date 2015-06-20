@@ -1,9 +1,9 @@
 package net.romanitalian.moneytrackerapp.activities;
 
+import android.accounts.AccountAuthenticatorActivity;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
-import android.app.Activity;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.CursorLoader;
 import android.content.Loader;
@@ -27,11 +27,13 @@ import android.widget.Toast;
 
 import net.romanitalian.moneytrackerapp.MoneyTrackerApplication;
 import net.romanitalian.moneytrackerapp.R;
+import net.romanitalian.moneytrackerapp.auth.SessionManager;
 import net.romanitalian.moneytrackerapp.rest.AuthInterceptor;
 import net.romanitalian.moneytrackerapp.rest.AuthResult;
 import net.romanitalian.moneytrackerapp.rest.RestClient;
 
 import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.rest.RestService;
@@ -40,7 +42,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @EActivity(R.layout.activity_login)
-public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
+public class LoginActivity extends AccountAuthenticatorActivity implements LoaderCallbacks<Cursor> {
     private UserLoginTask authTask = null;
     @RestService
     RestClient api;
@@ -56,6 +58,9 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 
     @ViewById(R.id.login_form)
     View loginFormView;
+
+    @Bean
+    SessionManager sessionManager;
 
     @AfterViews
     void ready() {
@@ -86,7 +91,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 
     /**
      * Attempts to sign in or register the account specified by the login form.
-     * If there are form errors (invalid email, missing fields, etc.), the
+     * If there are form errors (invalid login, missing fields, etc.), the
      * errors are presented and no actual login attempt is made.
      */
     public void attemptLogin() {
@@ -112,7 +117,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
             cancel = true;
         }
 
-        // Check for a valid email address.
+        // Check for a valid login address.
         if (TextUtils.isEmpty(email)) {
             emailView.setError(getString(R.string.error_field_required));
             focusView = emailView;
@@ -138,11 +143,10 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 
     private boolean isEmailValid(String email) {
         return true;
-//        return email.contains("@");
+//        return login.contains("@");
     }
 
     private boolean isPasswordValid(String password) {
-        //TODO: Replace this with your own logic
         return password.length() > 4;
     }
 
@@ -189,13 +193,13 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
                 Uri.withAppendedPath(ContactsContract.Profile.CONTENT_URI,
                         ContactsContract.Contacts.Data.CONTENT_DIRECTORY), ProfileQuery.PROJECTION,
 
-                // Select only email addresses.
+                // Select only login addresses.
                 ContactsContract.Contacts.Data.MIMETYPE +
                         " = ?", new String[]{ContactsContract.CommonDataKinds.Email
                 .CONTENT_ITEM_TYPE},
 
-                // Show primary email addresses first. Note that there won't be
-                // a primary email address if the user hasn't specified one.
+                // Show primary login addresses first. Note that there won't be
+                // a primary login address if the user hasn't specified one.
                 ContactsContract.Contacts.Data.IS_PRIMARY + " DESC");
     }
 
@@ -230,9 +234,10 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
     private void addEmailsToAutoComplete(List<String> emailAddressCollection) {
         //Create adapter to tell the AutoCompleteTextView what to show in its dropdown list.
         ArrayAdapter<String> adapter =
-                new ArrayAdapter<String>(LoginActivity.this,
-                        android.R.layout.simple_dropdown_item_1line, emailAddressCollection);
-
+                new ArrayAdapter<String>(
+                        LoginActivity.this,
+                        android.R.layout.simple_dropdown_item_1line, emailAddressCollection
+                );
         emailView.setAdapter(adapter);
     }
 
@@ -242,29 +247,32 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
      */
     public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
 
-        private final String email;
+        private final String login;
         private final String password;
 
         UserLoginTask(String email, String password) {
-            this.email = email;
+            this.login = email;
             this.password = password;
         }
 
         @Override
         protected Boolean doInBackground(Void... params) {
             // TODO: attempt authentication against a network service.
-            final AuthResult login = api.login(this.email, this.password);
-            AuthInterceptor.authToken = login.authToken;
-            MoneyTrackerApplication.isAuth = login.authToken != null;
+            final AuthResult authResult = api.login(this.login, this.password);
+            AuthInterceptor.authToken = authResult.authToken;
+            MoneyTrackerApplication.isAuth = authResult.authToken != null;
+            if (MoneyTrackerApplication.isAuth) {
+                sessionManager.createAccount(this.login, authResult.authToken);
+                setAccountAuthenticatorResult(new Bundle());
+//                finish();
+            }
             return MoneyTrackerApplication.isAuth;
-            // TODO: register the new account here.
         }
 
         @Override
         protected void onPostExecute(final Boolean success) {
             authTask = null;
             showProgress(false);
-
             if (success) {
                 Toast.makeText(getApplicationContext(), getString(R.string.auth_success), Toast.LENGTH_LONG).show();
                 finish();
@@ -281,4 +289,3 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         }
     }
 }
-

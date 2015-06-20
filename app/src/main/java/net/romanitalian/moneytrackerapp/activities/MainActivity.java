@@ -55,9 +55,7 @@ public class MainActivity extends ActionBarActivity {
     @AfterViews
     void ready() {
 //        testNetwork();
-        if (!MoneyTrackerApplication.isAuth) {
-            sessionManager.login(this);
-        }
+        sessionManager.login(this);
     }
 
     @Receiver(actions = {SessionManager.SESSION_OPENED_BROADCAST}, registerAt = Receiver.RegisterAt.OnResumeOnPause, local = true)

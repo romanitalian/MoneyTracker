@@ -18,6 +18,7 @@ import java.util.List;
 public class Transaction extends Model {
     private static final int ID_UNSYNCED = 0;
     private static final int ID_SYNCED = -1;
+
     @Column(name = "title")
     public String title;
 
