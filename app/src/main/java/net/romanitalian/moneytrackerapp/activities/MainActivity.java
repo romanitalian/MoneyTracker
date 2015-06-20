@@ -77,7 +77,6 @@ public class MainActivity extends ActionBarActivity {
     public void onResume() {
         super.onResume();
         setMenu();
-//        sessionManager.login(this);
     }
 
     public void setMenu() {
@@ -137,4 +136,3 @@ public class MainActivity extends ActionBarActivity {
         }
     }
 }
-

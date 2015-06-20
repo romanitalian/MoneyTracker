@@ -16,6 +16,8 @@ import java.util.List;
 
 @Table(name = "Transactions")
 public class Transaction extends Model {
+    private static final int ID_UNSYNCED = 0;
+    private static final int ID_SYNCED = -1;
     @Column(name = "title")
     public String title;
 
@@ -23,7 +25,10 @@ public class Transaction extends Model {
     public int sum;
 
     @Column(name = "date")
-    private Date date;
+    public Date date;
+
+    @Column(name = "uuid")
+    public int id;
 
     public Transaction() {
     }
@@ -78,6 +83,31 @@ public class Transaction extends Model {
         List<Model> delete = new Delete()
                 .from(Transaction.class)
                 .where("id = ?", id)
+                .execute();
+    }
+
+    public void markSynced() {
+        id = ID_SYNCED;
+    }
+
+    public boolean isInDatabase() {
+        return new Select()
+                .from(Transaction.class)
+                .where("uuid = ?", id)
+                .executeSingle() != null;
+    }
+
+    public static List<Transaction> getSynced() {
+        return new Select()
+                .from(Transaction.class)
+                .where("uuid = ?", ID_SYNCED)
+                .execute();
+    }
+
+    public static List<Transaction> getUnsynced() {
+        return new Select()
+                .from(Transaction.class)
+                .where("uuid = ?", ID_UNSYNCED)
                 .execute();
     }
 }
