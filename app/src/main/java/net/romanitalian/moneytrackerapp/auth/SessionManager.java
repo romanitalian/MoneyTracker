@@ -44,11 +44,23 @@ public class SessionManager {
         }
     }
 
+    public void sync() {
+        isSynced = true;
+
+        android.accounts.Account[] availableAccounts = accountManager.getAccountsByType(AUTH_ACCOUNT_TYPE);
+        if (availableAccounts.length == 0) {
+            Log.d(LOG_TAG, "sync(), Account not found");
+            return;
+        }
+
+        ContentResolver.requestSync(availableAccounts[0], AUTH_ACCOUNT_TYPE, new Bundle());
+    }
     @Background
     public void login(Activity activity) {
         if (restoreAccount()) {
             return;
         }
+
         try {
             AccountManagerFuture<Bundle> future = accountManager.addAccount(AUTH_ACCOUNT_TYPE, AUTH_TOKEN_TYPE_FULL_ACCESS, null, null, activity, null, null);
             future.getResult();
@@ -59,6 +71,7 @@ public class SessionManager {
 
     boolean restoreAccount() {
         Account[] availableAccounts = accountManager.getAccountsByType(AUTH_ACCOUNT_TYPE);
+
         if (availableAccounts.length == 0) {
             return false;
         }
@@ -79,22 +92,12 @@ public class SessionManager {
         authToken = token;
         Log.d(LOG_TAG, "restoreAccount authToken:" + token);
         LocalBroadcastManager.getInstance(context).sendBroadcast(new Intent(SESSION_OPENED_BROADCAST));
-        if (!isSynced) {
+//        if (!isSynced) {
             sync();
-        }
+//        }
     }
 
     public String getAuthToken() {
         return authToken;
-    }
-
-    public void sync() {
-        isSynced = true;
-        android.accounts.Account[] availableAccounts = accountManager.getAccountsByType(AUTH_ACCOUNT_TYPE);
-        if (availableAccounts.length == 0) {
-            Log.d(LOG_TAG, "sync(), Account not found");
-            return;
-        }
-        ContentResolver.requestSync(availableAccounts[0], AUTH_ACCOUNT_TYPE, new Bundle());
     }
 }

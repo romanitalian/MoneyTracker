@@ -120,4 +120,10 @@
         <item name="android:layout_alignParentLeft">true</item>
         <item name="android:textSize">@dimen/text_size_date</item>
     </style>
+
+    <style name="LoginButton">
+        <item name="android:layout_height">60dp</item>
+        <item name="android:layout_marginTop">45dp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 </resources>
