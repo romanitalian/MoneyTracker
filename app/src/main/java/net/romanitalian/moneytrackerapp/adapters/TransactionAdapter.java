@@ -1,9 +1,13 @@
 package net.romanitalian.moneytrackerapp.adapters;
 
+import android.content.Context;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 import net.romanitalian.moneytrackerapp.R;
@@ -21,10 +25,13 @@ import java.util.Locale;
 public class TransactionAdapter extends SelectableAdapter<TransactionAdapter.CardViewHolder> {
     List<Transaction> transactions;
     private CardViewHolder.ClickListener clickListener;
+    private Context context;
+    private int prevPosition = -1;
 
-    public TransactionAdapter(List<Transaction> transactions, CardViewHolder.ClickListener clickListener) {
+    public TransactionAdapter(List<Transaction> transactions, Context context, CardViewHolder.ClickListener clickListener) {
         this.transactions = transactions;
         this.clickListener = clickListener;
+        this.context = context;
     }
 
     @Override
@@ -39,6 +46,8 @@ public class TransactionAdapter extends SelectableAdapter<TransactionAdapter.Car
         holder.title.setText(transaction.comment);
         holder.sum.setText(String.valueOf(transaction.sum));
         holder.selectedOverlay.setVisibility(isSelected(position) ? View.VISIBLE : View.INVISIBLE);
+
+        setAnimation(holder.cardView, position);
 
         DateFormat df = new SimpleDateFormat(Udate.dateFormat, new Locale("ru"));
         String _date = transaction.tr_date != null ? df.format(transaction.tr_date) : "";
@@ -101,12 +110,21 @@ public class TransactionAdapter extends SelectableAdapter<TransactionAdapter.Car
         return transactions.size();
     }
 
+    private void setAnimation(View viewToAnimate, int position) {
+        if (position > prevPosition) {
+            Animation animation = AnimationUtils.loadAnimation(context, R.anim.slide_up);
+            viewToAnimate.startAnimation(animation);
+            prevPosition = position;
+        }
+    }
+
     public static class CardViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
         protected TextView title;
         protected TextView sum;
         protected TextView date;
         protected View selectedOverlay;
         private ClickListener clickListener;
+        protected CardView cardView;
 
         public CardViewHolder(View itemView, ClickListener clickListener) {
             super(itemView);
@@ -114,6 +132,7 @@ public class TransactionAdapter extends SelectableAdapter<TransactionAdapter.Car
             sum = (TextView) itemView.findViewById(R.id.transaction_sum);
             date = (TextView) itemView.findViewById(R.id.transaction_date);
             selectedOverlay = itemView.findViewById(R.id.selected_overlay);
+            cardView = (CardView) itemView.findViewById(R.id.cardview_id);
 
             this.clickListener = clickListener;
             itemView.setOnClickListener(this);
@@ -137,6 +156,5 @@ public class TransactionAdapter extends SelectableAdapter<TransactionAdapter.Car
 
             public boolean onItemLongClicked(int position);
         }
-
     }
 }

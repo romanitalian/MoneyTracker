@@ -5,6 +5,7 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto">
 
     <android.support.v7.widget.CardView
+        android:id="@+id/cardview_id"
         android:layout_width="match_parent"
         style="@style/cardView"
         card_view:cardBackgroundColor="@color/background"

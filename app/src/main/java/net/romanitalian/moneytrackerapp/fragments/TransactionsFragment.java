@@ -94,7 +94,7 @@ public class TransactionsFragment extends Fragment {
 
             @Override
             public void onLoadFinished(Loader<List<Transaction>> loader, List<Transaction> data) {
-                transactionAdapter = (new TransactionAdapter(data, new TransactionAdapter.CardViewHolder.ClickListener() {
+                transactionAdapter = (new TransactionAdapter(data, getActivity(), new TransactionAdapter.CardViewHolder.ClickListener() {
                     @Override
                     public void onItemClicked(int position) {
                         if (actionMode != null) {
