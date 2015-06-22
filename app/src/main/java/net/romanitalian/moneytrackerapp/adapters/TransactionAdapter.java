@@ -47,7 +47,7 @@ public class TransactionAdapter extends SelectableAdapter<TransactionAdapter.Car
         holder.sum.setText(String.valueOf(transaction.sum));
         holder.selectedOverlay.setVisibility(isSelected(position) ? View.VISIBLE : View.INVISIBLE);
 
-        setAnimation(holder.cardView, position);
+        setAnimation(holder.sum, position);
 
         DateFormat df = new SimpleDateFormat(Udate.dateFormat, new Locale("ru"));
         String _date = transaction.tr_date != null ? df.format(transaction.tr_date) : "";
