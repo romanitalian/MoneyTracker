@@ -71,6 +71,7 @@ public class TransactionsFragment extends Fragment {
     @Click
     void fabClicked() {
         AddTransactionActivity_.intent(getActivity()).start();
+        getActivity().overridePendingTransition(R.anim.from_midle, R.anim.to_midle);
     }
 
     @Background(delay = 300, id = FILTER_TIMER)
