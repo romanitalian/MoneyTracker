@@ -10,4 +10,9 @@
     <color name="accent">#DC3E56</color>
     <color name="accent_pressed">#C2185B</color>
     <color name="primary_foreground">#88bebebe</color>
+
+    <!--Swipe Refresh Colors-->
+    <color name="orange">#FF9900</color>
+    <color name="green_refresh">#009900</color>
+    <color name="blue">#000099</color>ref
 </resources>

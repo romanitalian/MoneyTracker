@@ -7,6 +7,7 @@ import android.content.AsyncTaskLoader;
 import android.content.Context;
 import android.content.Loader;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.view.ActionMode;
 import android.support.v7.widget.LinearLayoutManager;
@@ -53,6 +54,9 @@ public class TransactionsFragment extends Fragment {
     @OptionsMenuItem
     MenuItem menuSearch;
 
+    @ViewById(R.id.swipeRefreshLayout)
+    SwipeRefreshLayout swipeRefreshLayout;
+
     @AfterViews
     void ready() {
         transactionList.setHasFixedSize(true);
@@ -60,6 +64,14 @@ public class TransactionsFragment extends Fragment {
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         transactionList.setLayoutManager(linearLayoutManager);
         fab.attachToRecyclerView(transactionList);
+
+        swipeRefreshLayout.setColorSchemeColors(R.color.green, R.color.orange, R.color.blue);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                loadTransactions("");
+            }
+        });
     }
 
     @Override
@@ -95,6 +107,7 @@ public class TransactionsFragment extends Fragment {
 
             @Override
             public void onLoadFinished(Loader<List<Transaction>> loader, List<Transaction> data) {
+                swipeRefreshLayout.setRefreshing(false);
                 transactionAdapter = (new TransactionAdapter(data, getActivity(), new TransactionAdapter.CardViewHolder.ClickListener() {
                     @Override
                     public void onItemClicked(int position) {
