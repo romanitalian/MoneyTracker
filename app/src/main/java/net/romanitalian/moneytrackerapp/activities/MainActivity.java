@@ -54,8 +54,7 @@ public class MainActivity extends ActionBarActivity {
 
     @AfterViews
     void ready() {
-//        testNetwork();
-        sessionManager.login(this);
+        setFragment(0);
     }
 
     @Receiver(actions = {SessionManager.SESSION_OPENED_BROADCAST}, registerAt = Receiver.RegisterAt.OnResumeOnPause, local = true)
@@ -76,8 +75,8 @@ public class MainActivity extends ActionBarActivity {
     @Override
     public void onResume() {
         super.onResume();
+        sessionManager.login(this);
         setMenu();
-//        sessionManager.login(this);
     }
 
     public void setMenu() {
@@ -92,7 +91,7 @@ public class MainActivity extends ActionBarActivity {
                         new PrimaryDrawerItem().withName(R.string.transactions_title),
                         new PrimaryDrawerItem().withName(R.string.categories_title),
                         new PrimaryDrawerItem().withName(R.string.statistics_title),
-                        new PrimaryDrawerItem().withName(MoneyTrackerApplication.isAuth ? R.string.title_activity_logout : R.string.title_activity_login)
+                        new PrimaryDrawerItem().withName(!MoneyTrackerApplication.isAuth ? R.string.title_activity_login : R.string.title_activity_logout)
                 )
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
@@ -137,4 +136,3 @@ public class MainActivity extends ActionBarActivity {
         }
     }
 }
-

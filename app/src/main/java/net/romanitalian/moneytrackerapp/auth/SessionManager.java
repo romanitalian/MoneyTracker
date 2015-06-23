@@ -6,6 +6,7 @@ import android.accounts.AccountManagerFuture;
 import android.accounts.AuthenticatorException;
 import android.accounts.OperationCanceledException;
 import android.app.Activity;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,11 +21,9 @@ import org.androidannotations.annotations.UiThread;
 
 import java.io.IOException;
 
-
 @EBean(scope = EBean.Scope.Singleton)
 public class SessionManager {
     private static final String LOG_TAG = SessionManager.class.getSimpleName();
-
     public static final String AUTH_ACCOUNT_TYPE = "net.romanitalian.moneytrackerapp";
     private static final String AUTH_TOKEN_TYPE_FULL_ACCESS = AUTH_ACCOUNT_TYPE + ".authtokenFull";
     public static final String SESSION_OPENED_BROADCAST = "session-open";
@@ -36,6 +35,7 @@ public class SessionManager {
     Context context;
 
     private String authToken;
+    private boolean isSynced;
 
     public void createAccount(String login, String authToken) {
         Account account = new Account(login, AUTH_ACCOUNT_TYPE);
@@ -44,6 +44,17 @@ public class SessionManager {
         }
     }
 
+    public void sync() {
+        isSynced = true;
+
+        android.accounts.Account[] availableAccounts = accountManager.getAccountsByType(AUTH_ACCOUNT_TYPE);
+        if (availableAccounts.length == 0) {
+            Log.d(LOG_TAG, "sync(), Account not found");
+            return;
+        }
+
+        ContentResolver.requestSync(availableAccounts[0], AUTH_ACCOUNT_TYPE, new Bundle());
+    }
     @Background
     public void login(Activity activity) {
         if (restoreAccount()) {
@@ -61,11 +72,12 @@ public class SessionManager {
     boolean restoreAccount() {
         Account[] availableAccounts = accountManager.getAccountsByType(AUTH_ACCOUNT_TYPE);
 
-        if (availableAccounts.length == 0)
+        if (availableAccounts.length == 0) {
             return false;
-
+        }
         AccountManagerFuture<Bundle> future = accountManager.getAuthToken(availableAccounts[0], AUTH_TOKEN_TYPE_FULL_ACCESS, null, false, null, null);
         try {
+            ContentResolver.setSyncAutomatically(availableAccounts[0], AUTH_ACCOUNT_TYPE, true);
             onSessionOpen(future.getResult());
             return true;
         } catch (OperationCanceledException | IOException | AuthenticatorException e) {
@@ -80,6 +92,9 @@ public class SessionManager {
         authToken = token;
         Log.d(LOG_TAG, "restoreAccount authToken:" + token);
         LocalBroadcastManager.getInstance(context).sendBroadcast(new Intent(SESSION_OPENED_BROADCAST));
+//        if (!isSynced) {
+            sync();
+//        }
     }
 
     public String getAuthToken() {

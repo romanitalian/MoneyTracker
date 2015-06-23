@@ -16,7 +16,7 @@
     <string name="add_transaction">Добавить трату</string>
     <string name="hint_date">Сегодня</string>
     <string name="title_date">Дата</string>
-    <string name="category_hint">Выберите категорию</string>
+    <string name="category_hint">---</string>
     <string name="category_text">Категория</string>
     <string name="category_text_hint">Еда</string>
     <string name="about_hint">Война и мир</string>
@@ -42,4 +42,6 @@
     <string name="add_category">Добавить категорию</string>
     <string name="search_hint">search</string>
     <string name="menu_search">search</string>
+    <string name="login_error">Ошибка входа</string>
+    <string name="ok">ok</string>
 </resources>
