@@ -9,11 +9,17 @@
         android:background="@color/background"
         android:id="@+id/statistic_linear_layout">
 
-        <net.romanitalian.moneytrackerapp.PieChartView
-            android:id="@+id/piecahrt"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            />
+            android:gravity="center">
+
+            <com.github.mikephil.charting.charts.PieChart
+                android:id="@+id/chart"
+                android:layout_width="200dp"
+                android:layout_height="200dp"/>
+
+        </LinearLayout>
     </LinearLayout>
 
 </RelativeLayout>
