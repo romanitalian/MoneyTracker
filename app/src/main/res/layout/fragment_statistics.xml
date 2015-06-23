@@ -9,11 +9,11 @@
         android:background="@color/background"
         android:id="@+id/statistic_linear_layout">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:text="@string/categories_text"
-            android:layout_height="match_parent"
-            android:id="@+id/statistic"/>
+        <net.romanitalian.moneytrackerapp.PieChartView
+            android:id="@+id/piecahrt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
     </LinearLayout>
 
 </RelativeLayout>
