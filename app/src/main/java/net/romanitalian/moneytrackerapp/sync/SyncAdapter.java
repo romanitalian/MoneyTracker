@@ -21,7 +21,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
         try {
             final RestClient api = new RestClient_(getContext());
             for (Transaction transaction : Transaction.getUnsynced()) {
-                api.addTransaction(transaction.sum, transaction.comment, 1, transaction.tr_date.toString());
+                api.addTransaction(transaction.sum, transaction.comment, 1, transaction.trDate.toString());
                 transaction.markSynced();
             }
             for (Transaction transaction : api.getTransactions().data) {

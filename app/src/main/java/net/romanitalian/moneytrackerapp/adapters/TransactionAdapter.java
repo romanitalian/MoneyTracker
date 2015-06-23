@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import net.romanitalian.moneytrackerapp.R;
 import net.romanitalian.moneytrackerapp.models.Transaction;
@@ -50,16 +51,21 @@ public class TransactionAdapter extends SelectableAdapter<TransactionAdapter.Car
         setAnimation(holder.sum, position);
 
         DateFormat df = new SimpleDateFormat(Udate.dateFormat, new Locale("ru"));
-        String _date = transaction.tr_date != null ? df.format(transaction.tr_date) : "";
+        String _date = transaction.trDate != null ? df.format(transaction.trDate) : "";
         holder.date.setText(_date);
     }
 
     public void removeItem(int position) {
         transactions.remove(position);
-        if (transactions.get(position) != null) {
-            transactions.get(position).delete();
+        try {
+            Transaction item = Transaction.load(Transaction.class, position);
+            if (item != null) {
+                item.delete();
+            }
+            notifyItemRemoved(position);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            Toast.makeText(context, "Не удалось удалить", Toast.LENGTH_LONG).show();
         }
-        notifyItemRemoved(position);
     }
 
     public void removeItems(List<Integer> positions) {

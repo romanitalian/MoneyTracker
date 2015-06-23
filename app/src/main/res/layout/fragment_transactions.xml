@@ -23,7 +23,7 @@
         android:layout_alignParentRight="true"
         android:layout_margin="@dimen/floating_action_margin"
         android:src="@drawable/ic_add_white_24dp"
-        fab:fab_colorNormal="@color/primary"
-        fab:fab_colorPressed="@color/accent_pressed"
+        fab:fab_colorNormal="@color/green_dark"
+        fab:fab_colorPressed="@color/green"
         fab:fab_colorRipple="@color/ripple"/>
 </RelativeLayout>
