@@ -68,6 +68,7 @@ public class Transaction extends Model {
 
     public void markSynced() {
         id = ID_SYNCED;
+        save();
     }
 
     public boolean isInDatabase() {
