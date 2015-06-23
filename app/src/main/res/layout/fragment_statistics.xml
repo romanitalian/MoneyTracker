@@ -14,10 +14,15 @@
             android:layout_height="wrap_content"
             android:gravity="center">
 
-            <com.github.mikephil.charting.charts.PieChart
+            <org.eazegraph.lib.charts.PieChart
+                xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/chart"
-                android:layout_width="200dp"
-                android:layout_height="200dp"/>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                app:egLegendTextSize="18sp"
+                app:egUsePieRotation="true"
+                app:egValueTextSize="36sp"/>
 
         </LinearLayout>
     </LinearLayout>
