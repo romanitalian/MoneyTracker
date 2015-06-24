@@ -16,54 +16,39 @@ import java.util.List;
 
 @Table(name = "Transactions")
 public class Transaction extends Model {
+    private static final int ID_UNSYNCED = 0;
+    private static final int ID_SYNCED = -1;
+
+    @Column(name = "uuid")
+    public int id;
+
     @Column(name = "title")
-    public String title;
+    public String comment;
 
     @Column(name = "sum")
     public int sum;
 
     @Column(name = "date")
-    private Date date;
+    public Date tr_date;
 
     public Transaction() {
     }
 
     public Transaction(String title, String sum) {
-        this.title = title;
+        this.comment = title;
         this.sum = Integer.valueOf(sum);
-        this.date = Udate.getDateNow();
+        this.tr_date = Udate.getDateNow();
     }
 
     public Transaction(String title, String sum, Date date) {
-        this.title = title;
+        this.comment = title;
         this.sum = Integer.valueOf(sum);
-        this.date = date;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public int getSum() {
-        return sum;
-    }
-
-    public void setSum(int sum) {
-        this.sum = sum;
-    }
-
-    public Date getDate() {
-        return date;
+        this.tr_date = date;
     }
 
     public boolean isValid() {
-        return title.length() != 0 && sum > 0;
+        return comment.length() != 0 && sum > 0;
     }
-
 
     public static List<Transaction> getAll(String filter) {
         final From from = new Select()
@@ -78,6 +63,32 @@ public class Transaction extends Model {
         List<Model> delete = new Delete()
                 .from(Transaction.class)
                 .where("id = ?", id)
+                .execute();
+    }
+
+    public void markSynced() {
+        id = ID_SYNCED;
+        save();
+    }
+
+    public boolean isInDatabase() {
+        return new Select()
+                .from(Transaction.class)
+                .where("uuid = ?", id)
+                .executeSingle() != null;
+    }
+
+    public static List<Transaction> getSynced() {
+        return new Select()
+                .from(Transaction.class)
+                .where("uuid = ?", ID_SYNCED)
+                .execute();
+    }
+
+    public static List<Transaction> getUnsynced() {
+        return new Select()
+                .from(Transaction.class)
+                .where("uuid = ?", ID_UNSYNCED)
                 .execute();
     }
 }

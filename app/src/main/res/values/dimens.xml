@@ -26,4 +26,8 @@
     <dimen name="medium_card_margin">7dp</dimen>
     <dimen name="large_margin">10dp</dimen>
     <dimen name="form_login_padding_top">20dp</dimen>
+    <dimen name="login_padding_body">20dp</dimen>
+    <dimen name="login_edit_text_padding">10dp</dimen>
+    <dimen name="edit_text_margin_top">10dp</dimen>
+    <dimen name="logo_margin">30dp</dimen>
 </resources>

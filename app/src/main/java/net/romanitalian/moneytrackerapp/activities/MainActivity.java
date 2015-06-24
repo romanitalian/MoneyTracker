@@ -22,7 +22,6 @@ import net.romanitalian.moneytrackerapp.fragments.StatisticsFragment_;
 import net.romanitalian.moneytrackerapp.fragments.TransactionsFragment_;
 import net.romanitalian.moneytrackerapp.rest.RestClient;
 
-import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Background;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EActivity;
@@ -52,12 +51,6 @@ public class MainActivity extends ActionBarActivity {
     @Bean
     SessionManager sessionManager;
 
-    @AfterViews
-    void ready() {
-//        testNetwork();
-        sessionManager.login(this);
-    }
-
     @Receiver(actions = {SessionManager.SESSION_OPENED_BROADCAST}, registerAt = Receiver.RegisterAt.OnResumeOnPause, local = true)
     void onSessionOpen() {
         testNetwork();
@@ -76,8 +69,8 @@ public class MainActivity extends ActionBarActivity {
     @Override
     public void onResume() {
         super.onResume();
+        sessionManager.login(this);
         setMenu();
-//        sessionManager.login(this);
     }
 
     public void setMenu() {
@@ -92,7 +85,7 @@ public class MainActivity extends ActionBarActivity {
                         new PrimaryDrawerItem().withName(R.string.transactions_title),
                         new PrimaryDrawerItem().withName(R.string.categories_title),
                         new PrimaryDrawerItem().withName(R.string.statistics_title),
-                        new PrimaryDrawerItem().withName(MoneyTrackerApplication.isAuth ? R.string.title_activity_logout : R.string.title_activity_login)
+                        new PrimaryDrawerItem().withName(!MoneyTrackerApplication.isAuth ? R.string.title_activity_login : R.string.title_activity_logout)
                 )
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
@@ -137,4 +130,3 @@ public class MainActivity extends ActionBarActivity {
         }
     }
 }
-

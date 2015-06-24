@@ -13,6 +13,7 @@ import java.io.IOException;
 
 @EBean
 public class AuthInterceptor implements ClientHttpRequestInterceptor {
+    private static final String LOG_TAG = AuthInterceptor.class.getSimpleName();
     public static String authToken;
 
     @Bean
@@ -20,7 +21,7 @@ public class AuthInterceptor implements ClientHttpRequestInterceptor {
 
     @Override
     public ClientHttpResponse intercept(HttpRequest request, byte[] body, ClientHttpRequestExecution execution) throws IOException {
-        request.getHeaders().add("authToken", authToken);
+        request.getHeaders().add("authToken", sessionManager.getAuthToken());
         return execution.execute(request, body);
     }
 }

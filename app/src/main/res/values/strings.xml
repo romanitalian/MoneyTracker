@@ -42,4 +42,6 @@
     <string name="add_category">Добавить категорию</string>
     <string name="search_hint">search</string>
     <string name="menu_search">search</string>
+    <string name="login_error">Ошибка входа</string>
+    <string name="ok">ok</string>
 </resources>

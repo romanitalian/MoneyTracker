@@ -36,12 +36,12 @@ public class TransactionAdapter extends SelectableAdapter<TransactionAdapter.Car
     @Override
     public void onBindViewHolder(CardViewHolder holder, int position) {
         Transaction transaction = transactions.get(position);
-        holder.title.setText(transaction.getTitle());
-        holder.sum.setText(String.valueOf(transaction.getSum()));
+        holder.title.setText(transaction.comment);
+        holder.sum.setText(String.valueOf(transaction.sum));
         holder.selectedOverlay.setVisibility(isSelected(position) ? View.VISIBLE : View.INVISIBLE);
 
         DateFormat df = new SimpleDateFormat(Udate.dateFormat, new Locale("ru"));
-        String _date = df.format(transaction.getDate());
+        String _date = transaction.tr_date != null ? df.format(transaction.tr_date) : "";
         holder.date.setText(_date);
     }
 
