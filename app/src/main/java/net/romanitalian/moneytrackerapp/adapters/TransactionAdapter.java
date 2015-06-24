@@ -56,11 +56,10 @@ public class TransactionAdapter extends SelectableAdapter<TransactionAdapter.Car
     }
 
     public void removeItem(int position) {
-        transactions.remove(position);
         try {
-            Transaction item = Transaction.load(Transaction.class, position);
-            if (item != null) {
-                item.delete();
+            if (transactions.get(position) != null) {
+                transactions.get(position).delete();
+                transactions.remove(position);
             }
             notifyItemRemoved(position);
         } catch (ArrayIndexOutOfBoundsException e) {
@@ -102,10 +101,15 @@ public class TransactionAdapter extends SelectableAdapter<TransactionAdapter.Car
     }
 
     private void removeRange(int positionStart, int itemCount) {
-        for (int i = 0; i < itemCount; ++i) {
-            transactions.remove(positionStart);
-            if (transactions.get(positionStart) != null) {
-                transactions.get(positionStart).delete();
+        for (int position = 0; position < itemCount; ++position) {
+            try {
+                if (transactions.get(position) != null) {
+                    transactions.get(position).delete();
+                    transactions.remove(position);
+                }
+                notifyItemRemoved(position);
+            } catch (ArrayIndexOutOfBoundsException e) {
+                Toast.makeText(context, "Не удалось удалить", Toast.LENGTH_LONG).show();
             }
         }
         notifyItemRangeRemoved(positionStart, itemCount);
