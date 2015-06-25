@@ -49,11 +49,22 @@
         <item name="android:orientation">vertical</item>
     </style>
 
+    <style name="Container.Land">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
     <style name="Container.Background">
         <item name="android:background">@drawable/android_app_back_main</item>
     </style>
 
     <style name="Container.DarkBackground">
+        <item name="android:background">@drawable/android_app_back</item>
+    </style>
+
+    <style name="Container.DarkBackground.Land">
         <item name="android:background">@drawable/android_app_back</item>
     </style>
 

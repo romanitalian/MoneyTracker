@@ -9,11 +9,22 @@
         android:background="@color/background"
         android:id="@+id/statistic_linear_layout">
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:text="@string/categories_text"
-            android:layout_height="match_parent"
-            android:id="@+id/statistic"/>
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <org.eazegraph.lib.charts.PieChart
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/chart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/pie_chart_padding"
+                app:egLegendTextSize="@demin/pie_chart_legend_text_size"
+                app:egUsePieRotation="true"
+                app:egValueTextSize="@demin/pie_chart_value_text_size"/>
+
+        </LinearLayout>
     </LinearLayout>
 
 </RelativeLayout>
