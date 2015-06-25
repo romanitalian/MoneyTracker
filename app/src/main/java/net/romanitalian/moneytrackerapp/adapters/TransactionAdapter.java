@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import net.romanitalian.moneytrackerapp.R;
 import net.romanitalian.moneytrackerapp.models.Transaction;
@@ -55,16 +54,15 @@ public class TransactionAdapter extends SelectableAdapter<TransactionAdapter.Car
         holder.date.setText(_date);
     }
 
-    public void removeItem(int position) {
-        try {
-            if (transactions.get(position) != null) {
-                transactions.get(position).delete();
-                transactions.remove(position);
-            }
-            notifyItemRemoved(position);
-        } catch (ArrayIndexOutOfBoundsException e) {
-            Toast.makeText(context, "Не удалось удалить", Toast.LENGTH_LONG).show();
+    private void removeItem_(int position) {
+        if (transactions.get(position) != null) {
+            transactions.get(position).delete();
+            transactions.remove(position);
         }
+    }
+    public void removeItem(int position) {
+        removeItem_(position);
+        notifyItemRemoved(position);
     }
 
     public void removeItems(List<Integer> positions) {
@@ -102,15 +100,7 @@ public class TransactionAdapter extends SelectableAdapter<TransactionAdapter.Car
 
     private void removeRange(int positionStart, int itemCount) {
         for (int position = 0; position < itemCount; ++position) {
-            try {
-                if (transactions.get(position) != null) {
-                    transactions.get(position).delete();
-                    transactions.remove(position);
-                }
-                notifyItemRemoved(position);
-            } catch (ArrayIndexOutOfBoundsException e) {
-                Toast.makeText(context, "Не удалось удалить", Toast.LENGTH_LONG).show();
-            }
+            removeItem_(position);
         }
         notifyItemRangeRemoved(positionStart, itemCount);
     }
