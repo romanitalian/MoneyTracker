@@ -32,4 +32,8 @@
     <dimen name="login_edit_text_padding">10dp</dimen>
     <dimen name="edit_text_margin_top">10dp</dimen>
     <dimen name="logo_margin">30dp</dimen>
+
+    <dimen name="pie_chart_padding">8dp</dimen>
+    <dimen name="pie_chart_legend_text_size">18sp</dimen>
+    <dimen name="pie_chart_value_text_size">36sp</dimen>
 </resources>
