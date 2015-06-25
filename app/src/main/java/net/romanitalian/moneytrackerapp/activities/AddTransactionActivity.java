@@ -2,6 +2,8 @@ package net.romanitalian.moneytrackerapp.activities;
 
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
+import android.widget.Button;
 import android.widget.EditText;
 
 import com.activeandroid.query.Select;
@@ -15,6 +17,7 @@ import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.OptionsItem;
+import org.androidannotations.annotations.TextChange;
 import org.androidannotations.annotations.ViewById;
 
 @EActivity(R.layout.activity_add_transaction)
@@ -27,6 +30,9 @@ public class AddTransactionActivity extends ActionBarActivity {
 
     @ViewById
     EditText sum;
+
+    @ViewById
+    Button add_transaction;
 
     @AfterViews
     void ready() {
@@ -53,6 +59,11 @@ public class AddTransactionActivity extends ActionBarActivity {
         } else {
             Uerror.showAlert(this);
         }
+    }
+
+    @TextChange
+    void titleTextChanged(CharSequence text) {
+        add_transaction.setEnabled(!TextUtils.isEmpty(text));
     }
 
     @OptionsItem
