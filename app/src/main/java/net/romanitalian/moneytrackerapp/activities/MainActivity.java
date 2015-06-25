@@ -22,7 +22,6 @@ import net.romanitalian.moneytrackerapp.fragments.StatisticsFragment_;
 import net.romanitalian.moneytrackerapp.fragments.TransactionsFragment_;
 import net.romanitalian.moneytrackerapp.rest.RestClient;
 
-import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Background;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EActivity;
