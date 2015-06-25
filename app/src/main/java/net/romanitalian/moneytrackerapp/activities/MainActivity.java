@@ -51,6 +51,11 @@ public class MainActivity extends ActionBarActivity {
     @Bean
     SessionManager sessionManager;
 
+    @AfterViews
+    void ready() {
+        setFragment(0);
+    }
+
     @Receiver(actions = {SessionManager.SESSION_OPENED_BROADCAST}, registerAt = Receiver.RegisterAt.OnResumeOnPause, local = true)
     void onSessionOpen() {
         testNetwork();

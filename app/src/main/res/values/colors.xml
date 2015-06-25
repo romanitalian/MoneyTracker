@@ -4,10 +4,15 @@
     <color name="green">#1A9C56</color>
     <color name="text_color">#7F7F7F</color>
     <color name="green_dark">#157E46</color>
-    <color name="primary">#DC3E39</color>
+    <!--<color name="primary">#DC3E39</color>-->
     <color name="primary_dark">#303f9f</color>
     <color name="ripple">#DC3E52</color>
     <color name="accent">#DC3E56</color>
-    <color name="accent_pressed">#C2185B</color>
+    <!--<color name="accent_pressed">#C2185B</color>-->
     <color name="primary_foreground">#88bebebe</color>
+
+    <!--Swipe Refresh Colors-->
+    <color name="orange">#FF9900</color>
+    <color name="green_refresh">#009900</color>
+    <color name="blue">#000099</color>ref
 </resources>

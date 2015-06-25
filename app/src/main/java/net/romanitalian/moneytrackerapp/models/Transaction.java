@@ -5,7 +5,6 @@ import android.text.TextUtils;
 import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
-import com.activeandroid.query.Delete;
 import com.activeandroid.query.From;
 import com.activeandroid.query.Select;
 
@@ -29,7 +28,7 @@ public class Transaction extends Model {
     public int sum;
 
     @Column(name = "date")
-    public Date tr_date;
+    public Date trDate;
 
     public Transaction() {
     }
@@ -37,13 +36,13 @@ public class Transaction extends Model {
     public Transaction(String title, String sum) {
         this.comment = title;
         this.sum = Integer.valueOf(sum);
-        this.tr_date = Udate.getDateNow();
+        this.trDate = Udate.getDateNow();
     }
 
     public Transaction(String title, String sum, Date date) {
         this.comment = title;
         this.sum = Integer.valueOf(sum);
-        this.tr_date = date;
+        this.trDate = date;
     }
 
     public boolean isValid() {
@@ -58,13 +57,13 @@ public class Transaction extends Model {
             from.where("title LIKE ?", "%" + filter + "%");
         return from.execute();
     }
-
-    public static void delete(int id) {
-        List<Model> delete = new Delete()
-                .from(Transaction.class)
-                .where("id = ?", id)
-                .execute();
-    }
+//
+//    public static void delete(int id) {
+//        new Delete()
+//                .from(Transaction.class)
+//                .where("id = ?", id)
+//                .execute();
+//    }
 
     public void markSynced() {
         id = ID_SYNCED;
@@ -89,6 +88,13 @@ public class Transaction extends Model {
         return new Select()
                 .from(Transaction.class)
                 .where("uuid = ?", ID_UNSYNCED)
+                .execute();
+    }
+
+    public static List<Transaction> getItem(int position) {
+        return new Select()
+                .from(Transaction.class)
+                .where("id = ?", position)
                 .execute();
     }
 }
