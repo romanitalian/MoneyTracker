@@ -2,6 +2,8 @@ package net.romanitalian.moneytrackerapp.activities;
 
 import android.accounts.AccountAuthenticatorActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,6 +17,7 @@ import org.androidannotations.annotations.Background;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.TextChange;
 import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.rest.RestService;
@@ -31,9 +34,17 @@ public class LoginActivity extends AccountAuthenticatorActivity {
     @Bean
     SessionManager sessionManager;
 
+    @ViewById
+    Button ok;
+
     @Click
     void ok() {
         login();
+    }
+
+    @TextChange({R.id.login, R.id.password})
+    void loginTextChanged(CharSequence text) {
+        ok.setEnabled(!TextUtils.isEmpty(text));
     }
 
     @Background

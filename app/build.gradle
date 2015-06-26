@@ -34,7 +34,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    defaultConfig {
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
     packagingOptions {
+        exclude 'LICENSE.txt' // for testing
         exclude 'META-INF/license.txt'
         exclude 'META-INF/notice.txt'
     }
@@ -61,6 +65,10 @@ dependencies {
     compile 'com.google.android.gms:play-services:7.3.0'
     compile 'com.github.blackfizz:eazegraph:1.2.2@aar'
     compile 'com.nineoldandroids:library:2.4.0'
+
+    androidTestCompile 'com.android.support.test:runner:0.3'
+    androidTestCompile 'com.android.support.test:rules:0.3'
+    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2'
 }
 apt {
     arguments {

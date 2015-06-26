@@ -79,6 +79,7 @@
         <Button
             android:id="@+id/add_transaction"
             android:text="@string/add"
+            android:enabled="false"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 

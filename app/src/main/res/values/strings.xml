@@ -16,7 +16,7 @@
     <string name="add_transaction">Добавить трату</string>
     <string name="hint_date">Сегодня</string>
     <string name="title_date">Дата</string>
-    <string name="category_hint">---</string>
+    <string name="category_hint">Выберите категорию</string>
     <string name="category_text">Категория</string>
     <string name="category_text_hint">Еда</string>
     <string name="about_hint">Война и мир</string>
@@ -28,8 +28,8 @@
     <string name="title_activity_login">Войти</string>
 
     <!-- Strings related to login -->
-    <string name="prompt_email">Login</string>
-    <string name="prompt_password">Password</string>
+    <string name="enter_login">Логин</string>
+    <string name="enter_password">Пароль</string>
     <string name="action_sign_in">Войти / зарегистрироваться</string>
     <string name="action_sign_in_short">Войти</string>
 
