@@ -14,6 +14,9 @@ import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.OptionsItem;
 import org.androidannotations.annotations.ViewById;
 
+/**
+ * Now - this activity replaced to dialog_window
+ */
 @EActivity(R.layout.activity_add_category)
 public class AddCategoryActivity extends ActionBarActivity {
     @ViewById
