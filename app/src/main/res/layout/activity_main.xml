@@ -24,7 +24,7 @@
 
         <ListView
             android:id="@+id/drawer_list"
-            android:layout_width="@dimen/drawer_list_width"
+            android:layout_width="@dimen/width_drawer_list"
             android:layout_height="match_parent"
             android:layout_gravity="start"
             android:background="@color/background"

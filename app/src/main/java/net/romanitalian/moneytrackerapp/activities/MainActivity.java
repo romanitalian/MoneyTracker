@@ -22,6 +22,7 @@ import net.romanitalian.moneytrackerapp.fragments.StatisticsFragment_;
 import net.romanitalian.moneytrackerapp.fragments.TransactionsFragment_;
 import net.romanitalian.moneytrackerapp.rest.RestClient;
 
+import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Background;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EActivity;
@@ -107,6 +108,11 @@ public class MainActivity extends ActionBarActivity {
         bundle.putString("dateFormat", dateFormat);
         fragment.setArguments(bundle);
         getFragmentManager().beginTransaction().replace(R.id.drawer_layout_frame, fragment).commit();
+    }
+
+    @Override
+    public void setTitle(CharSequence title) {
+        super.setTitle(title);
     }
 
     public void setFragment(int position) {

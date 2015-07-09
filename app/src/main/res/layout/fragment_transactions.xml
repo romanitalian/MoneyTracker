@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_margin="@dimen/floating_action_margin"
+        android:layout_margin="@dimen/margin_floating_action"
         android:src="@drawable/ic_add_white_24dp"
         fab:fab_colorNormal="@color/green_dark"
         fab:fab_colorPressed="@color/green"

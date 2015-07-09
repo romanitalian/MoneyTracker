@@ -82,7 +82,6 @@ public class TransactionsFragment extends Fragment {
 
             @Override
             public void onSwiped(RecyclerView.ViewHolder viewHolder, int i) {
-//                @todo remove from db
                 transactionAdapter.removeItem(viewHolder.getAdapterPosition());
             }
         };

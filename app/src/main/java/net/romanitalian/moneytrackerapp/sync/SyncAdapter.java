@@ -10,6 +10,7 @@ import android.os.Bundle;
 import net.romanitalian.moneytrackerapp.models.Transaction;
 import net.romanitalian.moneytrackerapp.rest.RestClient;
 import net.romanitalian.moneytrackerapp.rest.RestClient_;
+import net.romanitalian.moneytrackerapp.utils.Udate;
 
 public class SyncAdapter extends AbstractThreadedSyncAdapter {
     public SyncAdapter(Context context) {
@@ -21,7 +22,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
         try {
             final RestClient api = new RestClient_(getContext());
             for (Transaction transaction : Transaction.getUnsynced()) {
-                api.addTransaction(transaction.sum, transaction.comment, 1, transaction.trDate.toString());
+                api.addTransaction(transaction.sum, transaction.comment, 1, Udate.getDateNowToString());
                 transaction.markSynced();
             }
             for (Transaction transaction : api.getTransactions().data) {

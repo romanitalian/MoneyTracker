@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_alignParentLeft="true"
+              android:layout_alignParentStart="true"
+              android:background="@color/background"
+              android:orientation="vertical"
+              android:paddingBottom="@dimen/padding_large"
+              android:paddingLeft="@dimen/padding_medium"
+              android:paddingRight="@dimen/padding_medium"
+              android:paddingTop="@dimen/padding_medium">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/green"
+        android:textSize="@dimen/text_size_dialog_window"/>
+
+    <EditText
+        android:id="@+id/edit_text"
+        style="@style/Widget.AppCompat.EditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/add_category_hint"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/cancel_button"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:background="@color/background"
+            android:text="@string/cancel"
+            android:textColor="@color/text_color"/>
+
+        <Button
+            android:id="@+id/ok_button"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="right"
+            android:background="@color/background"
+            android:text="@string/ok"
+            android:textColor="@color/text_color"/>
+    </RelativeLayout>
+
+</LinearLayout>

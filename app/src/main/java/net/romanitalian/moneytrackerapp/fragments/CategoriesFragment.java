@@ -1,5 +1,6 @@
 package net.romanitalian.moneytrackerapp.fragments;
 
+import android.app.Dialog;
 import android.app.Fragment;
 import android.app.LoaderManager;
 import android.app.SearchManager;
@@ -7,17 +8,24 @@ import android.content.AsyncTaskLoader;
 import android.content.Context;
 import android.content.Loader;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
+import android.text.Editable;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.SearchView;
+import android.widget.TextView;
 
 import com.melnykov.fab.FloatingActionButton;
 
 import net.romanitalian.moneytrackerapp.R;
-import net.romanitalian.moneytrackerapp.activities.AddCategoryActivity_;
 import net.romanitalian.moneytrackerapp.adapters.CategoryAdapter;
 import net.romanitalian.moneytrackerapp.models.Category;
 
@@ -40,27 +48,51 @@ public class CategoriesFragment extends Fragment {
     List<Category> data = new ArrayList<>();
 
     @ViewById
-    RecyclerView category_list;
+    RecyclerView categoryList;
 
     @ViewById
-    FloatingActionButton fab2;
+    FloatingActionButton fab;
 
     @OptionsMenuItem
     MenuItem menuSearch;
+
+    @ViewById(R.id.swipeRefreshLayout)
+    SwipeRefreshLayout swipeRefreshLayout;
 
     @AfterViews
     void ready() {
         List<Category> categories = Category.getAll("");
         categoryAdapter = new CategoryAdapter(categories);
-        category_list.setAdapter(categoryAdapter);
+        categoryList.setAdapter(categoryAdapter);
 
-        category_list.setHasFixedSize(true);
+        categoryList.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        category_list.setLayoutManager(linearLayoutManager);
+        categoryList.setLayoutManager(linearLayoutManager);
 
-        category_list.setAdapter(categoryAdapter);
-        fab2.attachToRecyclerView(category_list);
+        categoryList.setAdapter(categoryAdapter);
+        fab.attachToRecyclerView(categoryList);
+
+        swipeRefreshLayout.setColorSchemeColors(R.color.green, R.color.orange, R.color.blue);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                loadCategories("");
+            }
+        });
+        ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+            @Override
+            public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder viewHolder1) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(RecyclerView.ViewHolder viewHolder, int i) {
+                categoryAdapter.removeItem(viewHolder.getAdapterPosition());
+            }
+        };
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
+        itemTouchHelper.attachToRecyclerView(categoryList);
     }
 
     @Override
@@ -70,8 +102,39 @@ public class CategoriesFragment extends Fragment {
     }
 
     @Click
-    void fab2Clicked() {
-        AddCategoryActivity_.intent(getActivity()).start();
+    void fabClicked() {
+//        AddCategoryActivity_.intent(getActivity()).start();
+        alertDialog();
+    }
+
+    private void alertDialog() {
+        final Dialog dialog = new Dialog(getActivity());
+        dialog.setContentView(R.layout.dialog_window);
+        final TextView textView = (TextView) dialog.findViewById(R.id.title);
+        final EditText editText = (EditText) dialog.findViewById(R.id.edit_text);
+        Button okButton = (Button) dialog.findViewById(R.id.ok_button);
+        Button cancelButton = (Button) dialog.findViewById(R.id.cancel_button);
+
+        textView.setText(getString(R.string.categories_text));
+        okButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Editable text = editText.getText();
+                if (!TextUtils.isEmpty(text)) {
+                    new Category(text.toString()).save();
+                    dialog.dismiss();
+                    loadCategories("");
+                }
+            }
+        });
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+        dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+        dialog.show();
     }
 
     @Background(delay = 300, id = FILTER_TIMER)
@@ -92,15 +155,14 @@ public class CategoriesFragment extends Fragment {
                 loader.forceLoad();
                 return loader;
             }
-
             @Override
             public void onLoadFinished(Loader<List<Category>> loader, List<Category> categories) {
-                category_list.setAdapter(new CategoryAdapter(categories));
+                swipeRefreshLayout.setRefreshing(false);
+                categoryAdapter = new CategoryAdapter(categories);
+                categoryList.setAdapter(categoryAdapter);
             }
-
             @Override
             public void onLoaderReset(Loader<List<Category>> loader) {
-
             }
         });
     }

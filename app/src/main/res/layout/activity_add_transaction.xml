@@ -9,9 +9,9 @@
         android:layout_height="wrap_content"
         android:background="@color/background"
         android:columnCount="2"
-        android:paddingBottom="@dimen/small_padding"
-        android:paddingLeft="@dimen/medium_padding"
-        android:paddingTop="@dimen/small_padding"
+        android:paddingBottom="@dimen/padding_small"
+        android:paddingLeft="@dimen/padding_medium"
+        android:paddingTop="@dimen/padding_small"
         android:rowCount="4">
 
 
@@ -21,7 +21,7 @@
             android:layout_gravity="fill"
             android:gravity="left|center"
             android:text="@string/sum_text"
-            android:textSize="@dimen/big_text_size" />
+            android:textSize="@dimen/text_size_big"/>
 
 
         <EditText
@@ -36,7 +36,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/about_text"
-            android:textSize="@dimen/big_text_size" />
+            android:textSize="@dimen/text_size_big"/>
 
         <EditText
             android:id="@+id/title"
@@ -52,7 +52,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/category_text"
-            android:textSize="@dimen/big_text_size" />
+            android:textSize="@dimen/text_size_big"/>
 
         <EditText
             android:layout_width="wrap_content"
@@ -60,21 +60,21 @@
             android:gravity="fill"
             android:hint="@string/category_hint"
             android:textColorHint="@color/green"
-            android:textSize="@dimen/medium_text_size" />
+            android:textSize="@dimen/text_size_medium"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/title_date"
-            android:textSize="@dimen/big_text_size" />
+            android:textSize="@dimen/text_size_big"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="@string/hint_date"
             android:textColorHint="@color/green"
-            android:textSize="@dimen/medium_text_size" />
+            android:textSize="@dimen/text_size_medium"/>
 
         <Button
             android:id="@+id/add_transaction"

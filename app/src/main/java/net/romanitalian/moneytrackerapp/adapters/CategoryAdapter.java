@@ -43,4 +43,16 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.CardVi
             title = (TextView) itemView.findViewById(R.id.category_title);
         }
     }
+
+    private void removeItem_(int position) {
+        if (categories.get(position) != null) {
+            categories.get(position).delete();
+            categories.remove(position);
+        }
+    }
+
+    public void removeItem(int position) {
+        removeItem_(position);
+        notifyItemRemoved(position);
+    }
 }

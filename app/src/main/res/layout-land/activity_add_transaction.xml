@@ -10,9 +10,9 @@
         android:layout_height="wrap_content"
         android:background="@color/background"
         android:columnCount="4"
-        android:paddingBottom="@dimen/medium_padding_plus"
-        android:paddingLeft="@dimen/medium_padding"
-        android:paddingTop="@dimen/medium_padding_plus"
+        android:paddingBottom="@dimen/padding_plus_medium"
+        android:paddingLeft="@dimen/padding_medium"
+        android:paddingTop="@dimen/padding_plus_medium"
         android:rowCount="4">
 
 
@@ -20,16 +20,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
-            android:layout_marginBottom="@dimen/small_padding"
+            android:layout_marginBottom="@dimen/padding_small"
             android:gravity="left|center"
             android:text="@string/sum_text"
-            android:textSize="@dimen/big_text_size"/>
+            android:textSize="@dimen/text_size_big"/>
 
         <EditText
             android:id="@+id/sum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/small_padding"
+            android:layout_marginBottom="@dimen/padding_small"
             android:gravity="fill"
             android:hint="@string/sum_hint"/>
 
@@ -39,10 +39,10 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/about_text"
-            android:textSize="@dimen/big_text_size"
-            android:layout_marginBottom="@dimen/small_padding"
-            android:layout_marginRight="@dimen/small_padding"
-            android:layout_marginLeft="@dimen/large_padding"/>
+            android:textSize="@dimen/text_size_big"
+            android:layout_marginBottom="@dimen/padding_small"
+            android:layout_marginRight="@dimen/padding_small"
+            android:layout_marginLeft="@dimen/padding_large"/>
 
         <EditText
             android:id="@+id/title"
@@ -50,25 +50,25 @@
             android:layout_height="wrap_content"
             android:gravity="fill"
             android:hint="@string/about_hint"
-            android:layout_marginBottom="@dimen/small_padding"/>
+            android:layout_marginBottom="@dimen/padding_small"/>
 
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/medium_padding"
+            android:layout_marginBottom="@dimen/padding_medium"
             android:gravity="center"
             android:text="@string/category_text"
-            android:textSize="@dimen/big_text_size"/>
+            android:textSize="@dimen/text_size_big"/>
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/medium_padding"
+            android:layout_marginBottom="@dimen/padding_medium"
             android:gravity="fill"
             android:hint="@string/category_hint"
             android:textColorHint="@color/green"
-            android:textSize="@dimen/medium_text_size"/>
+            android:textSize="@dimen/text_size_medium"/>
 
 
         <TextView
@@ -76,18 +76,18 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/title_date"
-            android:textSize="@dimen/big_text_size"
-            android:layout_marginBottom="@dimen/small_padding"
-            android:layout_marginRight="@dimen/small_padding"
-            android:layout_marginLeft="@dimen/large_padding"/>
+            android:textSize="@dimen/text_size_big"
+            android:layout_marginBottom="@dimen/padding_small"
+            android:layout_marginRight="@dimen/padding_small"
+            android:layout_marginLeft="@dimen/padding_large"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/medium_padding"
+            android:layout_marginBottom="@dimen/padding_medium"
             android:hint="@string/hint_date"
             android:textColorHint="@color/green"
-            android:textSize="@dimen/medium_text_size"/>
+            android:textSize="@dimen/text_size_medium"/>
 
         <Button
             android:id="@+id/add_transaction"

@@ -33,6 +33,7 @@
 
         <!--<item name="selectableItemBackground">@drawable/my_ripple</item>-->
         <!--<item name="android:selectableItemBackground">@drawable/my_ripple</item>-->
+        <item name="windowActionModeOverlay">true</item>
 
     </style>
 
@@ -120,8 +121,8 @@
         <item name="android:textSize">@dimen/text_size_main</item>
         <item name="android:textColor">@color/text_color</item>
         <item name="android:layout_alignParentRight">true</item>
-        <item name="android:layout_marginRight">@dimen/text_main_margin_right</item>
-        <item name="android:layout_marginTop">@dimen/text_main_margin_top</item>
+        <item name="android:layout_marginRight">@dimen/margin_right_text_main</item>
+        <item name="android:layout_marginTop">@dimen/margin_top_text_main</item>
         <item name="android:textStyle">bold</item>
     </style>
 
