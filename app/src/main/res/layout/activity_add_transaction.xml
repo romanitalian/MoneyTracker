@@ -65,8 +65,9 @@
             android:id="@+id/spinner_category_list"
             android:layout_width="@dimen/width_spinner_category_list"
             android:layout_height="match_parent"
-            android:background="@color/spinner"
-            android:spinnerMode="dropdown"/>
+            android:padding="@dimen/padding_small"
+            android:background="@color/background_spinner"
+            android:spinnerMode="dialog"/>
 
         <TextView
             android:layout_width="wrap_content"

@@ -8,7 +8,7 @@
     <color name="primary_dark">#303f9f</color>
     <color name="ripple">#DC3E52</color>
     <color name="accent">#DC3E56</color>
-    <color name="spinner">#d0ffd1</color>
+    <color name="background_spinner">#bee7e7e7</color>
     <color name="primary_foreground">#88bebebe</color>
 
     <!--Swipe Refresh Colors-->
