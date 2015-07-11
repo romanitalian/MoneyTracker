@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/Container.DarkBackground">
+<LinearLayout
+    style="@style/Container.DarkBackground"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <include layout="@layout/toolbar" />
+    <include layout="@layout/toolbar"/>
 
     <GridLayout
         android:layout_width="match_parent"
@@ -29,7 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="fill"
-            android:hint="@string/sum_hint" />
+            android:hint="@string/sum_hint"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -65,8 +66,8 @@
             android:id="@+id/spinner_category_list"
             android:layout_width="@dimen/width_spinner_category_list"
             android:layout_height="match_parent"
-            android:padding="@dimen/padding_small"
             android:background="@color/background_spinner"
+            android:padding="@dimen/padding_small"
             android:spinnerMode="dialog"/>
 
         <TextView
@@ -76,19 +77,19 @@
             android:text="@string/title_date"
             android:textSize="@dimen/text_size_big"/>
 
-        <TextView
+        <Button
+            android:id="@+id/date_time_transaction"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="@string/hint_date"
-            android:textColorHint="@color/green"
-            android:textSize="@dimen/text_size_medium"/>
+            android:text="@string/hint_date"
+            android:textColor="@color/green"/>
 
         <Button
             android:id="@+id/add_transaction"
-            android:text="@string/add"
-            android:enabled="false"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:text="@string/add"/>
 
     </GridLayout>
 

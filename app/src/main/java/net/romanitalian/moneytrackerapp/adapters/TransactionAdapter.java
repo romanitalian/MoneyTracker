@@ -11,6 +11,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 import net.romanitalian.moneytrackerapp.R;
+import net.romanitalian.moneytrackerapp.activities.AddCategoryActivity_;
 import net.romanitalian.moneytrackerapp.models.Category;
 import net.romanitalian.moneytrackerapp.models.Transaction;
 import net.romanitalian.moneytrackerapp.utils.Udate;
@@ -44,7 +45,12 @@ public class TransactionAdapter extends SelectableAdapter<TransactionAdapter.Car
     @Override
     public void onBindViewHolder(CardViewHolder holder, int position) {
         Transaction transaction = transactions.get(position);
-        Category category = Category.getAll("").get(transaction.category_id);
+        Category category = null;
+        if (transaction.category_id != -1) {
+            category = Category.getAll("").get(transaction.category_id);
+        } else {
+            AddCategoryActivity_.intent(context).start();
+        }
 
         holder.title.setText(transaction.comment);
         holder.sum.setText(String.valueOf(transaction.sum));

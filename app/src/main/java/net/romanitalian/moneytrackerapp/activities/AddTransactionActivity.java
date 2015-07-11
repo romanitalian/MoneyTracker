@@ -1,10 +1,15 @@
 package net.romanitalian.moneytrackerapp.activities;
 
+import android.app.DatePickerDialog;
+import android.app.Dialog;
+import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -13,7 +18,6 @@ import com.activeandroid.query.Select;
 import net.romanitalian.moneytrackerapp.R;
 import net.romanitalian.moneytrackerapp.models.Category;
 import net.romanitalian.moneytrackerapp.models.Transaction;
-import net.romanitalian.moneytrackerapp.utils.Udate;
 import net.romanitalian.moneytrackerapp.utils.Uerror;
 
 import org.androidannotations.annotations.AfterViews;
@@ -23,6 +27,8 @@ import org.androidannotations.annotations.OptionsItem;
 import org.androidannotations.annotations.TextChange;
 import org.androidannotations.annotations.ViewById;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 @EActivity(R.layout.activity_add_transaction)
@@ -40,7 +46,12 @@ public class AddTransactionActivity extends ActionBarActivity {
     Button add_transaction;
 
     @ViewById
+    Button DateTimeTransaction;
+
+    @ViewById
     Spinner spinnerCategoryList;
+
+    Date date;
 
     @AfterViews
     void ready() {
@@ -69,19 +80,27 @@ public class AddTransactionActivity extends ActionBarActivity {
 
     @Click
     void AddTransaction() {
+        date = DatePickerFragment.date;
         if (isValidForm()) {
-            Integer selectedItemPosition = this.spinnerCategoryList.getSelectedItemPosition();
+            DateTimeTransaction.getText();
             Transaction transaction = new Transaction(
                     title.getText().toString(),
                     sum.getText().toString(),
-                    Udate.getDateNow(),
-                    selectedItemPosition
+                    date,
+//                    DateTimeTransaction.toString(),
+                    spinnerCategoryList.getSelectedItemPosition()
             );
             transaction.save();
             finish();
         } else {
             Uerror.showAlert(this);
         }
+    }
+
+    @Click
+    void DateTimeTransaction() {
+        DialogFragment newFragment = new DatePickerFragment();
+        newFragment.show(getSupportFragmentManager(), "datePicker");
     }
 
     @TextChange
@@ -102,6 +121,33 @@ public class AddTransactionActivity extends ActionBarActivity {
     }
 
     boolean isValidForm() {
-        return title.getText().length() != 0 && sum.getText().length() != 0;
+        return title.getText().length() != 0 && sum.getText().length() != 0 && date != null;
+    }
+
+    public static class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
+        public static Date date;
+
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            // Use the current date as the default date in the picker
+            final Calendar c = Calendar.getInstance();
+            int year = c.get(Calendar.YEAR);
+            int month = c.get(Calendar.MONTH);
+            int day = c.get(Calendar.DAY_OF_MONTH);
+
+            // Create a new instance of DatePickerDialog and return it
+            return new DatePickerDialog(getActivity(), this, year, month, day);
+        }
+
+        public void onDateSet(DatePicker view, int year, int month, int day) {
+            // Do something with the date chosen by the user
+            Calendar cal = Calendar.getInstance();
+            cal.set(year, month, day);
+            date = cal.getTime();
+        }
+
+        public static Date getDate() {
+            return date;
+        }
     }
 }
