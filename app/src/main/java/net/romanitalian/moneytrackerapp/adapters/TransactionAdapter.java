@@ -11,6 +11,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 import net.romanitalian.moneytrackerapp.R;
+import net.romanitalian.moneytrackerapp.models.Category;
 import net.romanitalian.moneytrackerapp.models.Transaction;
 import net.romanitalian.moneytrackerapp.utils.Udate;
 
@@ -43,8 +44,11 @@ public class TransactionAdapter extends SelectableAdapter<TransactionAdapter.Car
     @Override
     public void onBindViewHolder(CardViewHolder holder, int position) {
         Transaction transaction = transactions.get(position);
+        Category category = Category.getAll("").get(transaction.category_id);
+
         holder.title.setText(transaction.comment);
         holder.sum.setText(String.valueOf(transaction.sum));
+        holder.categoty.setText(String.valueOf(category != null ? category.toString() : ""));
         holder.selectedOverlay.setVisibility(isSelected(position) ? View.VISIBLE : View.INVISIBLE);
 
         setAnimation(holder.cardView, position);
@@ -122,6 +126,7 @@ public class TransactionAdapter extends SelectableAdapter<TransactionAdapter.Car
         protected TextView title;
         protected TextView sum;
         protected TextView date;
+        protected TextView categoty;
         protected View selectedOverlay;
         private ClickListener clickListener;
         protected CardView cardView;
@@ -131,6 +136,7 @@ public class TransactionAdapter extends SelectableAdapter<TransactionAdapter.Car
             title = (TextView) itemView.findViewById(R.id.transaction_title);
             sum = (TextView) itemView.findViewById(R.id.transaction_sum);
             date = (TextView) itemView.findViewById(R.id.transaction_date);
+            categoty = (TextView) itemView.findViewById(R.id.transaction_category_title);
             selectedOverlay = itemView.findViewById(R.id.selected_overlay);
             cardView = (CardView) itemView.findViewById(R.id.cardview_id);
 

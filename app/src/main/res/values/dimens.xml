@@ -13,7 +13,7 @@
     <dimen name="margin_floating_action">16dp</dimen>
     <dimen name="card_view_margin_bottom">7dp</dimen>
     <dimen name="card_view_corner_radius">3dp</dimen>
-    <dimen name="card_view_layout_height">60dp</dimen>
+    <dimen name="card_view_layout_height">70dp</dimen>
     <dimen name="card_view_layout_margin">5dp</dimen>
 
     <dimen name="padding_large">70dp</dimen>
@@ -37,5 +37,7 @@
     <dimen name="text_size_pie_chart_legend">18sp</dimen>
     <dimen name="text_size_pie_chart_value">36sp</dimen>
     <dimen name="text_size_dialog_window">20sp</dimen>
+    <dimen name="margin_top_transaction_card_category_title">30dp</dimen>
+    <dimen name="width_spinner_category_list">150dp</dimen>
 
 </resources>

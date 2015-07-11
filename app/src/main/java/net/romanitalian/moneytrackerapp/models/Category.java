@@ -32,4 +32,14 @@ public class Category extends Model {
             from.where("title LIKE ?", "%" + filter + "%");
         return from.execute();
     }
+
+    public static List<Model> getCategory(int id) {
+        final From from = new Select().from(Category.class).where("id = ?", id);
+        return from.execute();
+    }
+
+    @Override
+    public String toString() {
+        return title;
+    }
 }

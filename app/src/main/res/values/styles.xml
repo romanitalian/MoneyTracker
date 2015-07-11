@@ -137,5 +137,7 @@
         <item name="android:layout_height">60dp</item>
         <item name="android:layout_marginTop">45dp</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/background</item>
+        <item name="android:background">@color/green_dark</item>
     </style>
 </resources>

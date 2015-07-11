@@ -54,13 +54,19 @@
             android:text="@string/category_text"
             android:textSize="@dimen/text_size_big"/>
 
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="fill"
-            android:hint="@string/category_hint"
-            android:textColorHint="@color/green"
-            android:textSize="@dimen/text_size_medium"/>
+        <!--<EditText-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:gravity="fill"-->
+        <!--android:hint="@string/category_hint"-->
+        <!--android:textColorHint="@color/green"-->
+        <!--android:textSize="@dimen/text_size_medium"/>-->
+        <Spinner
+            android:id="@+id/spinner_category_list"
+            android:layout_width="@dimen/width_spinner_category_list"
+            android:layout_height="match_parent"
+            android:background="@color/spinner"
+            android:spinnerMode="dropdown"/>
 
         <TextView
             android:layout_width="wrap_content"

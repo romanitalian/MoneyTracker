@@ -30,6 +30,9 @@ public class Transaction extends Model {
     @Column(name = "date")
     public Date trDate;
 
+    @Column(name = "category_id")
+    public Integer category_id;
+
     public Transaction() {
     }
 
@@ -39,10 +42,17 @@ public class Transaction extends Model {
         this.trDate = Udate.getDateNow();
     }
 
-    public Transaction(String title, String sum, Date date) {
-        this.comment = title;
+    public Transaction(String comment, String sum, Date date) {
+        this.comment = comment;
         this.sum = Integer.valueOf(sum);
         this.trDate = date;
+    }
+
+    public Transaction(String comment, String sum, Date date, Integer category_id) {
+        this.comment = comment;
+        this.sum = Integer.valueOf(sum);
+        this.trDate = date;
+        this.category_id = category_id;
     }
 
     public boolean isValid() {
