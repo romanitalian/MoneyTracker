@@ -1,8 +1,8 @@
 <resources>
     <!-- Default screen margins, per the Android Design guidelines. -->
-    <dimen name="activity_horizontal_margin">16dp</dimen>
-    <dimen name="activity_vertical_margin">16dp</dimen>
-    <dimen name="devider_height">0.4dp</dimen>
+    <dimen name="horizontal_margin_activity">16dp</dimen>
+    <dimen name="vertical_margin_activity">16dp</dimen>
+    <dimen name="height_devider">0.4dp</dimen>
     <dimen name="text_size_main">16sp</dimen>
     <dimen name="text_size_date">12sp</dimen>
     <dimen name="margin_right_text_main">10dp</dimen>
@@ -29,7 +29,7 @@
     <dimen name="margin_medium_card">7dp</dimen>
     <dimen name="margin_large">10dp</dimen>
     <dimen name="padding_top_form_login">20dp</dimen>
-    <dimen name="login_padding_body">20dp</dimen>
+    <dimen name="padding_login_body">20dp</dimen>
     <dimen name="padding_login_edit_text">10dp</dimen>
     <dimen name="margin_top_edit_text">10dp</dimen>
     <dimen name="margin_logo">30dp</dimen>
