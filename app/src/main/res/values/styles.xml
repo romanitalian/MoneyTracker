@@ -110,9 +110,15 @@
     </style>
 
     <style name="cardView">
-        <item name="android:layout_height">@dimen/card_view_layout_height</item>
-        <item name="android:layout_margin">@dimen/card_view_layout_margin</item>
-        <item name="android:layout_marginBottom">@dimen/card_view_margin_bottom</item>
+        <item name="android:layout_height">@dimen/height_card_view</item>
+        <item name="android:layout_margin">@dimen/margin_card_view</item>
+        <item name="android:layout_marginBottom">@dimen/margin_bottom_card_view</item>
+    </style>
+
+    <style name="cardViewCategories">
+        <item name="android:layout_height">@dimen/height_card_view_categories</item>
+        <item name="android:layout_margin">@dimen/margin_card_view</item>
+        <item name="android:layout_marginBottom">@dimen/margin_bottom_card_view</item>
     </style>
 
     <style name="TextMain">

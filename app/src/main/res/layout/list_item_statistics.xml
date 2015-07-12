@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         style="@style/cardView"
         card_view:cardBackgroundColor="@color/background"
-        card_view:cardCornerRadius="@dimen/card_view_corner_radius">
+        card_view:cardCornerRadius="@dimen/corner_radius_card_view">
 
         <RelativeLayout
             android:layout_width="match_parent"

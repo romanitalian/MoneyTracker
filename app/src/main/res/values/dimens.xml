@@ -11,10 +11,11 @@
     <dimen name="drawer_layout_text_size">10sp</dimen>
     <dimen name="drawer_elevation">4dp</dimen>
     <dimen name="margin_floating_action">16dp</dimen>
-    <dimen name="card_view_margin_bottom">7dp</dimen>
-    <dimen name="card_view_corner_radius">3dp</dimen>
-    <dimen name="card_view_layout_height">70dp</dimen>
-    <dimen name="card_view_layout_margin">5dp</dimen>
+    <dimen name="margin_bottom_card_view">7dp</dimen>
+    <dimen name="corner_radius_card_view">3dp</dimen>
+    <dimen name="height_card_view">70dp</dimen>
+    <dimen name="margin_card_view">5dp</dimen>
+    <dimen name="height_card_view_categories">35dp</dimen>
 
     <dimen name="padding_large">70dp</dimen>
     <dimen name="padding_medium">20dp</dimen>

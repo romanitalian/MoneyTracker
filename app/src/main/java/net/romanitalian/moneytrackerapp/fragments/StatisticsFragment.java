@@ -6,6 +6,7 @@ import android.widget.LinearLayout;
 
 import net.romanitalian.moneytrackerapp.R;
 import net.romanitalian.moneytrackerapp.models.Category;
+import net.romanitalian.moneytrackerapp.models.Transaction;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EFragment;
@@ -32,12 +33,22 @@ public class StatisticsFragment extends Fragment {
     @AfterViews
     void ready() {
         List<Category> categories = Category.getAll("");
-        if (categories != null) {
-            // @todo get real data
-            map.put("Food", 15.7f);
-            map.put("Closes", 35.0f);
-            map.put("Electricity", 25.0f);
-            map.put("Rent", 9.1f);
+        List<Transaction> transactions = Transaction.getAll("");
+        Map<String, Float> byCategory = new HashMap<>();
+        int sum;
+        for (Transaction tran : transactions) {
+            String categoryTitle = categories.get(tran.category_id).title;
+            if (byCategory.containsKey(categoryTitle)) {
+                sum = byCategory.remove(categoryTitle).intValue();
+                byCategory.put(categoryTitle, (float) tran.sum + sum);
+            } else {
+                byCategory.put(categoryTitle, (float) tran.sum);
+            }
+        }
+        if (byCategory.size() != 0) {
+            for (Map.Entry<String, Float> cat : byCategory.entrySet()) {
+                map.put(cat.getKey(), cat.getValue());
+            }
             Random r;
             for (Map.Entry<String, Float> entry : map.entrySet()) {
                 String key = entry.getKey();
