@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.TextUtils;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -24,7 +23,6 @@ import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.OptionsItem;
-import org.androidannotations.annotations.TextChange;
 import org.androidannotations.annotations.ViewById;
 
 import java.util.Calendar;
@@ -43,7 +41,7 @@ public class AddTransactionActivity extends ActionBarActivity {
     EditText sum;
 
     @ViewById
-    Button add_transaction;
+    Button addTransaction;
 
     @ViewById
     Button DateTimeTransaction;
@@ -80,14 +78,13 @@ public class AddTransactionActivity extends ActionBarActivity {
 
     @Click
     void AddTransaction() {
-        date = DatePickerFragment.date;
+        this.date = DatePickerFragment.date;
         if (isValidForm()) {
             DateTimeTransaction.getText();
             Transaction transaction = new Transaction(
                     title.getText().toString(),
                     sum.getText().toString(),
                     date,
-//                    DateTimeTransaction.toString(),
                     spinnerCategoryList.getSelectedItemPosition()
             );
             transaction.save();
@@ -103,10 +100,10 @@ public class AddTransactionActivity extends ActionBarActivity {
         newFragment.show(getSupportFragmentManager(), "datePicker");
     }
 
-    @TextChange
-    void titleTextChanged(CharSequence text) {
-        add_transaction.setEnabled(!TextUtils.isEmpty(text));
-    }
+//    @TextChange
+//    void titleTextChanged(CharSequence text) {
+//        addTransaction.setEnabled(!TextUtils.isEmpty(text));
+//    }
 
     @OptionsItem
     void homeSelected() {
@@ -121,7 +118,10 @@ public class AddTransactionActivity extends ActionBarActivity {
     }
 
     boolean isValidForm() {
-        return title.getText().length() != 0 && sum.getText().length() != 0 && date != null;
+        return title.getText().length() != 0
+                && sum.getText().length() != 0
+                && date != null
+                && spinnerCategoryList.getSelectedItemPosition() > 0;
     }
 
     public static class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
@@ -144,10 +144,10 @@ public class AddTransactionActivity extends ActionBarActivity {
             Calendar cal = Calendar.getInstance();
             cal.set(year, month, day);
             date = cal.getTime();
-        }
 
-        public static Date getDate() {
-            return date;
+//            Locale locale = new Locale("ru");
+//            DateFormat df = new SimpleDateFormat("yyyy.MM.dd", locale);
+//            DateTimeTransaction.setText(df.format(date.getTime()));
         }
     }
 }

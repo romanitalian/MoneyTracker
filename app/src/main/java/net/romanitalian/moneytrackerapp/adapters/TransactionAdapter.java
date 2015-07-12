@@ -9,9 +9,9 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import net.romanitalian.moneytrackerapp.R;
-import net.romanitalian.moneytrackerapp.activities.AddCategoryActivity_;
 import net.romanitalian.moneytrackerapp.models.Category;
 import net.romanitalian.moneytrackerapp.models.Transaction;
 import net.romanitalian.moneytrackerapp.utils.Udate;
@@ -49,7 +49,7 @@ public class TransactionAdapter extends SelectableAdapter<TransactionAdapter.Car
         if (transaction.category_id != -1) {
             category = Category.getAll("").get(transaction.category_id);
         } else {
-            AddCategoryActivity_.intent(context).start();
+            Toast.makeText(context, R.string.you_need_to_add_category, Toast.LENGTH_LONG).show();
         }
 
         holder.title.setText(transaction.comment);

@@ -40,10 +40,12 @@
     <string name="title_activity_logout">Выйти</string>
     <string name="auth_success">Вы авторизовались успешно</string>
     <string name="add_category">Добавить категорию</string>
+    <string name="you_need_to_add_category">Добавьте категорию</string>
     <string name="search_hint">search</string>
     <string name="menu_search">search</string>
     <string name="login_error">Ошибка входа</string>
     <string name="ok">OK</string>
     <string name="add_category_hint">Одежда</string>
     <string name="cancel">Отмена</string>
+    <string name="not_all_fields_are_filled">Не все поля заполнены.</string>
 </resources>
