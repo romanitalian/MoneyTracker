@@ -14,7 +14,7 @@
     <dimen name="margin_bottom_card_view">7dp</dimen>
     <dimen name="corner_radius_card_view">3dp</dimen>
     <dimen name="height_card_view">70dp</dimen>
-    <dimen name="margin_card_view">5dp</dimen>
+    <dimen name="margin_card_view">0dp</dimen>
     <dimen name="height_card_view_categories">35dp</dimen>
 
     <dimen name="padding_large">70dp</dimen>
@@ -22,6 +22,7 @@
     <dimen name="padding_plus_medium">30dp</dimen>
     <dimen name="padding_small">10dp</dimen>
     <dimen name="text_size_big">18dp</dimen>
+    <dimen name="text_size_large">24sp</dimen>
     <dimen name="text_size_medium">16sp</dimen>
     <dimen name="button_margin">16dp</dimen>
     <dimen name="height_card">60dp</dimen>

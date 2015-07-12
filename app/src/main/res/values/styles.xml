@@ -111,13 +111,14 @@
 
     <style name="cardView">
         <item name="android:layout_height">@dimen/height_card_view</item>
+        <item name="android:layout_width">match_parent</item>
         <item name="android:layout_margin">@dimen/margin_card_view</item>
         <item name="android:layout_marginBottom">@dimen/margin_bottom_card_view</item>
     </style>
 
-    <style name="cardViewCategories">
-        <item name="android:layout_height">@dimen/height_card_view_categories</item>
-        <item name="android:layout_margin">@dimen/margin_card_view</item>
+    <style name="cardViewCategory" parent="cardView">
+        <item name="android:textSize">@dimen/text_size_big</item>
+        <item name="android:layout_centerHorizontal">true</item>
     </style>
 
     <style name="TextMain">

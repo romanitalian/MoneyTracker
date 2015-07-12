@@ -17,6 +17,7 @@ import com.activeandroid.query.Select;
 import net.romanitalian.moneytrackerapp.R;
 import net.romanitalian.moneytrackerapp.models.Category;
 import net.romanitalian.moneytrackerapp.models.Transaction;
+import net.romanitalian.moneytrackerapp.utils.Udate;
 import net.romanitalian.moneytrackerapp.utils.Uerror;
 
 import org.androidannotations.annotations.AfterViews;
@@ -97,6 +98,7 @@ public class AddTransactionActivity extends ActionBarActivity {
     @Click
     void DateTimeTransaction() {
         DialogFragment newFragment = new DatePickerFragment();
+        DatePickerFragment.setButton(DateTimeTransaction);
         newFragment.show(getSupportFragmentManager(), "datePicker");
     }
 
@@ -126,6 +128,11 @@ public class AddTransactionActivity extends ActionBarActivity {
 
     public static class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
         public static Date date;
+        public static Button datePickerButton;
+
+        public static void setButton(Button button) {
+            datePickerButton = button;
+        }
 
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -148,6 +155,12 @@ public class AddTransactionActivity extends ActionBarActivity {
 //            Locale locale = new Locale("ru");
 //            DateFormat df = new SimpleDateFormat("yyyy.MM.dd", locale);
 //            DateTimeTransaction.setText(df.format(date.getTime()));
+        }
+
+        @Override
+        public void onStop() {
+            super.onStop();
+            datePickerButton.setText(Udate.dateToString(date));
         }
     }
 }
