@@ -24,6 +24,7 @@
                     android:id="@+id/transaction_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_transaction_title"
                     android:text="@string/title"/>
 
                 <TextView

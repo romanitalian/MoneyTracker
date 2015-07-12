@@ -8,7 +8,7 @@
     <dimen name="margin_right_text_main">10dp</dimen>
     <dimen name="margin_top_text_main">10dp</dimen>
     <dimen name="width_drawer_list">180dp</dimen>
-    <dimen name="drawer_layout_text_size">10sp</dimen>
+    <dimen name="drawer_layout_text_size">40sp</dimen>
     <dimen name="drawer_elevation">4dp</dimen>
     <dimen name="margin_floating_action">16dp</dimen>
     <dimen name="margin_bottom_card_view">7dp</dimen>
@@ -22,7 +22,7 @@
     <dimen name="padding_plus_medium">30dp</dimen>
     <dimen name="padding_small">10dp</dimen>
     <dimen name="text_size_big">18dp</dimen>
-    <dimen name="text_size_large">24sp</dimen>
+    <dimen name="text_size_large">21sp</dimen>
     <dimen name="text_size_medium">16sp</dimen>
     <dimen name="button_margin">16dp</dimen>
     <dimen name="height_card">60dp</dimen>
@@ -40,6 +40,6 @@
     <dimen name="text_size_pie_chart_value">36sp</dimen>
     <dimen name="text_size_dialog_window">20sp</dimen>
     <dimen name="margin_top_transaction_card_category_title">30dp</dimen>
+    <dimen name="text_size_transaction_title">18sp</dimen>
     <dimen name="width_spinner_category_list">150dp</dimen>
-
 </resources>

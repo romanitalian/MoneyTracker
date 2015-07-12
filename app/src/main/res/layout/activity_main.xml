@@ -23,13 +23,14 @@
             android:background="@color/background"/>
 
         <ListView
+            style="@style/CustomTheme"
             android:id="@+id/drawer_list"
             android:layout_width="@dimen/width_drawer_list"
             android:layout_height="match_parent"
             android:layout_gravity="start"
             android:background="@color/background"
             android:choiceMode="singleChoice"
-            android:divider="@android:color/transparent"
+            android:divider="@color/green"
             android:textSize="@dimen/drawer_layout_text_size">
         </ListView>
 
