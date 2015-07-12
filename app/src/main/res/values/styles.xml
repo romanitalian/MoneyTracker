@@ -118,7 +118,6 @@
     <style name="cardViewCategories">
         <item name="android:layout_height">@dimen/height_card_view_categories</item>
         <item name="android:layout_margin">@dimen/margin_card_view</item>
-        <item name="android:layout_marginBottom">@dimen/margin_bottom_card_view</item>
     </style>
 
     <style name="TextMain">
@@ -145,5 +144,9 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/background</item>
         <item name="android:background">@color/green_dark</item>
+    </style>
+
+    <style name="RegisterButton" parent="LoginButton">
+        <item name="android:layout_marginTop">15dp</item>
     </style>
 </resources>

@@ -41,4 +41,11 @@
         android:layout_width="match_parent"
         android:enabled="false"
         android:text="@string/action_sign_in"/>
+
+    <Button
+        android:id="@+id/register"
+        style="@style/RegisterButton"
+        android:layout_width="match_parent"
+        android:enabled="false"
+        android:text="@string/action_register"/>
 </LinearLayout>

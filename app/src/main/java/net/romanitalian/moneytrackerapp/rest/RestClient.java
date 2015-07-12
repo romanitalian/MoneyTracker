@@ -9,6 +9,9 @@ public interface RestClient {
     @Get("/auth?login={login}&password={password}")
     AuthResult login(CharSequence login, CharSequence password);
 
+    @Get("/auth?login={login}&password={password}&register=1")
+    RegisterResult register(CharSequence login, CharSequence password);
+
     @Post("/categories/add?title={title}")
     Result addCategory(String title);
 

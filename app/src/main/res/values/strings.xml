@@ -30,20 +30,22 @@
     <!-- Strings related to login -->
     <string name="enter_login">Логин</string>
     <string name="enter_password">Пароль</string>
-    <string name="action_sign_in">Войти / зарегистрироваться</string>
+    <string name="action_sign_in">Войти</string>
+    <string name="action_register">Зарегистрироваться</string>
     <string name="action_sign_in_short">Войти</string>
 
-    <string name="error_invalid_email">Login не валидный</string>
-    <string name="error_invalid_password">Пароль слишком слабый</string>
     <string name="error_incorrect_password">Пароль не верный</string>
     <string name="error_field_required">Обязательно для заполнения</string>
     <string name="title_activity_logout">Выйти</string>
-    <string name="auth_success">Вы авторизовались успешно</string>
     <string name="add_category">Добавить категорию</string>
     <string name="you_need_to_add_category">Добавьте категорию</string>
     <string name="search_hint">search</string>
     <string name="menu_search">search</string>
-    <string name="login_error">Ошибка входа</string>
+    <string name="success_auth">Вы авторизовались успешно</string>
+    <string name="error_login">Ошибка входа</string>
+    <string name="error_register">Ошибка регистрации</string>
+    <string name="success_register">Вы зарегистрировались успешно</string>
+    <string name="congratulations_register">Поздравляем. Вы успешно зарегистрировались.</string>
     <string name="ok">OK</string>
     <string name="add_category_hint">Одежда</string>
     <string name="cancel">Отмена</string>
