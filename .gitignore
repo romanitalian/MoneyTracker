@@ -45,3 +45,6 @@ libraries/facebook/build/
 
 # some stupid generated file
 reader/manifest-merger-release-report.txt
+
+app/app.iml
+
