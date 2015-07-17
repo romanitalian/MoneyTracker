@@ -50,4 +50,5 @@
     <string name="add_category_hint">Одежда</string>
     <string name="cancel">Отмена</string>
     <string name="not_all_fields_are_filled">Не все поля заполнены.</string>
+    <string name="default_category_name">test</string>
 </resources>

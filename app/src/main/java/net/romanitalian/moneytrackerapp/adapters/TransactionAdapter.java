@@ -23,12 +23,15 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
 
-
 public class TransactionAdapter extends SelectableAdapter<TransactionAdapter.CardViewHolder> {
     List<Transaction> transactions;
     private CardViewHolder.ClickListener clickListener;
     private Context context;
     private int prevPosition = -1;
+
+    public TransactionAdapter(List<Transaction> transactions) {
+        this.transactions = transactions;
+    }
 
     public TransactionAdapter(List<Transaction> transactions, Context context, CardViewHolder.ClickListener clickListener) {
         this.transactions = transactions;
@@ -47,18 +50,26 @@ public class TransactionAdapter extends SelectableAdapter<TransactionAdapter.Car
         Transaction transaction = transactions.get(position);
         Category category = null;
         if (transaction.category_id != -1) {
-            category = Category.getAll("").get(transaction.category_id);
+            List<Category> categoryListAll = Category.getAll("");
+            if (categoryListAll.size() > transaction.category_id) {
+                category = categoryListAll.get(transaction.category_id);
+            } else {
+                // @todo fix server-side api: return only bounded data - transaction and categories (maybe return in json: transaction with categories)
+                if (categoryListAll.size() == 0) { // if categories does not exist local - on device (in local DB): make new "default category"
+                    category = new Category(context.getString(R.string.default_category_name));
+                    category.save();
+                } else { // else get "default category"
+                    category = categoryListAll.get(0);
+                }
+            }
         } else {
             Toast.makeText(context, R.string.you_need_to_add_category, Toast.LENGTH_LONG).show();
         }
-
         holder.title.setText(transaction.comment);
         holder.sum.setText(String.valueOf(transaction.sum));
         holder.categoty.setText(String.valueOf(category != null ? category.toString() : ""));
         holder.selectedOverlay.setVisibility(isSelected(position) ? View.VISIBLE : View.INVISIBLE);
-
         setAnimation(holder.cardView, position);
-
         DateFormat df = new SimpleDateFormat(Udate.dateFormat, new Locale("ru"));
         String _date = transaction.trDate != null ? df.format(transaction.trDate) : "";
         holder.date.setText(_date);
@@ -70,6 +81,7 @@ public class TransactionAdapter extends SelectableAdapter<TransactionAdapter.Car
             transactions.remove(position);
         }
     }
+
     public void removeItem(int position) {
         removeItem_(position);
         notifyItemRemoved(position);

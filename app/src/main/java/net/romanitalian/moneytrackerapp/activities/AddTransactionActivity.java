@@ -123,7 +123,7 @@ public class AddTransactionActivity extends ActionBarActivity {
         return title.getText().length() != 0
                 && sum.getText().length() != 0
                 && date != null
-                && spinnerCategoryList.getSelectedItemPosition() > 0;
+                && spinnerCategoryList.getSelectedItemPosition() >= 0;
     }
 
     public static class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {

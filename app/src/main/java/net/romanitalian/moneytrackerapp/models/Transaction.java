@@ -25,7 +25,7 @@ public class Transaction extends Model {
     public String comment;
 
     @Column(name = "sum")
-    public int sum;
+    public float sum;
 
     @Column(name = "date")
     public Date trDate;
@@ -50,7 +50,7 @@ public class Transaction extends Model {
 
     public Transaction(String comment, String sum, Date date, Integer category_id) {
         this.comment = comment;
-        this.sum = Integer.valueOf(sum);
+        this.sum = Float.valueOf(sum);
         this.trDate = date;
         this.category_id = category_id;
     }

@@ -75,9 +75,7 @@ public class MainActivity extends ActionBarActivity {
     @Override
     public void onResume() {
         super.onResume();
-        if (!MoneyTrackerApplication.isAuth) {
-            sessionManager.login(this);
-        }
+        sessionManager.login(this);
         setMenu();
     }
 

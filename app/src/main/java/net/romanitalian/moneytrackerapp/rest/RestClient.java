@@ -19,5 +19,5 @@ public interface RestClient {
     TransactionsResult getTransactions();
 
     @Post("transactions/add?sum={sum}&comment={comment}&category_id={category_id}&tr_date={date}")
-    Result addTransaction(int sum, String comment, int category_id, String date);
+    Result addTransaction(float sum, String comment, int category_id, String date);
 }

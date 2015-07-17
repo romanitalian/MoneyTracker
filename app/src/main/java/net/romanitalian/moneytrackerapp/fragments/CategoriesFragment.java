@@ -104,10 +104,10 @@ public class CategoriesFragment extends Fragment {
     @Click
     void fabClicked() {
 //        AddCategoryActivity_.intent(getActivity()).start();
-        alertAddCcategory();
+        alertAddCategory();
     }
 
-    public void alertAddCcategory() {
+    public void alertAddCategory() {
         final Dialog dialog = new Dialog(getActivity());
         dialog.setContentView(R.layout.dialog_window);
         final TextView textView = (TextView) dialog.findViewById(R.id.title);

@@ -73,6 +73,7 @@ public class LoginActivity extends AccountAuthenticatorActivity {
             sessionManager.createAccount(loginName, loginResult.authToken);
             setAccountAuthenticatorResult(new Bundle());
             MoneyTrackerApplication.isAuth = loginResult.authToken != null;
+//            MoneyTrackerApplication.isAuth = sessionManager.getAuthToken() != null;
             Toast.makeText(this, R.string.success_auth, Toast.LENGTH_LONG).show();
             finish();
         } else {

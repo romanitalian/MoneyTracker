@@ -24,6 +24,7 @@ import net.romanitalian.moneytrackerapp.R;
 import net.romanitalian.moneytrackerapp.activities.AddTransactionActivity_;
 import net.romanitalian.moneytrackerapp.adapters.TransactionAdapter;
 import net.romanitalian.moneytrackerapp.models.Transaction;
+import net.romanitalian.moneytrackerapp.sync.SyncAdapter;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Background;
@@ -31,6 +32,7 @@ import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.OptionsMenu;
 import org.androidannotations.annotations.OptionsMenuItem;
+import org.androidannotations.annotations.Receiver;
 import org.androidannotations.annotations.ViewById;
 
 import java.util.ArrayList;
@@ -87,6 +89,11 @@ public class TransactionsFragment extends Fragment {
         };
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
         itemTouchHelper.attachToRecyclerView(transactionList);
+    }
+
+    @Receiver(actions = {SyncAdapter.SYNCED}, registerAt = Receiver.RegisterAt.OnResumeOnPause, local = true)
+    void onSync() {
+        loadTransactions("");
     }
 
     @Override
