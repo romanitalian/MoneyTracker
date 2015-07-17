@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.crashlytics.android.Crashlytics;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
@@ -29,6 +30,8 @@ import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.Receiver;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.rest.RestService;
+
+import io.fabric.sdk.android.Fabric;
 
 
 @EActivity(R.layout.activity_main)
@@ -80,7 +83,7 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void setMenu() {
-//        Fabric.with(this, new Crashlytics());
+        Fabric.with(this, new Crashlytics());
         setSupportActionBar(toolbar);
         new Drawer()
                 .withActivity(this)
