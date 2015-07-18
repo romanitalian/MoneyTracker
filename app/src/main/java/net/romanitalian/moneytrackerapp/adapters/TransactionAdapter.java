@@ -55,12 +55,8 @@ public class TransactionAdapter extends SelectableAdapter<TransactionAdapter.Car
                 category = categoryListAll.get(transaction.category_id);
             } else {
                 // @todo fix server-side api: return only bounded data - transaction and categories (maybe return in json: transaction with categories)
-                if (categoryListAll.size() == 0) { // if categories does not exist local - on device (in local DB): make new "default category"
-                    category = new Category(context.getString(R.string.default_category_name));
-                    category.save();
-                } else { // else get "default category"
-                    category = categoryListAll.get(0);
-                }
+                category = new Category(context.getString(R.string.default_category_name) + categoryListAll.size());
+                category.save();
             }
         } else {
             Toast.makeText(context, R.string.you_need_to_add_category, Toast.LENGTH_LONG).show();
