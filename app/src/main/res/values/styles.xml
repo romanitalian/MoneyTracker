@@ -10,7 +10,7 @@
     <!--<item name="drawerArrowStyle">@style/DrawerArrowStyle</item>-->
     <!--</style>-->
 
-    <style name="AppTheme" parent="AppTheme.Base"/>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar" />
     <!-- Base application theme.
          Defining this lets values-v21/styles.xml reuse it with changes. -->
 
@@ -43,7 +43,7 @@
         <item name="color">@android:color/white</item>
     </style>
 
-    <style name="Container">
+    <style name="Container" parent="AppTheme.Base">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:gravity">center_horizontal</item>
@@ -57,7 +57,7 @@
         <item name="android:orientation">horizontal</item>
     </style>
 
-    <style name="Container.Background">
+    <style name="Container.Background" parent="AppTheme">
         <item name="android:background">@drawable/android_app_back_main</item>
     </style>
 

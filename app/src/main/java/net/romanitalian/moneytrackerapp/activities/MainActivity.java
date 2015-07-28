@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
@@ -35,7 +36,7 @@ import io.fabric.sdk.android.Fabric;
 
 
 @EActivity(R.layout.activity_main)
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends AppCompatActivity {
 
     @SuppressWarnings("FieldCanBeLocal")
     private String dateFormat = "dd-MM-yyyy";
@@ -83,7 +84,7 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void setMenu() {
-        Fabric.with(this, new Crashlytics());
+//        Fabric.with(this, new Crashlytics());
         setSupportActionBar(toolbar);
         new Drawer()
                 .withActivity(this)
