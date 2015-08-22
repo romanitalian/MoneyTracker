@@ -32,6 +32,7 @@ import org.androidannotations.annotations.Receiver;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.rest.RestService;
 
+import co.flightrecorder.android.FlightRecorder;
 import io.fabric.sdk.android.Fabric;
 
 
@@ -59,6 +60,8 @@ public class MainActivity extends AppCompatActivity {
     @AfterViews
     void ready() {
         Fabric.with(this, new Crashlytics());
+        FlightRecorder.getInstance().setAuthentication("53dd85ad-c174-44f4-a787-beed4c26c4a7", "14f00dc2-2aac-4148-8298-3156460f93df");
+        FlightRecorder.getInstance().startFlight();
         setFragment(0);
     }
 
