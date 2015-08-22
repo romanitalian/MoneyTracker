@@ -8,6 +8,7 @@ import android.content.AsyncTaskLoader;
 import android.content.Context;
 import android.content.Loader;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -23,7 +24,7 @@ import android.widget.EditText;
 import android.widget.SearchView;
 import android.widget.TextView;
 
-import com.melnykov.fab.FloatingActionButton;
+//import com.melnykov.fab.FloatingActionButton;
 
 import net.romanitalian.moneytrackerapp.R;
 import net.romanitalian.moneytrackerapp.adapters.CategoryAdapter;
@@ -71,7 +72,7 @@ public class CategoriesFragment extends Fragment {
         categoryList.setLayoutManager(linearLayoutManager);
 
         categoryList.setAdapter(categoryAdapter);
-        fab.attachToRecyclerView(categoryList);
+//        fab.attachToRecyclerView(categoryList);
 
         swipeRefreshLayout.setColorSchemeColors(R.color.green, R.color.orange, R.color.blue);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {

@@ -7,6 +7,7 @@ import android.content.AsyncTaskLoader;
 import android.content.Context;
 import android.content.Loader;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.view.ActionMode;
@@ -16,9 +17,11 @@ import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.SearchView;
+import android.widget.Toast;
 
-import com.melnykov.fab.FloatingActionButton;
+//import com.melnykov.fab.FloatingActionButton;
 
 import net.romanitalian.moneytrackerapp.R;
 import net.romanitalian.moneytrackerapp.activities.AddTransactionActivity_;
@@ -51,8 +54,11 @@ public class TransactionsFragment extends Fragment {
     @ViewById
     RecyclerView transactionList;
 
+//    @ViewById
+//    FloatingActionButton fab;
+
     @ViewById
-    FloatingActionButton fab;
+    FloatingActionButton fab2;
 
     @OptionsMenuItem
     MenuItem menuSearch;
@@ -66,7 +72,13 @@ public class TransactionsFragment extends Fragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         transactionList.setLayoutManager(linearLayoutManager);
-        fab.attachToRecyclerView(transactionList);
+//        fab.attachToRecyclerView(transactionList);
+        fab2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getActivity(), "test: fab pressed", Toast.LENGTH_LONG).show();
+            }
+        });
 
         swipeRefreshLayout.setColorSchemeColors(R.color.green, R.color.orange, R.color.blue);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -76,12 +88,10 @@ public class TransactionsFragment extends Fragment {
             }
         });
         ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
-
             @Override
             public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder viewHolder1) {
                 return false;
             }
-
             @Override
             public void onSwiped(RecyclerView.ViewHolder viewHolder, int i) {
                 transactionAdapter.removeItem(viewHolder.getAdapterPosition());

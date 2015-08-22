@@ -1,5 +1,5 @@
 <LinearLayout
-    style="@style/AppTheme"
+    style="@style/Container"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <include layout="@layout/toolbar"/>

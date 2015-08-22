@@ -58,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
 
     @AfterViews
     void ready() {
+        Fabric.with(this, new Crashlytics());
         setFragment(0);
     }
 
@@ -84,7 +85,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void setMenu() {
-//        Fabric.with(this, new Crashlytics());
         setSupportActionBar(toolbar);
         new Drawer()
                 .withActivity(this)
