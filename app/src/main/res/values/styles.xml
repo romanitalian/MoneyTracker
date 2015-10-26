@@ -105,7 +105,6 @@
     <style name="FragmentRowStyle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
-        <item name="android:divider">@color/link_text_material_dark</item>
         <item name="android:dividerHeight">@dimen/height_devider</item>
     </style>
 

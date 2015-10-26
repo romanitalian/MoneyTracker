@@ -5,6 +5,7 @@ import android.app.LoaderManager;
 import android.app.SearchManager;
 import android.content.AsyncTaskLoader;
 import android.content.Context;
+import android.content.Intent;
 import android.content.Loader;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -54,11 +55,11 @@ public class TransactionsFragment extends Fragment {
     @ViewById
     RecyclerView transactionList;
 
-//    @ViewById
-//    FloatingActionButton fab;
-
     @ViewById
-    FloatingActionButton fab2;
+    FloatingActionButton fab;
+
+//    @ViewById
+//    FloatingActionButton fab2;
 
     @OptionsMenuItem
     MenuItem menuSearch;
@@ -73,12 +74,12 @@ public class TransactionsFragment extends Fragment {
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         transactionList.setLayoutManager(linearLayoutManager);
 //        fab.attachToRecyclerView(transactionList);
-        fab2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getActivity(), "test: fab pressed", Toast.LENGTH_LONG).show();
-            }
-        });
+//        fab2.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Toast.makeText(getActivity(), "test: fab pressed", Toast.LENGTH_LONG).show();
+//            }
+//        });
 
         swipeRefreshLayout.setColorSchemeColors(R.color.green, R.color.orange, R.color.blue);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -112,8 +113,13 @@ public class TransactionsFragment extends Fragment {
         loadTransactions("");
     }
 
+//    @Click
+//    void fabClicked() {
+//        AddTransactionActivity_.intent(getActivity()).start();
+//        getActivity().overridePendingTransition(R.anim.from_midle, R.anim.to_midle);
+//    }
     @Click
-    void fabClicked() {
+    public void fab() {
         AddTransactionActivity_.intent(getActivity()).start();
         getActivity().overridePendingTransition(R.anim.from_midle, R.anim.to_midle);
     }
