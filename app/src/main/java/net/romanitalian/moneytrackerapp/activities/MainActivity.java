@@ -3,6 +3,8 @@ package net.romanitalian.moneytrackerapp.activities;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
@@ -10,8 +12,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
-import com.crashlytics.android.Crashlytics;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
@@ -27,14 +29,11 @@ import net.romanitalian.moneytrackerapp.rest.RestClient;
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Background;
 import org.androidannotations.annotations.Bean;
+import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.Receiver;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.rest.RestService;
-
-import co.flightrecorder.android.FlightRecorder;
-import io.fabric.sdk.android.Fabric;
-
 
 @EActivity(R.layout.activity_main)
 public class MainActivity extends AppCompatActivity {
@@ -57,13 +56,37 @@ public class MainActivity extends AppCompatActivity {
     @Bean
     SessionManager sessionManager;
 
+
     @AfterViews
     void ready() {
-        Fabric.with(this, new Crashlytics());
-        FlightRecorder.getInstance().setAuthentication("53dd85ad-c174-44f4-a787-beed4c26c4a7", "14f00dc2-2aac-4148-8298-3156460f93df");
-        FlightRecorder.getInstance().startFlight();
-        setFragment(0);
+        Toast.makeText(this, "start", Toast.LENGTH_LONG).show();
     }
+
+//    @AfterViews
+//    void ready() {
+//        Fabric.with(this, new Crashlytics());
+//        FlightRecorder.getInstance().setAuthentication("53dd85ad-c174-44f4-a787-beed4c26c4a7", "14f00dc2-2aac-4148-8298-3156460f93df");
+//        FlightRecorder.getInstance().startFlight();
+//        setFragment(0);
+//    }
+
+//
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        setContentView(R.layout.main);
+//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
+//
+//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+//            }
+//        });
+//    }
 
     @Receiver(actions = {SessionManager.SESSION_OPENED_BROADCAST}, registerAt = Receiver.RegisterAt.OnResumeOnPause, local = true)
     void onSessionOpen() {
@@ -83,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onResume() {
         super.onResume();
-        sessionManager.login(this);
+//        sessionManager.login(this);
         setMenu();
     }
 
