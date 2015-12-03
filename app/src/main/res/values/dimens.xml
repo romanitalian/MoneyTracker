@@ -42,4 +42,8 @@
     <dimen name="margin_top_transaction_card_category_title">30dp</dimen>
     <dimen name="text_size_transaction_title">18sp</dimen>
     <dimen name="width_spinner_category_list">150dp</dimen>
+
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
 </resources>

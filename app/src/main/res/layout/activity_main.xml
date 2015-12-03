@@ -20,7 +20,15 @@
             android:id="@+id/drawer_layout_frame"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/background"/>
+            android:background="@color/background">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Button"
+                android:id="@+id/button2"
+                android:layout_gravity="right|top"/>
+        </FrameLayout>
 
         <ListView
             style="@style/CustomTheme"

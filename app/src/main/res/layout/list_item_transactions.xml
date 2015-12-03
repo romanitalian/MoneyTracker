@@ -45,6 +45,15 @@
                 android:layout_alignParentRight="true"
                 android:layout_marginTop="@dimen/margin_top_transaction_card_category_title"
                 android:text="@string/categories_title"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Button"
+                android:id="@+id/button"
+                android:layout_alignParentBottom="true"
+                android:layout_toLeftOf="@+id/transaction_category_title"
+                android:layout_toStartOf="@+id/transaction_category_title"/>
         </RelativeLayout>
 
         <View
