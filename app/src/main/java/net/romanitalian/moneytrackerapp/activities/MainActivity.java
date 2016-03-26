@@ -78,7 +78,7 @@ public class MainActivity extends ActionBarActivity {
     @Override
     public void onResume() {
         super.onResume();
-        sessionManager.login(this);
+//        sessionManager.login(this);
         setMenu();
     }
 

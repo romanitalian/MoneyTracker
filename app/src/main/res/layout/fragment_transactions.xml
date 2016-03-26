@@ -1,29 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    style="@style/Container.Background"
+<android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:fab="http://schemas.android.com/apk/res-auto">
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    style="@style/Container.Background"
+    android:id="@+id/categories_content">
 
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/swipeRefreshLayout"
+
+
+  <android.support.v4.widget.SwipeRefreshLayout
+      android:id="@+id/swipeRefreshLayout"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/transaction_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"/>
+  </android.support.v4.widget.SwipeRefreshLayout>
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/transaction_list"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-    </android.support.v4.widget.SwipeRefreshLayout>
+  <android.support.design.widget.FloatingActionButton
+      android:id="@+id/transaction_fab"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentBottom="true"
+      android:layout_alignParentRight="true"
+      android:layout_margin="@dimen/margin_floating_action"
+      android:src="@drawable/ic_add_white_24dp"
+      fab:layout_behavior="net.romanitalian.moneytrackerapp.utils.ScrollFABBehavior"
+      fab:layout_anchor="@id/transaction_list"
+      fab:layout_anchorGravity="bottom|right|end"
+      fab:fab_colorNormal="@color/green_dark"
+      fab:fab_colorPressed="@color/green"
+      fab:fab_colorRipple="@color/ripple"/>
 
-    <com.melnykov.fab.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_margin="@dimen/margin_floating_action"
-        android:src="@drawable/ic_add_white_24dp"
-        fab:fab_colorNormal="@color/green_dark"
-        fab:fab_colorPressed="@color/green"
-        fab:fab_colorRipple="@color/ripple"/>
-</RelativeLayout>
+
+</android.support.design.widget.CoordinatorLayout>

@@ -18,7 +18,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.SearchView;
 
-import com.melnykov.fab.FloatingActionButton;
+import android.support.design.widget.FloatingActionButton;
 
 import net.romanitalian.moneytrackerapp.R;
 import net.romanitalian.moneytrackerapp.activities.AddTransactionActivity_;
@@ -48,13 +48,13 @@ public class TransactionsFragment extends Fragment {
 
     List<Transaction> data = new ArrayList<>();
 
-    @ViewById
+    @ViewById(R.id.transaction_list)
     RecyclerView transactionList;
 
-    @ViewById
+    @ViewById(R.id.transaction_fab)
     FloatingActionButton fab;
 
-    @OptionsMenuItem
+    @OptionsMenuItem(R.id.menu_search)
     MenuItem menuSearch;
 
     @ViewById(R.id.swipeRefreshLayout)
@@ -66,7 +66,7 @@ public class TransactionsFragment extends Fragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         transactionList.setLayoutManager(linearLayoutManager);
-        fab.attachToRecyclerView(transactionList);
+
 
         swipeRefreshLayout.setColorSchemeColors(R.color.green, R.color.orange, R.color.blue);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -102,8 +102,8 @@ public class TransactionsFragment extends Fragment {
         loadTransactions("");
     }
 
-    @Click
-    void fabClicked() {
+    @Click(R.id.transaction_fab)
+    void fab() {
         AddTransactionActivity_.intent(getActivity()).start();
         getActivity().overridePendingTransition(R.anim.from_midle, R.anim.to_midle);
     }

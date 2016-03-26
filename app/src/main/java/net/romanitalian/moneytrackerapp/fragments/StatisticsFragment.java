@@ -22,7 +22,7 @@ import java.util.Random;
 @EFragment(R.layout.fragment_statistics)
 public class StatisticsFragment extends Fragment {
 
-    @ViewById
+    @ViewById(R.id.statistic_linear_layout)
     LinearLayout statistic_linear_layout;
 
     @ViewById(R.id.chart)
